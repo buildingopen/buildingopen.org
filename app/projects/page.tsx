@@ -1,17 +1,56 @@
 import Card from "../components/Card";
 
 const writingProjects = [
-  { icon: "🤖", title: "OpenClaw", description: "Set up your own AI assistant in 10 minutes. No coding required.", meta: "Setup Guide · Beginner friendly", href: "https://github.com/buildingopen/openclaw-setup", id: "openclaw" },
-  { icon: "📝", title: "OpenDraft", description: "AI thesis writer with 19 specialized agents. Generate 20k+ word research drafts.", meta: "Python · MIT License", href: "https://github.com/federicodeponte/opendraft", id: "opendraft" },
-  { icon: "📄", title: "OpenWord", description: "AI document generator. Create business letters, invoices, contracts with natural language.", meta: "Python · PDF Export", href: "https://github.com/federicodeponte/openword", id: "openword" },
+  {
+    icon: "🤖",
+    title: "OpenClaw",
+    description: "Set up your own AI assistant in 10 minutes. No coding required.",
+    tags: ["Beginner", "Setup Guide"],
+    meta: "MIT License",
+    href: "https://github.com/buildingopen/openclaw-setup",
+    id: "openclaw"
+  },
+  {
+    icon: "📝",
+    title: "OpenDraft",
+    description: "AI thesis writer with 19 specialized agents. Generate 20k+ word research drafts.",
+    tags: ["Python", "Gemini", "AI"],
+    meta: "MIT License",
+    href: "https://github.com/federicodeponte/opendraft",
+    id: "opendraft"
+  },
+  {
+    icon: "📄",
+    title: "OpenWord",
+    description: "AI document generator. Create business letters, invoices, contracts with natural language.",
+    tags: ["Python", "PDF", "Gemini"],
+    meta: "MIT License",
+    href: "https://github.com/federicodeponte/openword",
+    id: "openword"
+  },
 ];
 
 const presentationProjects = [
-  { icon: "📊", title: "OpenSlides", description: "Brand-first slide deck generator. Create presentations with full creative control.", meta: "Python · PNG/PDF Export", href: "https://github.com/federicodeponte/openslides", id: "openslides" },
+  {
+    icon: "📊",
+    title: "OpenSlides",
+    description: "Brand-first slide deck generator. Create presentations with full creative control.",
+    tags: ["Python", "PNG/PDF", "Branding"],
+    meta: "MIT License",
+    href: "https://github.com/federicodeponte/openslides",
+    id: "openslides"
+  },
 ];
 
 const aiProjects = [
-  { icon: "💬", title: "OpenChat", description: "Claude Code for everyone. Accessible AI chat for non-techies.", meta: "Coming soon", id: "openchat" },
+  {
+    icon: "💬",
+    title: "OpenChat",
+    description: "Claude Code for everyone. Accessible AI chat for non-techies.",
+    tags: ["Next.js", "Claude", "TypeScript"],
+    meta: "Coming soon",
+    id: "openchat"
+  },
 ];
 
 export default function ProjectsPage() {
@@ -30,7 +69,15 @@ export default function ProjectsPage() {
           <div className="grid md:grid-cols-3 gap-4">
             {writingProjects.map((project) => (
               <div key={project.id} id={project.id}>
-                <Card icon={project.icon} title={project.title} description={project.description} meta={project.meta} href={project.href} external />
+                <Card
+                  icon={project.icon}
+                  title={project.title}
+                  description={project.description}
+                  tags={project.tags}
+                  meta={project.meta}
+                  href={project.href}
+                  external
+                />
               </div>
             ))}
           </div>
@@ -43,7 +90,15 @@ export default function ProjectsPage() {
           <div className="grid md:grid-cols-3 gap-4">
             {presentationProjects.map((project) => (
               <div key={project.id} id={project.id}>
-                <Card icon={project.icon} title={project.title} description={project.description} meta={project.meta} href={project.href} external />
+                <Card
+                  icon={project.icon}
+                  title={project.title}
+                  description={project.description}
+                  tags={project.tags}
+                  meta={project.meta}
+                  href={project.href}
+                  external
+                />
               </div>
             ))}
           </div>
@@ -56,7 +111,14 @@ export default function ProjectsPage() {
           <div className="grid md:grid-cols-3 gap-4">
             {aiProjects.map((project) => (
               <div key={project.id} id={project.id}>
-                <Card icon={project.icon} title={project.title} description={project.description} meta={project.meta} disabled />
+                <Card
+                  icon={project.icon}
+                  title={project.title}
+                  description={project.description}
+                  tags={project.tags}
+                  meta={project.meta}
+                  disabled
+                />
               </div>
             ))}
           </div>
