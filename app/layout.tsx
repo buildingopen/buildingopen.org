@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://buildingopen.org"),
   title: "Building Open",
   description: "Open source tools for opportunity and education. Free software for learning, creating, and growing.",
   icons: {
