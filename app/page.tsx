@@ -4,15 +4,15 @@ import Terminal from "./components/Terminal";
 export default function Home() {
   return (
     <>
-      {/* Hero - The real mission */}
+      {/* Hero - Value prop */}
       <section className="py-20 md:py-28 border-b border-zinc-800">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-            Equal opportunity through open source
+            Tools you can use, learn from, and make your own
           </h1>
           <p className="text-lg text-zinc-400 mb-8 max-w-2xl mx-auto">
-            The student in Lagos deserves the same tools as the one in London.
-            We build software you can use, learn from, and make your own.
+            Open source software for writing, presenting, and creating.
+            Free forever. No catch.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link

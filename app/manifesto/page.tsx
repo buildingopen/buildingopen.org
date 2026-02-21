@@ -4,8 +4,8 @@ export default function ManifestoPage() {
   return (
     <article className="py-16">
       <div className="mx-auto max-w-2xl px-6">
-        <h1 className="text-3xl font-bold mb-2">Building Open</h1>
-        <p className="text-zinc-500 mb-12">Why we exist and what we believe.</p>
+        <h1 className="text-3xl font-bold mb-2">Equal opportunity through open source</h1>
+        <p className="text-zinc-500 mb-12">Why Building Open exists and what we believe.</p>
 
         <section className="mb-10">
           <h2 className="text-lg font-semibold mb-3">Why We Exist</h2>
