@@ -18,8 +18,12 @@ export default function Header() {
     <header className="border-b border-zinc-800 bg-[#0a0a0a]">
       <div className="mx-auto max-w-5xl px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="font-semibold">
-            Building Open
+          <Link href="/" className="flex items-center gap-3">
+            <svg width="28" height="22" viewBox="0 0 28 22" className="flex-shrink-0">
+              <text x="0" y="17" fontFamily="Space Grotesk, system-ui, sans-serif" fontWeight="700" fontSize="20" fill="#22c55e">b</text>
+              <circle cx="18" cy="12" r="5" fill="#22c55e"/>
+            </svg>
+            <span className="font-semibold text-white">Building Open</span>
           </Link>
 
           {/* Mobile menu button */}

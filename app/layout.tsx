@@ -22,6 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+      </head>
       <body className="antialiased min-h-screen flex flex-col">
         <a href="#main" className="skip-link">Skip to main content</a>
         <Header />

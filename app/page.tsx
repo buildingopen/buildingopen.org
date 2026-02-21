@@ -238,9 +238,11 @@ export default function Home() {
         <div className="mx-auto max-w-2xl px-6">
           <div className="flex items-start gap-6">
             <div className="shrink-0">
-              <div className="w-16 h-16 rounded-full bg-green-500 flex items-center justify-center text-xl font-bold text-black">
-                FD
-              </div>
+              <img
+                src="/fede.jpg"
+                alt="Federico De Ponte"
+                className="w-16 h-16 rounded-full object-cover"
+              />
             </div>
             <div>
               <h2 className="text-xl font-bold mb-2">Federico De Ponte</h2>
