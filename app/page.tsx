@@ -1,135 +1,194 @@
 import Link from "next/link";
 import Card from "./components/Card";
 
-const projects = [
-  {
-    icon: "🤖",
-    title: "OpenClaw",
-    description: "AI assistant setup in 10 minutes",
-    meta: "Setup Guide",
-    href: "/projects#openclaw",
-    screenshot: "/screenshots/openclaw.png"
-  },
-  {
-    icon: "📝",
-    title: "OpenDraft",
-    description: "AI thesis writer with 19 agents",
-    meta: "6 stars on GitHub",
-    href: "/projects#opendraft",
-    screenshot: "/screenshots/opendraft.png"
-  },
+const moreTools = [
   {
     icon: "📊",
     title: "OpenSlides",
-    description: "Brand-first slide deck generator",
-    meta: "Python",
-    href: "/projects#openslides",
-    screenshot: "/screenshots/openslides.png"
+    description: "Create branded slide decks from a single prompt",
+    meta: "Python + PIL",
+    href: "https://github.com/federicodeponte/openslides",
+    external: true,
+  },
+  {
+    icon: "📄",
+    title: "OpenWord",
+    description: "Generate contracts, invoices, and letters",
+    meta: "Python + DOCX",
+    href: "https://github.com/federicodeponte/openword",
+    external: true,
+  },
+  {
+    icon: "🤖",
+    title: "OpenClaw",
+    description: "Set up your own AI assistant in 10 minutes",
+    meta: "Setup Guide",
+    href: "https://github.com/buildingopen/openclaw-setup",
+    external: true,
   },
 ];
 
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="py-20 md:py-32 text-center border-b border-dashed border-zinc-800 relative overflow-hidden">
+      {/* Hero - Problem-first */}
+      <section className="py-20 md:py-28 text-center border-b border-dashed border-zinc-800 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-green-500/5 via-transparent to-transparent pointer-events-none" />
 
         <div className="mx-auto max-w-5xl px-6 relative">
+          <p className="text-sm text-zinc-500 mb-4 animate-fade-in-up">For students and self-taught developers</p>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 animate-fade-in-up">
-            Open source for <span className="text-green-500">everyone</span>
+            Stop paying for tools<br className="hidden md:block" /> you can build <span className="text-green-500">yourself</span>
           </h1>
-          <p className="text-lg md:text-xl text-zinc-400 max-w-lg mx-auto mb-10 animate-fade-in-up-delay-1">
-            We build tools that create opportunity. Free software for learning, creating, and growing.
+          <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 animate-fade-in-up-delay-1">
+            Free, open source alternatives to expensive SaaS. Use them, learn from them, make them yours.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up-delay-2">
-            <Link
-              href="/projects"
-              className="group px-8 py-3.5 bg-green-500 text-black font-semibold rounded-lg hover:bg-green-400 transition-all hover:shadow-lg hover:shadow-green-500/25 btn-shine"
-            >
-              View Projects
-              <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
-            </Link>
             <a
-              href="https://github.com/buildingopen"
+              href="https://github.com/federicodeponte/opendraft"
               target="_blank"
               rel="noopener noreferrer"
-              className="group px-8 py-3.5 border border-zinc-700 rounded-lg hover:border-zinc-500 hover:bg-zinc-800/50 transition-all flex items-center justify-center gap-2"
+              className="group px-8 py-3.5 bg-green-500 text-black font-semibold rounded-lg hover:bg-green-400 transition-all hover:shadow-lg hover:shadow-green-500/25"
             >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-              </svg>
-              GitHub
+              Try OpenDraft Free
+              <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
             </a>
+            <Link
+              href="/projects"
+              className="px-8 py-3.5 border border-zinc-700 rounded-lg hover:border-zinc-500 hover:bg-zinc-800/50 transition-all"
+            >
+              Browse All Tools
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Social Proof Bar */}
-      <section className="py-6 border-b border-dashed border-zinc-800 bg-zinc-900/30">
+      {/* Social Proof - Real numbers */}
+      <section className="py-5 border-b border-dashed border-zinc-800 bg-zinc-900/30">
         <div className="mx-auto max-w-5xl px-6">
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16 text-sm">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-12 text-sm">
             <div className="flex items-center gap-2 text-zinc-400">
-              <span className="text-2xl font-bold text-white">5</span>
-              <span>open source tools</span>
+              <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" /></svg>
+              <span><span className="text-white font-semibold">5</span> repos on GitHub</span>
             </div>
             <div className="flex items-center gap-2 text-zinc-400">
-              <span className="text-2xl font-bold text-white">MIT</span>
-              <span>licensed, forever free</span>
+              <span className="text-green-500">MIT</span>
+              <span>Use commercially, modify freely</span>
             </div>
             <div className="flex items-center gap-2 text-zinc-400">
-              <span className="text-2xl font-bold text-white">100%</span>
-              <span>open source</span>
+              <span className="text-green-500">$0</span>
+              <span>forever</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Projects with Screenshots */}
+      {/* Featured: OpenDraft Demo */}
+      <section className="py-16 border-b border-dashed border-zinc-800">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            {/* Left: Value prop */}
+            <div>
+              <p className="text-xs uppercase tracking-widest text-green-500 mb-3 font-medium">Featured Tool</p>
+              <h2 className="text-3xl font-bold mb-4">Write your thesis in 12 minutes</h2>
+              <p className="text-zinc-400 mb-6 leading-relaxed">
+                OpenDraft uses 19 AI agents to research, outline, and write academic papers.
+                One command generates a 20,000+ word draft with 40+ citations.
+              </p>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center gap-3 text-zinc-300">
+                  <svg className="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                  Academic sources from OpenAlex API
+                </li>
+                <li className="flex items-center gap-3 text-zinc-300">
+                  <svg className="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                  Proper citations in APA/MLA format
+                </li>
+                <li className="flex items-center gap-3 text-zinc-300">
+                  <svg className="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                  Outputs .docx ready for editing
+                </li>
+              </ul>
+              <a
+                href="https://github.com/federicodeponte/opendraft"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 text-black font-semibold rounded-lg hover:bg-green-400 transition-all"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" /></svg>
+                Get OpenDraft
+              </a>
+            </div>
+
+            {/* Right: Terminal demo */}
+            <div className="relative rounded-xl overflow-hidden border border-zinc-800 bg-zinc-950">
+              <div className="flex items-center gap-2 px-4 py-3 border-b border-zinc-800 bg-zinc-900/50">
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                </div>
+                <span className="text-xs text-zinc-500 ml-2">Terminal</span>
+              </div>
+              <div className="p-5 font-mono text-sm leading-relaxed">
+                <div className="text-zinc-500">$ python opendraft.py --topic "Climate change"</div>
+                <div className="mt-3 text-green-400">Agents initialized (19/19)</div>
+                <div className="text-green-400">Searching OpenAlex for sources...</div>
+                <div className="text-green-400">Found 47 relevant papers</div>
+                <div className="text-green-400">Generating outline...</div>
+                <div className="text-green-400">Writing chapters...</div>
+                <div className="text-zinc-600 my-2">━━━━━━━━━━━━━━━━━━━━ 100%</div>
+                <div className="text-white mt-3">Done in 11m 42s</div>
+                <div className="text-zinc-400 mt-1">Output: thesis_draft.docx</div>
+                <div className="text-zinc-400">Words: 23,847</div>
+                <div className="text-zinc-400">Citations: 47</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* More Tools */}
       <section className="py-16 border-b border-dashed border-zinc-800">
         <div className="mx-auto max-w-5xl px-6">
           <div className="flex justify-between items-end mb-8">
             <div>
-              <p className="text-xs uppercase tracking-widest text-green-500 mb-2 font-medium">Projects</p>
-              <h2 className="text-2xl font-semibold">What we're building</h2>
+              <p className="text-xs uppercase tracking-widest text-green-500 mb-2 font-medium">More Tools</p>
+              <h2 className="text-2xl font-semibold">Also free, also open</h2>
             </div>
-            <Link href="/projects" className="text-sm text-zinc-500 hover:text-green-500 transition-colors link-underline">
-              View all
+            <Link href="/projects" className="text-sm text-zinc-500 hover:text-green-500 transition-colors">
+              View all →
             </Link>
           </div>
           <div className="grid md:grid-cols-3 gap-5">
-            {projects.map((project, i) => (
-              <div key={project.title} className={`animate-fade-in-up stagger-${i + 1}`}>
-                <Card {...project} />
+            {moreTools.map((tool, i) => (
+              <div key={tool.title} className={`animate-fade-in-up stagger-${i + 1}`}>
+                <Card {...tool} />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Builder Section - The Face Behind It */}
-      <section className="py-16 border-b border-dashed border-zinc-800">
+      {/* Builder Section - No emoji, initials only */}
+      <section className="py-16 border-b border-dashed border-zinc-800 bg-zinc-900/20">
         <div className="mx-auto max-w-5xl px-6">
           <div className="max-w-3xl mx-auto">
-            <p className="text-xs uppercase tracking-widest text-green-500 mb-6 font-medium text-center">Who's behind this</p>
-
-            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-              {/* Photo */}
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-10">
+              {/* Initials avatar */}
               <div className="shrink-0">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-green-500/20 to-zinc-800 p-1">
-                  <div className="w-full h-full rounded-full bg-zinc-800 flex items-center justify-center text-4xl md:text-5xl">
-                    👨‍💻
-                  </div>
+                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-2xl font-bold text-black">
+                  FD
                 </div>
               </div>
 
               {/* Bio */}
               <div className="text-center md:text-left">
+                <p className="text-zinc-500 text-sm mb-2">Built by</p>
                 <h3 className="text-xl font-semibold mb-1">Federico De Ponte</h3>
-                <p className="text-green-500 text-sm mb-4">Founder & Builder</p>
                 <p className="text-zinc-400 leading-relaxed mb-4">
-                  Self-taught developer from Germany. Building tools I wished existed when I was learning to code.
-                  Every project here started as a personal itch that needed scratching.
+                  Self-taught developer from Germany. I build the tools I wished I had when starting out.
+                  Everything here is MIT licensed, use it however you want.
                 </p>
                 <div className="flex flex-wrap justify-center md:justify-start gap-4">
                   <a
@@ -157,61 +216,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* What it looks like - Demo section */}
-      <section className="py-16 border-b border-dashed border-zinc-800">
-        <div className="mx-auto max-w-5xl px-6">
-          <p className="text-xs uppercase tracking-widest text-green-500 mb-2 font-medium text-center">See it in action</p>
-          <h2 className="text-2xl font-semibold text-center mb-8">What OpenDraft actually looks like</h2>
-
-          <div className="relative rounded-xl overflow-hidden border border-zinc-800 bg-zinc-900">
-            {/* Fake browser chrome */}
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-zinc-800 bg-zinc-900">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-zinc-700"></div>
-                <div className="w-3 h-3 rounded-full bg-zinc-700"></div>
-                <div className="w-3 h-3 rounded-full bg-zinc-700"></div>
-              </div>
-              <div className="flex-1 mx-4">
-                <div className="bg-zinc-800 rounded px-3 py-1 text-xs text-zinc-500 max-w-md mx-auto">
-                  github.com/federicodeponte/opendraft
-                </div>
-              </div>
-            </div>
-
-            {/* Screenshot placeholder - terminal style */}
-            <div className="p-6 font-mono text-sm">
-              <div className="text-zinc-500 mb-2">$ python opendraft.py --topic &quot;Climate change impacts&quot;</div>
-              <div className="text-green-500 mb-1">✓ Initializing 19 specialized agents...</div>
-              <div className="text-green-500 mb-1">✓ Research agent gathering sources...</div>
-              <div className="text-green-500 mb-1">✓ Outline agent structuring chapters...</div>
-              <div className="text-green-500 mb-1">✓ Writing agents generating content...</div>
-              <div className="text-zinc-400 mb-4">...</div>
-              <div className="text-white mb-2">📄 Generated: thesis_draft.docx (23,847 words)</div>
-              <div className="text-white mb-2">📚 Citations: 47 academic sources</div>
-              <div className="text-white">⏱️  Time: 12 minutes</div>
-            </div>
-          </div>
-
-          <p className="text-center text-zinc-500 text-sm mt-4">
-            Real output from OpenDraft v3. One command, 20k+ words.
-          </p>
-        </div>
-      </section>
-
-      {/* Manifesto teaser */}
+      {/* CTA */}
       <section className="py-20">
         <div className="mx-auto max-w-5xl px-6">
           <div className="max-w-2xl mx-auto text-center">
-            <p className="text-lg text-zinc-400 mb-6 leading-relaxed">
-              We believe the best tools should be free. The best education should be accessible.
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Start building today</h2>
+            <p className="text-zinc-400 mb-8">
+              Clone a repo, run it locally, make it yours. No signups, no credit cards, no strings.
             </p>
-            <Link
-              href="/manifesto"
-              className="group inline-flex items-center gap-2 text-green-500 hover:text-green-400 transition-colors font-medium"
-            >
-              Read our Manifesto
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://github.com/federicodeponte/opendraft"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-3.5 bg-green-500 text-black font-semibold rounded-lg hover:bg-green-400 transition-all"
+              >
+                Clone OpenDraft
+              </a>
+              <Link
+                href="/manifesto"
+                className="px-8 py-3.5 border border-zinc-700 rounded-lg hover:border-zinc-500 hover:bg-zinc-800/50 transition-all"
+              >
+                Read the Manifesto
+              </Link>
+            </div>
           </div>
         </div>
       </section>
