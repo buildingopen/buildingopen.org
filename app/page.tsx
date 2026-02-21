@@ -4,11 +4,11 @@ import Terminal from "./components/Terminal";
 export default function Home() {
   return (
     <>
-      {/* Hero - Value prop */}
+      {/* Hero */}
       <section className="py-20 md:py-28 border-b border-zinc-800">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-            Let&apos;s build together
+            Let&apos;s build <span className="text-green-500">together</span>
           </h1>
           <p className="text-lg text-zinc-400 mb-8 max-w-2xl mx-auto">
             Open source tools, education, and community. Use it. Learn it. Make it yours.
@@ -16,13 +16,13 @@ export default function Home() {
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/projects"
-              className="px-6 py-3 bg-white text-black font-medium rounded-lg hover:bg-zinc-200 transition-colors"
+              className="px-6 py-3 bg-green-500 text-black font-medium rounded-lg hover:bg-green-400 transition-colors"
             >
               View Projects
             </Link>
             <Link
               href="/manifesto"
-              className="px-6 py-3 border border-zinc-700 rounded-lg hover:border-zinc-500 transition-colors"
+              className="px-6 py-3 border border-zinc-700 rounded-lg hover:border-green-500 hover:text-green-500 transition-colors"
             >
               Read the Manifesto
             </Link>
@@ -35,19 +35,19 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-6">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
-              <h3 className="font-semibold mb-2">Tools</h3>
+              <h3 className="font-semibold mb-2 text-green-500">Tools</h3>
               <p className="text-sm text-zinc-400">
                 Free, open source software that creates real value. Not demos, but tools you can actually use.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold mb-2">Education</h3>
+              <h3 className="font-semibold mb-2 text-green-500">Education</h3>
               <p className="text-sm text-zinc-400">
                 Learn how things work. Read the code, understand the patterns, build your own.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold mb-2">Community</h3>
+              <h3 className="font-semibold mb-2 text-green-500">Community</h3>
               <p className="text-sm text-zinc-400">
                 Ask questions, share what you&apos;ve built, learn from others on the same journey.
               </p>
@@ -61,7 +61,7 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-6">
           <div className="flex flex-wrap items-center gap-4 mb-8">
             <div>
-              <p className="text-sm text-zinc-500 mb-2">Featured Project</p>
+              <p className="text-sm text-green-500 mb-2">Featured Project</p>
               <h2 className="text-2xl md:text-3xl font-bold">OpenDraft</h2>
             </div>
             <a
@@ -99,19 +99,19 @@ export default function Home() {
                 <h3 className="font-semibold mb-3">What you get:</h3>
                 <ul className="space-y-2 text-zinc-400 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="text-white mt-0.5">•</span>
+                    <span className="text-green-500 mt-0.5">•</span>
                     <span>20,000+ words across 40+ pages</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-white mt-0.5">•</span>
+                    <span className="text-green-500 mt-0.5">•</span>
                     <span>Real academic sources from OpenAlex</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-white mt-0.5">•</span>
+                    <span className="text-green-500 mt-0.5">•</span>
                     <span>Proper citations (APA, MLA, Chicago)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-white mt-0.5">•</span>
+                    <span className="text-green-500 mt-0.5">•</span>
                     <span>Exports to .docx for editing</span>
                   </li>
                 </ul>
@@ -150,14 +150,14 @@ export default function Home() {
                   href="https://github.com/federicodeponte/opendraft"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 bg-white text-black font-medium rounded-lg hover:bg-zinc-200 transition-colors"
+                  className="px-5 py-2.5 bg-green-500 text-black font-medium rounded-lg hover:bg-green-400 transition-colors"
                 >
                   Get OpenDraft
                 </a>
                 <a
                   href="/sample-thesis.pdf"
                   target="_blank"
-                  className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-zinc-500 transition-colors text-sm"
+                  className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-green-500 transition-colors text-sm"
                 >
                   Download sample PDF
                 </a>
@@ -190,7 +190,7 @@ export default function Home() {
       {/* More tools */}
       <section className="py-16 border-b border-zinc-800">
         <div className="mx-auto max-w-5xl px-6">
-          <p className="text-sm text-zinc-500 mb-2">More Projects</p>
+          <p className="text-sm text-green-500 mb-2">More Projects</p>
           <h2 className="text-xl font-bold mb-8">Same philosophy, different outputs</h2>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -201,14 +201,14 @@ export default function Home() {
               rel="noopener noreferrer"
               className="group block"
             >
-              <div className="bg-zinc-900 rounded-lg border border-zinc-800 group-hover:border-zinc-600 transition-colors overflow-hidden">
+              <div className="bg-zinc-900 rounded-lg border border-zinc-800 group-hover:border-green-500/50 transition-colors overflow-hidden">
                 <img
                   src="/openslides-demo.png"
                   alt="OpenSlides output - 4-slide strategy deck"
                   className="w-full"
                 />
               </div>
-              <h3 className="font-semibold mt-4 group-hover:text-white transition-colors">OpenSlides</h3>
+              <h3 className="font-semibold mt-4 group-hover:text-green-500 transition-colors">OpenSlides</h3>
               <p className="text-sm text-zinc-500">Text prompt → branded slide deck</p>
             </a>
 
@@ -219,14 +219,14 @@ export default function Home() {
               rel="noopener noreferrer"
               className="group block"
             >
-              <div className="bg-zinc-900 rounded-lg border border-zinc-800 group-hover:border-zinc-600 transition-colors overflow-hidden">
+              <div className="bg-zinc-900 rounded-lg border border-zinc-800 group-hover:border-green-500/50 transition-colors overflow-hidden">
                 <img
                   src="/openword-demo.png"
                   alt="OpenWord output - NDA contract"
                   className="w-full"
                 />
               </div>
-              <h3 className="font-semibold mt-4 group-hover:text-white transition-colors">OpenWord</h3>
+              <h3 className="font-semibold mt-4 group-hover:text-green-500 transition-colors">OpenWord</h3>
               <p className="text-sm text-zinc-500">Template + data → formatted document</p>
             </a>
           </div>
@@ -238,7 +238,7 @@ export default function Home() {
         <div className="mx-auto max-w-2xl px-6">
           <div className="flex items-start gap-6">
             <div className="shrink-0">
-              <div className="w-16 h-16 rounded-full bg-zinc-800 flex items-center justify-center text-xl font-bold">
+              <div className="w-16 h-16 rounded-full bg-green-500 flex items-center justify-center text-xl font-bold text-black">
                 FD
               </div>
             </div>
@@ -255,7 +255,7 @@ export default function Home() {
                   href="https://github.com/federicodeponte"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-zinc-500 hover:text-white transition-colors"
+                  className="text-sm text-zinc-500 hover:text-green-500 transition-colors"
                 >
                   GitHub →
                 </a>
@@ -263,7 +263,7 @@ export default function Home() {
                   href="https://linkedin.com/in/federicodeponte"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-zinc-500 hover:text-white transition-colors"
+                  className="text-sm text-zinc-500 hover:text-green-500 transition-colors"
                 >
                   LinkedIn →
                 </a>
@@ -287,13 +287,13 @@ export default function Home() {
               href="https://github.com/buildingopen"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 bg-white text-black font-medium rounded-lg hover:bg-zinc-200 transition-colors"
+              className="px-6 py-3 bg-green-500 text-black font-medium rounded-lg hover:bg-green-400 transition-colors"
             >
               GitHub
             </a>
             <Link
               href="/manifesto"
-              className="px-6 py-3 border border-zinc-700 rounded-lg hover:border-zinc-500 transition-colors"
+              className="px-6 py-3 border border-zinc-700 rounded-lg hover:border-green-500 hover:text-green-500 transition-colors"
             >
               Read the Manifesto
             </Link>
