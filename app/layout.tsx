@@ -6,12 +6,23 @@ import Footer from "./components/Footer";
 export const metadata: Metadata = {
   title: "Building Open",
   description: "Open source tools for opportunity and education. Free software for learning, creating, and growing.",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
     title: "Building Open",
     description: "Open source tools for opportunity and education",
     url: "https://buildingopen.org",
     siteName: "Building Open",
     type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Building Open",
+    description: "Open source tools for opportunity and education",
+    images: ["/og-image.png"],
   },
 };
 
