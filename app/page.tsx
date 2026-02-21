@@ -1,18 +1,18 @@
 import Link from "next/link";
+import Terminal from "./components/Terminal";
 
 export default function Home() {
   return (
     <>
-      {/* Hero */}
+      {/* Hero - The real mission */}
       <section className="py-20 md:py-28 border-b border-zinc-800">
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <p className="text-sm text-zinc-500 mb-4">For students, researchers, and indie hackers</p>
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-            The tools you need but can&apos;t afford
+            Equal opportunity through open source
           </h1>
-          <p className="text-lg text-zinc-400 mb-8 max-w-xl mx-auto">
-            Thesis writers. Slide generators. Document automation.
-            All open source. All free. No catch.
+          <p className="text-lg text-zinc-400 mb-8 max-w-2xl mx-auto">
+            The student in Lagos deserves the same tools as the one in London.
+            We build software you can use, learn from, and make your own.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
@@ -21,14 +21,38 @@ export default function Home() {
             >
               View Projects
             </Link>
-            <a
-              href="https://github.com/buildingopen"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/manifesto"
               className="px-6 py-3 border border-zinc-700 rounded-lg hover:border-zinc-500 transition-colors"
             >
-              GitHub
-            </a>
+              Read the Manifesto
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* What we do - Three pillars */}
+      <section className="py-16 border-b border-zinc-800">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="font-semibold mb-2">Tools</h3>
+              <p className="text-sm text-zinc-400">
+                Free, open source software that creates real value. Not demos, but tools you can actually use.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">Education</h3>
+              <p className="text-sm text-zinc-400">
+                Learn how things work. Read the code, understand the patterns, build your own.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">Community</h3>
+              <p className="text-sm text-zinc-400">
+                Ask questions, share what you&apos;ve built, learn from others on the same journey.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -36,13 +60,26 @@ export default function Home() {
       {/* Featured: OpenDraft */}
       <section className="py-16 border-b border-zinc-800">
         <div className="mx-auto max-w-5xl px-6">
-          <div className="mb-8">
-            <p className="text-sm text-zinc-500 mb-2">Featured</p>
-            <h2 className="text-2xl md:text-3xl font-bold">OpenDraft</h2>
-            <p className="text-zinc-400 mt-2">
-              Generate a 40-page research paper with proper citations in 12 minutes.
-            </p>
+          <div className="flex flex-wrap items-center gap-4 mb-8">
+            <div>
+              <p className="text-sm text-zinc-500 mb-2">Featured Project</p>
+              <h2 className="text-2xl md:text-3xl font-bold">OpenDraft</h2>
+            </div>
+            <a
+              href="https://github.com/federicodeponte/opendraft/stargazers"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3 py-1 bg-zinc-800 rounded-full text-sm hover:bg-zinc-700 transition-colors"
+            >
+              <svg className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+              </svg>
+              <span>6 stars</span>
+            </a>
           </div>
+          <p className="text-zinc-400 mb-8">
+            Generate a 40-page research paper with proper citations in 12 minutes.
+          </p>
 
           <div className="grid md:grid-cols-2 gap-8 items-start">
             {/* Main preview */}
@@ -59,9 +96,9 @@ export default function Home() {
 
             {/* Details */}
             <div>
-              <div className="mb-8">
+              <div className="mb-6">
                 <h3 className="font-semibold mb-3">What you get:</h3>
-                <ul className="space-y-2 text-zinc-400">
+                <ul className="space-y-2 text-zinc-400 text-sm">
                   <li className="flex items-start gap-2">
                     <span className="text-white mt-0.5">•</span>
                     <span>20,000+ words across 40+ pages</span>
@@ -73,10 +110,6 @@ export default function Home() {
                   <li className="flex items-start gap-2">
                     <span className="text-white mt-0.5">•</span>
                     <span>Proper citations (APA, MLA, Chicago)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-white mt-0.5">•</span>
-                    <span>Table of contents, abstract, references</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-white mt-0.5">•</span>
@@ -135,11 +168,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Other tools - with real screenshots */}
+      {/* Try it now */}
+      <section className="py-16 border-b border-zinc-800 bg-zinc-900/30">
+        <div className="mx-auto max-w-2xl px-6">
+          <h2 className="text-xl font-bold mb-2 text-center">Try it yourself</h2>
+          <p className="text-zinc-500 text-sm mb-6 text-center">
+            Clone, install, run. Read the code. Make it yours.
+          </p>
+          <Terminal
+            commands={[
+              "git clone https://github.com/federicodeponte/opendraft",
+              "cd opendraft && pip install -r requirements.txt",
+              "python opendraft.py --topic \"Your research topic here\""
+            ]}
+          />
+          <p className="text-xs text-zinc-600 mt-4 text-center">
+            Requires Python 3.10+ and a Gemini API key (free tier works)
+          </p>
+        </div>
+      </section>
+
+      {/* More tools */}
       <section className="py-16 border-b border-zinc-800">
         <div className="mx-auto max-w-5xl px-6">
-          <p className="text-sm text-zinc-500 mb-2">More tools</p>
-          <h2 className="text-xl font-bold mb-8">Same idea, different outputs</h2>
+          <p className="text-sm text-zinc-500 mb-2">More Projects</p>
+          <h2 className="text-xl font-bold mb-8">Same philosophy, different outputs</h2>
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* OpenSlides */}
@@ -181,7 +234,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Who built this - with avatar */}
+      {/* Who */}
       <section className="py-16 border-b border-zinc-800">
         <div className="mx-auto max-w-2xl px-6">
           <div className="flex items-start gap-6">
@@ -194,8 +247,9 @@ export default function Home() {
               <h2 className="text-xl font-bold mb-2">Federico De Ponte</h2>
               <p className="text-sm text-zinc-500 mb-4">Self-taught developer from Germany</p>
               <p className="text-zinc-400 leading-relaxed mb-4">
-                I built these tools because I needed them and couldn&apos;t afford the alternatives.
-                Now they&apos;re free for anyone. MIT licensed, no strings attached.
+                I believe the best tools and education should be accessible to everyone,
+                regardless of where you live or what you can afford.
+                That&apos;s why everything here is open source and free.
               </p>
               <div className="flex gap-4">
                 <a
@@ -220,20 +274,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why */}
+      {/* CTA */}
       <section className="py-16">
         <div className="mx-auto max-w-2xl px-6 text-center">
-          <h2 className="text-xl font-bold mb-4">Why free?</h2>
+          <h2 className="text-xl font-bold mb-4">Join us</h2>
           <p className="text-zinc-400 leading-relaxed mb-6">
-            Because I was the broke student who couldn&apos;t afford the $50/month tools.
-            If you&apos;re in that position now, these are for you.
+            Use the tools. Learn from the code. Contribute if you can.
+            Fork it, improve it, build something new.
+            That&apos;s not competition, that&apos;s the goal.
           </p>
-          <Link
-            href="/manifesto"
-            className="text-sm text-zinc-500 hover:text-white transition-colors"
-          >
-            Read the full manifesto →
-          </Link>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <a
+              href="https://github.com/buildingopen"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-white text-black font-medium rounded-lg hover:bg-zinc-200 transition-colors"
+            >
+              GitHub
+            </a>
+            <Link
+              href="/manifesto"
+              className="px-6 py-3 border border-zinc-700 rounded-lg hover:border-zinc-500 transition-colors"
+            >
+              Read the Manifesto
+            </Link>
+          </div>
         </div>
       </section>
     </>
