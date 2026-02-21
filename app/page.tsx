@@ -3,17 +3,18 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      {/* Hero - Building Open intro */}
+      {/* Hero */}
       <section className="py-20 md:py-28 border-b border-zinc-800">
         <div className="mx-auto max-w-4xl px-6 text-center">
+          <p className="text-sm text-zinc-500 mb-4">For students, researchers, and indie hackers</p>
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-            Free tools for people who build
+            The tools you need but can&apos;t afford
           </h1>
           <p className="text-lg text-zinc-400 mb-8 max-w-xl mx-auto">
-            Open source software for writing, presenting, and creating.
-            Use them, learn from them, make them yours.
+            Thesis writers. Slide generators. Document automation.
+            All open source. All free. No catch.
           </p>
-          <div className="flex gap-4 justify-center">
+          <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/projects"
               className="px-6 py-3 bg-white text-black font-medium rounded-lg hover:bg-zinc-200 transition-colors"
@@ -32,7 +33,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured: OpenDraft with large preview */}
+      {/* Featured: OpenDraft */}
       <section className="py-16 border-b border-zinc-800">
         <div className="mx-auto max-w-5xl px-6">
           <div className="mb-8">
@@ -43,9 +44,8 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Large PDF preview */}
           <div className="grid md:grid-cols-2 gap-8 items-start">
-            {/* Main preview - large */}
+            {/* Main preview */}
             <div className="bg-zinc-900 rounded-lg p-6 border border-zinc-800">
               <img
                 src="/thesis-page-01.png"
@@ -53,11 +53,11 @@ export default function Home() {
                 className="w-full rounded shadow-lg"
               />
               <p className="text-sm text-zinc-500 mt-4 text-center">
-                Title page with proper academic formatting
+                Real output from OpenDraft v3
               </p>
             </div>
 
-            {/* Details + more pages */}
+            {/* Details */}
             <div>
               <div className="mb-8">
                 <h3 className="font-semibold mb-3">What you get:</h3>
@@ -85,7 +85,7 @@ export default function Home() {
                 </ul>
               </div>
 
-              {/* Smaller page previews */}
+              {/* Page previews */}
               <div className="grid grid-cols-3 gap-3 mb-6">
                 <div>
                   <img
@@ -113,7 +113,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="flex gap-3">
+              <div className="flex flex-wrap gap-3">
                 <a
                   href="https://github.com/federicodeponte/opendraft"
                   target="_blank"
@@ -135,57 +135,109 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Other tools */}
+      {/* Other tools - with concrete outputs */}
       <section className="py-16 border-b border-zinc-800">
         <div className="mx-auto max-w-5xl px-6">
           <p className="text-sm text-zinc-500 mb-2">More tools</p>
-          <h2 className="text-xl font-bold mb-6">Also free, also open source</h2>
+          <h2 className="text-xl font-bold mb-6">Same idea, different outputs</h2>
 
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* OpenSlides */}
             <a
               href="https://github.com/federicodeponte/openslides"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-5 border border-zinc-800 rounded-lg hover:border-zinc-600 transition-colors group"
+              className="p-6 border border-zinc-800 rounded-lg hover:border-zinc-600 transition-colors group"
             >
-              <h3 className="font-semibold mb-1 group-hover:text-white transition-colors">OpenSlides</h3>
-              <p className="text-sm text-zinc-500">Generate branded slide decks from a text prompt</p>
+              <h3 className="font-semibold mb-2 group-hover:text-white transition-colors">OpenSlides</h3>
+              <p className="text-sm text-zinc-500 mb-4">Text prompt → branded slide deck</p>
+              <div className="bg-zinc-900 rounded p-3 text-xs font-mono text-zinc-600">
+                <p className="text-zinc-500">Input: &quot;10 slides on climate change for investors&quot;</p>
+                <p className="text-zinc-400 mt-2">Output: presentation.pdf (10 slides, branded)</p>
+              </div>
             </a>
+
+            {/* OpenWord */}
             <a
               href="https://github.com/federicodeponte/openword"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-5 border border-zinc-800 rounded-lg hover:border-zinc-600 transition-colors group"
+              className="p-6 border border-zinc-800 rounded-lg hover:border-zinc-600 transition-colors group"
             >
-              <h3 className="font-semibold mb-1 group-hover:text-white transition-colors">OpenWord</h3>
-              <p className="text-sm text-zinc-500">Generate documents, contracts, and letters</p>
+              <h3 className="font-semibold mb-2 group-hover:text-white transition-colors">OpenWord</h3>
+              <p className="text-sm text-zinc-500 mb-4">Template + data → formatted document</p>
+              <div className="bg-zinc-900 rounded p-3 text-xs font-mono text-zinc-600">
+                <p className="text-zinc-500">Input: contract template + client details</p>
+                <p className="text-zinc-400 mt-2">Output: contract_signed.docx (ready to send)</p>
+              </div>
             </a>
+          </div>
+
+          <div className="mt-6">
             <a
               href="https://github.com/buildingopen/openclaw-setup"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-5 border border-zinc-800 rounded-lg hover:border-zinc-600 transition-colors group"
+              className="block p-6 border border-zinc-800 rounded-lg hover:border-zinc-600 transition-colors group"
             >
-              <h3 className="font-semibold mb-1 group-hover:text-white transition-colors">OpenClaw</h3>
-              <p className="text-sm text-zinc-500">Set up your own AI assistant in 10 minutes</p>
+              <h3 className="font-semibold mb-2 group-hover:text-white transition-colors">OpenClaw</h3>
+              <p className="text-sm text-zinc-500 mb-4">Step-by-step guide to set up your own AI assistant (Claude, GPT, etc.)</p>
+              <div className="bg-zinc-900 rounded p-3 text-xs font-mono text-zinc-600">
+                <p className="text-zinc-500">Time: ~10 minutes</p>
+                <p className="text-zinc-400 mt-2">Result: Your own AI assistant, running locally or in the cloud</p>
+              </div>
             </a>
           </div>
         </div>
       </section>
 
-      {/* About / Why */}
+      {/* Who built this */}
+      <section className="py-16 border-b border-zinc-800">
+        <div className="mx-auto max-w-2xl px-6">
+          <p className="text-sm text-zinc-500 mb-2">Who&apos;s behind this</p>
+          <h2 className="text-xl font-bold mb-4">One person, building in public</h2>
+          <p className="text-zinc-400 leading-relaxed mb-4">
+            I&apos;m Federico, a self-taught developer from Germany. I built these tools because I needed them
+            and couldn&apos;t afford the alternatives.
+          </p>
+          <p className="text-zinc-400 leading-relaxed mb-6">
+            Now they&apos;re free for anyone. MIT licensed, no strings attached.
+            If you find them useful, that&apos;s the whole point.
+          </p>
+          <div className="flex gap-4">
+            <a
+              href="https://github.com/federicodeponte"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-zinc-500 hover:text-white transition-colors"
+            >
+              GitHub →
+            </a>
+            <a
+              href="https://linkedin.com/in/federicodeponte"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-zinc-500 hover:text-white transition-colors"
+            >
+              LinkedIn →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Why */}
       <section className="py-16">
         <div className="mx-auto max-w-2xl px-6 text-center">
-          <h2 className="text-xl font-bold mb-4">Why we build in the open</h2>
+          <h2 className="text-xl font-bold mb-4">Why free?</h2>
           <p className="text-zinc-400 leading-relaxed mb-6">
-            The best tools cost money. We think they shouldn&apos;t.
-            Everything here is MIT licensed, free forever, and built to be learned from.
+            Because I was the broke student who couldn&apos;t afford the $50/month tools.
+            If you&apos;re in that position now, these are for you.
           </p>
           <Link
             href="/manifesto"
             className="text-sm text-zinc-500 hover:text-white transition-colors"
           >
-            Read the manifesto →
+            Read the full manifesto →
           </Link>
         </div>
       </section>
