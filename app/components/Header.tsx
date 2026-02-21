@@ -8,9 +8,6 @@ const navItems = [
   { href: '/', label: 'Home' },
   { href: '/projects', label: 'Projects' },
   { href: '/manifesto', label: 'Manifesto' },
-  { href: '/tutorials', label: 'Tutorials', future: true },
-  { href: '/blog', label: 'Blog', future: true },
-  { href: '/community', label: 'Community', future: true },
 ];
 
 export default function Header() {
@@ -45,20 +42,14 @@ export default function Header() {
             {navItems.map((item) => (
               <Link
                 key={item.href}
-                href={item.future ? '#' : item.href}
+                href={item.href}
                 className={`px-2 py-2 md:py-1 rounded text-sm transition-colors ${
                   pathname === item.href
                     ? 'text-green-500'
-                    : item.future
-                    ? 'text-zinc-600 cursor-not-allowed'
                     : 'text-zinc-500 hover:text-white hover:bg-zinc-900'
                 }`}
                 aria-current={pathname === item.href ? 'page' : undefined}
-                aria-disabled={item.future}
-                onClick={(e) => {
-                  if (item.future) e.preventDefault();
-                  setMenuOpen(false);
-                }}
+                onClick={() => setMenuOpen(false)}
               >
                 {item.label}
               </Link>
