@@ -135,26 +135,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Other tools - with concrete outputs */}
+      {/* Other tools - with real screenshots */}
       <section className="py-16 border-b border-zinc-800">
         <div className="mx-auto max-w-5xl px-6">
           <p className="text-sm text-zinc-500 mb-2">More tools</p>
-          <h2 className="text-xl font-bold mb-6">Same idea, different outputs</h2>
+          <h2 className="text-xl font-bold mb-8">Same idea, different outputs</h2>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-8">
             {/* OpenSlides */}
             <a
               href="https://github.com/federicodeponte/openslides"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-6 border border-zinc-800 rounded-lg hover:border-zinc-600 transition-colors group"
+              className="group block"
             >
-              <h3 className="font-semibold mb-2 group-hover:text-white transition-colors">OpenSlides</h3>
-              <p className="text-sm text-zinc-500 mb-4">Text prompt → branded slide deck</p>
-              <div className="bg-zinc-900 rounded p-3 text-xs font-mono text-zinc-600">
-                <p className="text-zinc-500">Input: &quot;10 slides on climate change for investors&quot;</p>
-                <p className="text-zinc-400 mt-2">Output: presentation.pdf (10 slides, branded)</p>
+              <div className="bg-zinc-900 rounded-lg border border-zinc-800 group-hover:border-zinc-600 transition-colors overflow-hidden">
+                <img
+                  src="/openslides-demo.png"
+                  alt="OpenSlides output - 4-slide strategy deck"
+                  className="w-full"
+                />
               </div>
+              <h3 className="font-semibold mt-4 group-hover:text-white transition-colors">OpenSlides</h3>
+              <p className="text-sm text-zinc-500">Text prompt → branded slide deck</p>
             </a>
 
             {/* OpenWord */}
@@ -162,65 +165,57 @@ export default function Home() {
               href="https://github.com/federicodeponte/openword"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-6 border border-zinc-800 rounded-lg hover:border-zinc-600 transition-colors group"
+              className="group block"
             >
-              <h3 className="font-semibold mb-2 group-hover:text-white transition-colors">OpenWord</h3>
-              <p className="text-sm text-zinc-500 mb-4">Template + data → formatted document</p>
-              <div className="bg-zinc-900 rounded p-3 text-xs font-mono text-zinc-600">
-                <p className="text-zinc-500">Input: contract template + client details</p>
-                <p className="text-zinc-400 mt-2">Output: contract_signed.docx (ready to send)</p>
+              <div className="bg-zinc-900 rounded-lg border border-zinc-800 group-hover:border-zinc-600 transition-colors overflow-hidden">
+                <img
+                  src="/openword-demo.png"
+                  alt="OpenWord output - NDA contract"
+                  className="w-full"
+                />
               </div>
-            </a>
-          </div>
-
-          <div className="mt-6">
-            <a
-              href="https://github.com/buildingopen/openclaw-setup"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block p-6 border border-zinc-800 rounded-lg hover:border-zinc-600 transition-colors group"
-            >
-              <h3 className="font-semibold mb-2 group-hover:text-white transition-colors">OpenClaw</h3>
-              <p className="text-sm text-zinc-500 mb-4">Step-by-step guide to set up your own AI assistant (Claude, GPT, etc.)</p>
-              <div className="bg-zinc-900 rounded p-3 text-xs font-mono text-zinc-600">
-                <p className="text-zinc-500">Time: ~10 minutes</p>
-                <p className="text-zinc-400 mt-2">Result: Your own AI assistant, running locally or in the cloud</p>
-              </div>
+              <h3 className="font-semibold mt-4 group-hover:text-white transition-colors">OpenWord</h3>
+              <p className="text-sm text-zinc-500">Template + data → formatted document</p>
             </a>
           </div>
         </div>
       </section>
 
-      {/* Who built this */}
+      {/* Who built this - with avatar */}
       <section className="py-16 border-b border-zinc-800">
         <div className="mx-auto max-w-2xl px-6">
-          <p className="text-sm text-zinc-500 mb-2">Who&apos;s behind this</p>
-          <h2 className="text-xl font-bold mb-4">One person, building in public</h2>
-          <p className="text-zinc-400 leading-relaxed mb-4">
-            I&apos;m Federico, a self-taught developer from Germany. I built these tools because I needed them
-            and couldn&apos;t afford the alternatives.
-          </p>
-          <p className="text-zinc-400 leading-relaxed mb-6">
-            Now they&apos;re free for anyone. MIT licensed, no strings attached.
-            If you find them useful, that&apos;s the whole point.
-          </p>
-          <div className="flex gap-4">
-            <a
-              href="https://github.com/federicodeponte"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-zinc-500 hover:text-white transition-colors"
-            >
-              GitHub →
-            </a>
-            <a
-              href="https://linkedin.com/in/federicodeponte"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-zinc-500 hover:text-white transition-colors"
-            >
-              LinkedIn →
-            </a>
+          <div className="flex items-start gap-6">
+            <div className="shrink-0">
+              <div className="w-16 h-16 rounded-full bg-zinc-800 flex items-center justify-center text-xl font-bold">
+                FD
+              </div>
+            </div>
+            <div>
+              <h2 className="text-xl font-bold mb-2">Federico De Ponte</h2>
+              <p className="text-sm text-zinc-500 mb-4">Self-taught developer from Germany</p>
+              <p className="text-zinc-400 leading-relaxed mb-4">
+                I built these tools because I needed them and couldn&apos;t afford the alternatives.
+                Now they&apos;re free for anyone. MIT licensed, no strings attached.
+              </p>
+              <div className="flex gap-4">
+                <a
+                  href="https://github.com/federicodeponte"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-zinc-500 hover:text-white transition-colors"
+                >
+                  GitHub →
+                </a>
+                <a
+                  href="https://linkedin.com/in/federicodeponte"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-zinc-500 hover:text-white transition-colors"
+                >
+                  LinkedIn →
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
