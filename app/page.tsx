@@ -8,11 +8,10 @@ export default function Home() {
       <section className="py-20 md:py-28 border-b border-zinc-800">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-            Tools you can use, learn from, and make your own
+            Let&apos;s build the new world, together
           </h1>
           <p className="text-lg text-zinc-400 mb-8 max-w-2xl mx-auto">
-            Open source software for writing, presenting, and creating.
-            Free forever. No catch.
+            Open source tools you can use, learn from, and make your own.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
