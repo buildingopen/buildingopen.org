@@ -20,9 +20,15 @@ const posts = [
     date: "February 10, 2026",
   },
   {
-    slug: "ai-file-context",
-    title: "How to give AI 10x better answers with file context",
-    description: "Stop asking generic questions. Give AI your files, preferences, and history. The answers change completely.",
+    slug: "travel-planning",
+    title: "Better AI answers with file context",
+    description: "How to give AI 10x better answers with file context. Stop asking generic questions.",
+    date: "February 6, 2026",
+  },
+  {
+    slug: "claude-code-context",
+    title: "Why Claude Code is my new best friend",
+    description: "If you're still using AI like a search bar, you're missing the point. Give it context. Give it memory.",
     date: "February 6, 2026",
   },
   {
@@ -38,13 +44,13 @@ const posts = [
     date: "February 3, 2026",
   },
   {
-    slug: "opendraft-seo-aeo",
+    slug: "opendraft-seo",
     title: "How OpenDraft hit #1 on Google, ChatGPT, Perplexity, and Gemini",
     description: "18 months of SEO and AEO learnings distilled into a simple formula.",
     date: "January 29, 2026",
   },
   {
-    slug: "why-i-stopped-paying-for-software",
+    slug: "opensource-tools",
     title: "Why I stopped paying for software",
     description: "I replaced Word, Excel, PowerPoint, Figma, and n8n with open source tools I built myself. Here's why.",
     date: "January 13, 2026",
