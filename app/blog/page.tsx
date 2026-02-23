@@ -2,10 +2,22 @@ import Link from "next/link";
 
 const posts = [
   {
+    slug: "clawdbot-hinge",
+    title: "Clawdbot Killed My Hinge Date",
+    description: "Auto-replied with a config error. She blocked me. New item for the AI agent risk assessment checklist.",
+    date: "February 22, 2026",
+  },
+  {
     slug: "golf-vs-datacenters",
     title: "Golf courses use 30x more water than all US data centers",
     description: "I was worried about my AI carbon footprint. Then I fact-checked it.",
     date: "February 18, 2026",
+  },
+  {
+    slug: "goodbye-powerpoint",
+    title: "I genuinely stopped using PowerPoint",
+    description: "Spending days aligning boxes feels insane when you can build a whole app in the same time. So I made an app for building slides.",
+    date: "February 10, 2026",
   },
   {
     slug: "ai-file-context",
@@ -18,6 +30,12 @@ const posts = [
     title: "4 pivots in 1.5 years: what I'd tell myself before starting",
     description: "Venture studio. Marketing agency. Marketing SaaS. AI visibility SaaS. Here's what I learned.",
     date: "February 4, 2026",
+  },
+  {
+    slug: "scaile-india",
+    title: "SCAILE goes to India",
+    description: "One country, producing more unicorns than any country in Europe. I understand why now.",
+    date: "February 3, 2026",
   },
   {
     slug: "opendraft-seo-aeo",
