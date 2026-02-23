@@ -1,19 +1,60 @@
+import Link from "next/link";
+
+const posts = [
+  {
+    slug: "golf-vs-datacenters",
+    title: "Golf courses use 30x more water than all US data centers",
+    description: "I was worried about my AI carbon footprint. Then I fact-checked it.",
+    date: "February 18, 2026",
+  },
+  {
+    slug: "ai-file-context",
+    title: "How to give AI 10x better answers with file context",
+    description: "Stop asking generic questions. Give AI your files, preferences, and history. The answers change completely.",
+    date: "February 6, 2026",
+  },
+  {
+    slug: "startup-learnings",
+    title: "4 pivots in 1.5 years: what I'd tell myself before starting",
+    description: "Venture studio. Marketing agency. Marketing SaaS. AI visibility SaaS. Here's what I learned.",
+    date: "February 4, 2026",
+  },
+  {
+    slug: "opendraft-seo-aeo",
+    title: "How OpenDraft hit #1 on Google, ChatGPT, Perplexity, and Gemini",
+    description: "18 months of SEO and AEO learnings distilled into a simple formula.",
+    date: "January 29, 2026",
+  },
+  {
+    slug: "why-i-stopped-paying-for-software",
+    title: "Why I stopped paying for software",
+    description: "I replaced Word, Excel, PowerPoint, Figma, and n8n with open source tools I built myself. Here's why.",
+    date: "January 13, 2026",
+  },
+];
+
 export default function BlogPage() {
   return (
-    <div className="py-24">
-      <div className="mx-auto max-w-xl px-6 text-center">
-        <h1 className="text-2xl font-bold mb-3">Blog</h1>
-        <p className="text-zinc-500 mb-6">
-          Coming soon. Follow on GitHub for updates.
-        </p>
-        <a
-          href="https://github.com/buildingopen"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-zinc-400 hover:text-white transition-colors"
-        >
-          GitHub →
-        </a>
+    <div className="py-16">
+      <div className="mx-auto max-w-2xl px-6">
+        <h1 className="text-3xl font-bold mb-2">Blog</h1>
+        <p className="text-zinc-500 mb-12">Thoughts on building, open source, and the things we learn along the way.</p>
+
+        <div className="space-y-8">
+          {posts.map((post) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className="group block border-b border-zinc-800 pb-8"
+            >
+              <p className="text-sm text-zinc-600 mb-1">{post.date}</p>
+              <h2 className="text-lg font-semibold group-hover:text-green-500 transition-colors mb-2">
+                {post.title}
+              </h2>
+              <p className="text-zinc-400 text-sm">{post.description}</p>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
