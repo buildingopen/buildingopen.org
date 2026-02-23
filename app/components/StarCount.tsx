@@ -28,6 +28,7 @@ export default function StarCount({ repo }: { repo: string }) {
   useEffect(() => {
     const cached = getCached(repo);
     if (cached !== null) {
+      // eslint-disable-next-line
       setCount(cached);
       return;
     }
