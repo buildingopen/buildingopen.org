@@ -7,6 +7,10 @@ import type { User } from '@supabase/supabase-js';
 export default function AuthButton() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [email, setEmail] = useState('');
+  const [sendingLink, setSendingLink] = useState(false);
+  const [linkSent, setLinkSent] = useState(false);
   const supabase = createClient();
 
   useEffect(() => {
@@ -23,11 +27,27 @@ export default function AuthButton() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleLogin = async () => {
-    await supabase.auth.signInWithOAuth({
-      provider: 'github',
-      options: { redirectTo: `${window.location.origin}/community` },
+  const handleMagicLink = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setSendingLink(true);
+    
+    await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: `${window.location.origin}/community`,
+      },
     });
+    
+    setLinkSent(true);
+    setSendingLink(false);
+  };
+
+  const handleAnonymous = async () => {
+    setSendingLink(true);
+    await supabase.auth.signInAnonymously();
+    setShowModal(false);
+    setSendingLink(false);
   };
 
   const handleLogout = async () => {
@@ -38,16 +58,25 @@ export default function AuthButton() {
   if (loading) return null;
 
   if (user) {
+    const isAnonymous = user.is_anonymous;
+    const displayName = isAnonymous ? 'Anonymous User' : (user.user_metadata?.user_name || user.email?.split('@')[0] || 'User');
+    
     return (
       <div className="flex items-center gap-3">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={user.user_metadata?.avatar_url}
-          alt=""
-          className="w-7 h-7 rounded-full"
-        />
+        {user.user_metadata?.avatar_url ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={user.user_metadata.avatar_url}
+            alt=""
+            className="w-7 h-7 rounded-full"
+          />
+        ) : (
+          <div className="w-7 h-7 rounded-full bg-zinc-800 flex items-center justify-center text-xs font-medium text-zinc-400">
+            {displayName.charAt(0).toUpperCase()}
+          </div>
+        )}
         <span className="text-sm text-zinc-400 hidden sm:inline">
-          {user.user_metadata?.user_name || user.email}
+          {displayName}
         </span>
         <button
           onClick={handleLogout}
@@ -60,14 +89,79 @@ export default function AuthButton() {
   }
 
   return (
-    <button
-      onClick={handleLogin}
-      className="flex items-center gap-2 px-4 py-2 bg-zinc-800 rounded-lg text-sm hover:bg-zinc-700 transition-colors"
-    >
-      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-      </svg>
-      Sign in with GitHub
-    </button>
+    <>
+      <button
+        onClick={() => setShowModal(true)}
+        className="flex items-center gap-2 px-4 py-2 bg-zinc-800 rounded-lg text-sm hover:bg-zinc-700 transition-colors"
+      >
+        Sign in to post
+      </button>
+
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-xl w-full max-w-md p-6 relative">
+            <button 
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 text-zinc-500 hover:text-white"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            <h2 className="text-xl font-bold mb-2">Join the Community</h2>
+            <p className="text-sm text-zinc-400 mb-6">
+              Sign in to post, vote, and reply to discussions.
+            </p>
+
+            {linkSent ? (
+              <div className="text-center py-4 bg-green-500/10 border border-green-500/20 rounded-lg">
+                <p className="text-green-500 font-medium mb-1">Check your email</p>
+                <p className="text-sm text-zinc-400">We sent a magic link to {email}</p>
+              </div>
+            ) : (
+              <form onSubmit={handleMagicLink} className="space-y-4 mb-6">
+                <div>
+                  <label htmlFor="email" className="sr-only">Email address</label>
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="name@example.com"
+                    className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-green-500"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={sendingLink || !email}
+                  className="w-full px-4 py-3 bg-white text-black font-medium rounded-lg hover:bg-zinc-200 transition-colors disabled:opacity-50"
+                >
+                  {sendingLink ? 'Sending...' : 'Send Magic Link'}
+                </button>
+              </form>
+            )}
+
+            <div className="relative mb-6">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-zinc-800"></div>
+              </div>
+              <div className="relative flex justify-center text-xs">
+                <span className="bg-zinc-900 px-2 text-zinc-500">Or continue without email</span>
+              </div>
+            </div>
+
+            <button
+              onClick={handleAnonymous}
+              disabled={sendingLink}
+              className="w-full px-4 py-3 bg-zinc-800 text-white font-medium rounded-lg hover:bg-zinc-700 transition-colors disabled:opacity-50"
+            >
+              Post Anonymously
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
