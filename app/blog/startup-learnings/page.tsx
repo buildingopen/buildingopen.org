@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "4 pivots in 1.5 years: what I'd tell myself before starting - Building Open",
@@ -21,53 +22,43 @@ export default function StartupLearningsPost() {
         </header>
 
         <section className="mb-10">
-          <p className="text-zinc-400 mb-4 leading-relaxed">
-            When I started building my first company, I had no team, no idea, and no plan beyond &quot;start.&quot; Everyone around me said to wait. Wait for the right co-founder. Wait for the right concept. Wait until after graduation.
+          <p className="text-zinc-400 mb-6 leading-relaxed">
+            Venture studio. Marketing agency. Marketing SaaS. AI visibility SaaS.
           </p>
-          <p className="text-zinc-400 leading-relaxed">
-            I started anyway. Four pivots later, here&apos;s what I wish I&apos;d known.
-          </p>
-        </section>
 
-        <section className="mb-10">
-          <h2 className="text-lg font-semibold mb-3">1. Just start</h2>
-          <p className="text-zinc-400 mb-4 leading-relaxed">
-            I was still in uni. Every month I spent building taught me more than the previous semester. The compounding effect is real, same as investing: time in the market beats timing the market.
+          <p className="text-zinc-400 mb-6 leading-relaxed">
+            4 pivots in 1.5 years. Here&apos;s what I&apos;d tell myself before starting.
           </p>
-          <p className="text-zinc-400 leading-relaxed">
-            There is no &quot;ready.&quot; The decision to start taught me more than four years of university combined.
-          </p>
-        </section>
 
-        <section className="mb-10">
-          <h2 className="text-lg font-semibold mb-3">2. Try everything, then cut</h2>
-          <p className="text-zinc-400 mb-4 leading-relaxed">
-            Every pivot killed something we thought we wanted. That&apos;s the point.
-          </p>
-          <p className="text-zinc-400 mb-4 leading-relaxed">
-            You can&apos;t think your way to product-market fit. You have to try enough wrong things to recognize the right one. We had to build a venture studio, run an agency, and ship a marketing SaaS before we understood what we actually cared about.
-          </p>
-          <p className="text-zinc-400 leading-relaxed">
-            Clarity comes from doing, not thinking.
-          </p>
-        </section>
+          <div className="space-y-6 mb-10">
+            <Image 
+              src="/blog/pivot-visual.png" 
+              alt="4 Pivots in 1.5 Years" 
+              width={800} 
+              height={400} 
+              className="rounded-lg border border-zinc-800 w-full h-auto"
+            />
+          </div>
 
-        <section className="mb-10">
-          <h2 className="text-lg font-semibold mb-3">3. Build it yourself</h2>
-          <p className="text-zinc-400 mb-4 leading-relaxed">
-            No technical co-founder. No budget. We opened Cursor and built it ourselves. Kept it brutally simple. Once we had something real, the right people showed up.
+          <h2 className="text-lg font-semibold mb-3">1) Just start.</h2>
+          <p className="text-zinc-400 mb-8 leading-relaxed">
+            I was still in uni. No team. No idea. Everyone said wait - for the right co-founder, the right concept, graduation. I started anyway. That decision taught me more than 4 years of university combined. Every month of building compounds. Same as investing - time in the market beats timing the market. There is no &quot;ready.&quot;
           </p>
-          <p className="text-zinc-400 leading-relaxed">
-            Four pivots later, profitable in year one.
-          </p>
-        </section>
 
-        <section className="mb-10">
-          <h2 className="text-lg font-semibold mb-3">The gap that kills founders</h2>
-          <p className="text-zinc-400 mb-4 leading-relaxed">
-            The gap between thinking about starting and actually starting is where most founders die. It&apos;s not the pivot that kills you. It&apos;s the hesitation before the first step.
+          <h2 className="text-lg font-semibold mb-3">2) Try everything, then cut.</h2>
+          <p className="text-zinc-400 mb-8 leading-relaxed">
+            Every pivot killed something we thought we wanted. That&apos;s the point. You can&apos;t think your way to product-market fit. You have to try enough wrong things to recognize the right one. We had to build a venture studio, run an agency, and ship a marketing SaaS before we understood what we actually cared about. Clarity comes from doing, not thinking.
           </p>
-          <p className="text-zinc-400 leading-relaxed">
+
+          <h2 className="text-lg font-semibold mb-3">3) Build it yourself.</h2>
+          <p className="text-zinc-400 mb-8 leading-relaxed">
+            No technical co-founder. No budget. We opened Cursor and built it ourselves. Kept it brutally simple. Once we had something real, the right people showed up. 4 pivots later, profitable in year 1.
+          </p>
+
+          <p className="text-zinc-400 mb-4 leading-relaxed font-medium">
+            The gap between thinking about starting and starting is where most founders die.
+          </p>
+          <p className="text-zinc-400 leading-relaxed font-medium">
             And burnout? It doesn&apos;t come from working too hard. It comes from forgetting why you started.
           </p>
         </section>
