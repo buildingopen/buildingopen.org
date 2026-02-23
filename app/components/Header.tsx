@@ -24,6 +24,18 @@ export default function Header() {
             >
               Manifesto
             </Link>
+            <Link
+              href="/community"
+              className="px-3 py-1.5 rounded text-sm text-zinc-500 hover:text-white transition-colors"
+            >
+              Community
+            </Link>
+            <Link
+              href="/badge"
+              className="px-3 py-1.5 rounded text-sm text-zinc-500 hover:text-white transition-colors"
+            >
+              Badge
+            </Link>
             <a
               href="https://github.com/buildingopen"
               className="px-3 py-1.5 text-sm text-zinc-500 hover:text-white transition-colors"
