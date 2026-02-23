@@ -43,6 +43,7 @@ export default function PostCard({ post }: { post: Post }) {
         <div className="flex items-center gap-3 mt-2 text-xs text-zinc-600">
           <div className="flex items-center gap-1.5">
             {post.author_avatar && (
+              // eslint-disable-next-line @next/next/no-img-element
               <img src={post.author_avatar} alt="" className="w-4 h-4 rounded-full" />
             )}
             <span>{post.author_name}</span>

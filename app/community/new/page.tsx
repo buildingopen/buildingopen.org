@@ -28,6 +28,7 @@ export default function NewPostPage() {
       if (data.user) setUser(data.user as typeof user);
       setLoading(false);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {

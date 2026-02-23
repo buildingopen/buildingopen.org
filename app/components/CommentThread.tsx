@@ -113,6 +113,7 @@ function CommentItem({
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1 text-xs text-zinc-500">
             {comment.author_avatar && (
+              // eslint-disable-next-line @next/next/no-img-element
               <img src={comment.author_avatar} alt="" className="w-4 h-4 rounded-full" />
             )}
             <span className="font-medium text-zinc-400">{comment.author_name}</span>

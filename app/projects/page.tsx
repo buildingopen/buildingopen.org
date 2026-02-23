@@ -37,6 +37,7 @@ export default function ProjectsPage() {
           {projects.map((project) => (
             <div key={project.title} className="grid md:grid-cols-2 gap-8 items-start">
               <div className="bg-zinc-900 rounded-lg border border-zinc-800 overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={project.image}
                   alt={`${project.title} preview`}

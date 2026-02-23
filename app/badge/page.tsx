@@ -42,6 +42,7 @@ export default function BadgePage() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [hasImage, setHasImage] = useState(false);
   const [dragging, setDragging] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [fontLoaded, setFontLoaded] = useState(false);
 
   useEffect(() => {

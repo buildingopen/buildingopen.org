@@ -31,6 +31,7 @@ export default function CommunityPage() {
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => setUser(data.user));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -70,12 +71,8 @@ export default function CommunityPage() {
       setLoading(false);
     }
     fetchPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category, sort]);
-
-  const handleDeadLink = (e: React.MouseEvent) => {
-    e.preventDefault();
-    alert('This is a wireframe. Category filtering and new discussions are coming soon!');
-  };
 
   return (
     <div className="py-10 md:py-16">

@@ -53,6 +53,7 @@ export default function PostPage() {
     supabase.auth.getUser().then(({ data }) => {
       if (data.user) setUser(data.user as typeof user);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -67,6 +68,7 @@ export default function PostPage() {
       setLoading(false);
     }
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const handleComment = async (e: React.FormEvent) => {
@@ -138,6 +140,7 @@ export default function PostPage() {
             <h1 className="text-xl md:text-2xl font-bold mb-2">{post.title}</h1>
             <div className="flex items-center gap-2 text-xs text-zinc-500 mb-4">
               {post.author_avatar && (
+                // eslint-disable-next-line @next/next/no-img-element
                 <img src={post.author_avatar} alt="" className="w-5 h-5 rounded-full" />
               )}
               <span>{post.author_name}</span>

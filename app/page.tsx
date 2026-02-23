@@ -59,6 +59,7 @@ export default function Home() {
             className="group relative aspect-[4/3] overflow-hidden bg-zinc-900 border-b border-zinc-800 md:border-r"
           >
             {/* Image - full bleed */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={project.image}
               alt={project.name}
@@ -97,6 +98,7 @@ export default function Home() {
       <div className="grid grid-cols-1 md:grid-cols-3 border-b border-zinc-800">
         {/* About */}
         <div className="border-b md:border-b-0 md:border-r border-zinc-800 p-8 flex items-center gap-5">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/fede.jpg"
             alt="Federico De Ponte"

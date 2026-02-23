@@ -20,6 +20,7 @@ export default function AuthButton() {
     });
 
     return () => subscription.unsubscribe();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleLogin = async () => {
@@ -39,6 +40,7 @@ export default function AuthButton() {
   if (user) {
     return (
       <div className="flex items-center gap-3">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={user.user_metadata?.avatar_url}
           alt=""
