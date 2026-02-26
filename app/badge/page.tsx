@@ -21,14 +21,14 @@ function drawBadge(ctx: CanvasRenderingContext2D, img: HTMLImageElement) {
   const logoX = CANVAS_SIZE - LOGO_WIDTH - LOGO_OFFSET_RIGHT; // 555
   const logoY = CANVAS_SIZE - LOGO_HEIGHT - LOGO_OFFSET_BOTTOM; // 627
 
-  // Scale factors from SVG viewBox (46x40) to logo size
-  const scaleX = LOGO_WIDTH / 46;
+  // Scale factors from SVG viewBox (48x40) to logo size
+  const scaleX = LOGO_WIDTH / 48;
   const scaleY = LOGO_HEIGHT / 40;
 
   // Draw green circle
   ctx.fillStyle = '#22c55e';
   ctx.beginPath();
-  ctx.arc(logoX + 36 * scaleX, logoY + 22 * scaleY, 10 * scaleX, 0, Math.PI * 2);
+  ctx.arc(logoX + 36 * scaleX, logoY + 22 * scaleY, 11 * scaleX, 0, Math.PI * 2);
   ctx.fill();
 
   // Draw "b" text
@@ -107,7 +107,7 @@ export default function BadgePage() {
           onDrop={handleDrop}
           className={`relative border-2 border-dashed rounded-lg p-8 text-center transition-colors cursor-pointer ${
             dragging
-              ? 'border-green-500 bg-green-500/5'
+              ? 'border-zinc-400 bg-zinc-500/5'
               : 'border-zinc-700 hover:border-zinc-500'
           }`}
           onClick={() => document.getElementById('file-input')?.click()}
@@ -123,7 +123,7 @@ export default function BadgePage() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
           </svg>
           <p className="text-zinc-400 text-sm">
-            Drop your photo here or <span className="text-green-500">browse</span>
+            Drop your photo here or <span className="text-white">browse</span>
           </p>
           <p className="text-zinc-600 text-xs mt-1">PNG, JPG, or WebP</p>
         </div>
@@ -152,15 +152,15 @@ export default function BadgePage() {
           <h2 className="text-lg font-semibold mb-4">How it works</h2>
           <ol className="space-y-3 text-sm text-zinc-400">
             <li className="flex gap-3">
-              <span className="text-green-500 font-medium">1.</span>
+              <span className="text-zinc-500 font-medium">1.</span>
               Upload any profile picture (it gets cropped to a square)
             </li>
             <li className="flex gap-3">
-              <span className="text-green-500 font-medium">2.</span>
+              <span className="text-zinc-500 font-medium">2.</span>
               The Building Open logo is applied at the bottom-right
             </li>
             <li className="flex gap-3">
-              <span className="text-green-500 font-medium">3.</span>
+              <span className="text-zinc-500 font-medium">3.</span>
               Download the 800x800 PNG and use it on LinkedIn, GitHub, etc.
             </li>
           </ol>

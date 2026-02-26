@@ -10,7 +10,7 @@ export default function GolfVsDatacentersPost() {
   return (
     <article className="py-16">
       <div className="mx-auto max-w-2xl px-6">
-        <Link href="/blog" className="text-sm text-zinc-600 hover:text-green-500 transition-colors mb-8 block">
+        <Link href="/blog" className="text-sm text-zinc-600 hover:text-white transition-colors mb-8 block">
           &larr; Blog
         </Link>
 
@@ -50,7 +50,7 @@ export default function GolfVsDatacentersPost() {
               <hr className="border-zinc-800" />
               <div className="flex justify-between">
                 <span className="text-zinc-400">Ratio</span>
-                <span className="text-green-500 font-medium">30x more for golf</span>
+                <span className="text-white font-medium">30x more for golf</span>
               </div>
             </div>
           </div>
@@ -124,28 +124,28 @@ export default function GolfVsDatacentersPost() {
           <h2 className="text-lg font-semibold mb-3">Sources</h2>
           <ul className="space-y-2 text-sm text-zinc-500">
             <li>
-              <a href="https://www.eesi.org/articles/view/data-centers-and-water-consumption" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition-colors">
-                Environmental and Energy Study Institute &mdash; Data centers and water consumption
+              <a href="https://www.eesi.org/articles/view/data-centers-and-water-consumption" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                Environmental and Energy Study Institute -Data centers and water consumption
               </a>
             </li>
             <li>
-              <a href="https://eta-publications.lbl.gov/sites/default/files/2024-12/lbnl-2024-united-states-data-center-energy-usage-report_1.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition-colors">
-                Lawrence Berkeley National Laboratory &mdash; 2024 US Data Center Energy Usage Report
+              <a href="https://eta-publications.lbl.gov/sites/default/files/2024-12/lbnl-2024-united-states-data-center-energy-usage-report_1.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                Lawrence Berkeley National Laboratory -2024 US Data Center Energy Usage Report
               </a>
             </li>
             <li>
-              <a href="https://www.gcsaa.org/docs/default-source/Environment/phase-2-water-use-survey-full-report.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition-colors">
-                GCSAA / USGA &mdash; Golf Course Environmental Profile: Water Use Survey
+              <a href="https://www.gcsaa.org/docs/default-source/Environment/phase-2-water-use-survey-full-report.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                GCSAA / USGA -Golf Course Environmental Profile: Water Use Survey
               </a>
             </li>
             <li>
-              <a href="https://www.usgs.gov/mission-areas/water-resources/science/water-use-united-states" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition-colors">
-                US Geological Survey &mdash; Water Use in the United States
+              <a href="https://www.usgs.gov/mission-areas/water-resources/science/water-use-united-states" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                US Geological Survey -Water Use in the United States
               </a>
             </li>
             <li>
-              <a href="https://www.epa.gov/watersense/statistics-and-facts" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition-colors">
-                US EPA &mdash; WaterSense Statistics and Facts
+              <a href="https://www.epa.gov/watersense/statistics-and-facts" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                US EPA -WaterSense Statistics and Facts
               </a>
             </li>
           </ul>
@@ -156,7 +156,7 @@ export default function GolfVsDatacentersPost() {
         <div className="flex gap-4 justify-center">
           <Link
             href="/blog"
-            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-green-500 hover:text-green-500 transition-colors text-sm"
+            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-white hover:text-white transition-colors text-sm"
           >
             More posts
           </Link>

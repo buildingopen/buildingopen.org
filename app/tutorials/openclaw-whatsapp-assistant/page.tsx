@@ -10,7 +10,7 @@ export default function OpenClawTutorial() {
   return (
     <article className="py-16">
       <div className="mx-auto max-w-2xl px-6">
-        <Link href="/tutorials" className="text-sm text-zinc-600 hover:text-green-500 transition-colors mb-8 block">
+        <Link href="/tutorials" className="text-sm text-zinc-600 hover:text-white transition-colors mb-8 block">
           &larr; Tutorials
         </Link>
 
@@ -58,19 +58,19 @@ export default function OpenClawTutorial() {
           <h2 className="text-lg font-semibold mb-3">Prerequisites</h2>
           <ul className="space-y-2 text-zinc-400 text-sm">
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">1.</span>
+              <span className="text-zinc-500 mt-0.5">1.</span>
               <span>A Hetzner Cloud account (or any VPS provider). A CX22 server (~5/month) is enough.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">2.</span>
+              <span className="text-zinc-500 mt-0.5">2.</span>
               <span>A Google AI Studio API key for Gemini (free tier works).</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">3.</span>
+              <span className="text-zinc-500 mt-0.5">3.</span>
               <span>A phone with WhatsApp (you&apos;ll link it to the agent).</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">4.</span>
+              <span className="text-zinc-500 mt-0.5">4.</span>
               <span>Basic comfort with a terminal. You don&apos;t need to be a developer.</span>
             </li>
           </ul>
@@ -89,7 +89,7 @@ export default function OpenClawTutorial() {
             <div>
               <h3 className="text-sm font-medium mb-2">Step 2: Clone the setup repo</h3>
               <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4 font-mono text-sm text-zinc-300">
-                <p>git clone https://github.com/federicodeponte/openclaw-setup</p>
+                <p>git clone https://github.com/buildingopen/openclaw-setup</p>
                 <p>cd openclaw-setup</p>
               </div>
             </div>
@@ -112,19 +112,19 @@ export default function OpenClawTutorial() {
           <h2 className="text-lg font-semibold mb-3">What you get</h2>
           <ul className="space-y-2 text-zinc-400 text-sm">
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span><strong className="text-white">Email triage:</strong> Reads incoming emails and drafts replies.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span><strong className="text-white">Code context:</strong> Reads your repos and suggests changes with full project context.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span><strong className="text-white">Task management:</strong> Tracks your to-dos and projects.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span><strong className="text-white">Always on:</strong> Responds instantly via WhatsApp, even when your laptop is closed.</span>
             </li>
           </ul>
@@ -137,15 +137,15 @@ export default function OpenClawTutorial() {
           </p>
           <ul className="space-y-2 text-zinc-400 text-sm">
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span><strong className="text-white">Voice:</strong> Integrate ElevenLabs for voice conversations via WhatsApp calls.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span><strong className="text-white">Browser automation:</strong> Give it a browser window with logged-in sessions.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span><strong className="text-white">Social integrations:</strong> Connect Instagram or other platforms for monitoring and posting.</span>
             </li>
           </ul>
@@ -155,10 +155,10 @@ export default function OpenClawTutorial() {
           <h2 className="text-lg font-semibold mb-3">Resources</h2>
           <div className="space-y-2">
             <a
-              href="https://github.com/federicodeponte/openclaw-setup"
+              href="https://github.com/buildingopen/openclaw-setup"
               target="_blank"
               rel="noopener noreferrer"
-              className="block text-sm text-zinc-400 hover:text-green-500 transition-colors"
+              className="block text-sm text-zinc-400 hover:text-white transition-colors"
             >
               Setup repo on GitHub &rarr;
             </a>
@@ -170,7 +170,7 @@ export default function OpenClawTutorial() {
         <div className="flex gap-4 justify-center">
           <Link
             href="/tutorials"
-            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-green-500 hover:text-green-500 transition-colors text-sm"
+            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-white hover:text-white transition-colors text-sm"
           >
             More tutorials
           </Link>

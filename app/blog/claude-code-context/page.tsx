@@ -11,14 +11,14 @@ export default function ClaudeCodeContextPost() {
   return (
     <article className="py-16">
       <div className="mx-auto max-w-2xl px-6">
-        <Link href="/blog" className="text-sm text-zinc-600 hover:text-green-500 transition-colors mb-8 block">
+        <Link href="/blog" className="text-sm text-zinc-600 hover:text-white transition-colors mb-8 block">
           &larr; Blog
         </Link>
 
         <header className="mb-12">
           <p className="text-sm text-zinc-600 mb-2">February 6, 2026</p>
           <h1 className="text-3xl font-bold mb-3">My friends are jealous of my new best friend.</h1>
-          <p className="text-zinc-500">Why I moved everything—coding, decisions, life strategy—to Claude Code.</p>
+          <p className="text-zinc-500">Why I moved everything (coding, decisions, life strategy) to Claude Code.</p>
         </header>
 
         <section className="mb-10 text-zinc-400 space-y-6">
@@ -77,7 +77,7 @@ export default function ClaudeCodeContextPost() {
               <li>&rarr; Give it memory.</li>
               <li>&rarr; Give it your world.</li>
             </ul>
-            <p className="text-green-500 font-medium mt-4 text-sm">
+            <p className="text-white font-medium mt-4 text-sm">
               It becomes something else entirely.
             </p>
           </div>
@@ -89,7 +89,7 @@ export default function ClaudeCodeContextPost() {
         <div className="flex gap-4 justify-center">
           <Link
             href="/blog"
-            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-green-500 hover:text-green-500 transition-colors text-sm"
+            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-white hover:text-white transition-colors text-sm"
           >
             More posts
           </Link>

@@ -43,6 +43,28 @@ export default function RootLayout({
   return (
     <html lang="en" className={spaceGrotesk.variable}>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Building Open',
+              url: 'https://buildingopen.org',
+              logo: 'https://buildingopen.org/logo.svg',
+              description: 'Open source tools for opportunity and education.',
+              founder: {
+                '@type': 'Person',
+                name: 'Federico De Ponte',
+                url: 'https://linkedin.com/in/federicodeponte',
+              },
+              sameAs: [
+                'https://github.com/buildingopen',
+                'https://linkedin.com/in/federicodeponte',
+              ],
+            }),
+          }}
+        />
       </head>
       <body className="antialiased min-h-screen flex flex-col font-sans">
         <a href="#main" className="skip-link">Skip to main content</a>

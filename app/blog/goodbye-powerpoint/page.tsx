@@ -10,7 +10,7 @@ export default function GoodbyePowerpointPost() {
   return (
     <article className="py-16">
       <div className="mx-auto max-w-2xl px-6">
-        <Link href="/blog" className="text-sm text-zinc-600 hover:text-green-500 transition-colors mb-8 block">
+        <Link href="/blog" className="text-sm text-zinc-600 hover:text-white transition-colors mb-8 block">
           &larr; Blog
         </Link>
 
@@ -66,7 +66,7 @@ export default function GoodbyePowerpointPost() {
         <div className="flex gap-4 justify-center">
           <Link
             href="/blog"
-            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-green-500 hover:text-green-500 transition-colors text-sm"
+            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-white hover:text-white transition-colors text-sm"
           >
             More posts
           </Link>

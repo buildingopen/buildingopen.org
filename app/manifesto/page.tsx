@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Manifesto - Building Open",
+  description: "Equal opportunity through open source. Why Building Open exists and what we believe.",
+};
 
 export default function ManifestoPage() {
   return (
@@ -26,11 +32,11 @@ export default function ManifestoPage() {
           <h2 className="text-lg font-semibold mb-3">What We Do</h2>
           <p className="text-zinc-400 mb-4 leading-relaxed">Building Open runs a platform with three parts:</p>
 
-          <p className="text-zinc-400 mb-3 leading-relaxed"><strong className="text-white">Tools</strong> — Free, open source software that creates real value. AI writing assistants. Document generators. Presentation tools. Not demos or toys, but software you can actually use.</p>
+          <p className="text-zinc-400 mb-3 leading-relaxed"><strong className="text-white">Tools</strong> - Free, open source software that creates real value. AI writing assistants. Document generators. Presentation tools. Not demos or toys, but software you can actually use.</p>
 
-          <p className="text-zinc-400 mb-3 leading-relaxed"><strong className="text-white">Education</strong> — Tutorials, guides, and learning paths that teach you how things work. Not just how to use our tools, but how to build your own.</p>
+          <p className="text-zinc-400 mb-3 leading-relaxed"><strong className="text-white">Education</strong> - Tutorials, guides, and learning paths that teach you how things work. Not just how to use our tools, but how to build your own.</p>
 
-          <p className="text-zinc-400 leading-relaxed"><strong className="text-white">Community</strong> — A space to ask questions, share what you&apos;ve built, and learn from others on the same journey.</p>
+          <p className="text-zinc-400 leading-relaxed"><strong className="text-white">Community</strong> - A space to ask questions, share what you&apos;ve built, and learn from others on the same journey.</p>
         </section>
 
         <section className="mb-10">
@@ -46,7 +52,7 @@ export default function ManifestoPage() {
         <div className="flex gap-4 justify-center">
           <Link
             href="/projects"
-            className="px-5 py-2.5 bg-white text-black font-medium rounded-lg hover:bg-zinc-200 transition-colors"
+            className="px-5 py-2.5 bg-green-500 text-black font-medium rounded-lg hover:bg-green-400 transition-colors"
           >
             View Projects
           </Link>

@@ -14,12 +14,14 @@ const posts = [
     title: "I treated my life like a product. Here's what I removed.",
     description: "2 years into my 2nd startup. The habits that moved the needle most aren't what you'd expect.",
     date: "February 26, 2026",
+    image: null,
   },
   {
     slug: "clawdbot-hinge",
     title: "Clawdbot Killed My Hinge Date",
     description: "Auto-replied with a config error. She blocked me. New item for the AI agent risk assessment checklist.",
     date: "February 22, 2026",
+    image: "/clawdbot-hinge.jpg",
   },
   {
     slug: "golf-vs-datacenters",
@@ -101,15 +103,17 @@ export default function BlogPage() {
           href={`/blog/${featured.slug}`}
           className="group block mb-12"
         >
-          <div className="relative aspect-[2/1] rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800 mb-4">
-            <Image
-              src="/clawdbot-hinge.jpg"
-              alt={featured.title}
-              fill
-              sizes="(max-width: 672px) 100vw, 672px"
-              className="object-cover object-top"
-            />
-          </div>
+          {featured.image && (
+            <div className="relative aspect-[2/1] rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800 mb-4">
+              <Image
+                src={featured.image}
+                alt={featured.title}
+                fill
+                sizes="(max-width: 672px) 100vw, 672px"
+                className="object-cover object-top"
+              />
+            </div>
+          )}
           <p className="text-sm text-zinc-600 mb-1">{featured.date}</p>
           <h2 className="text-xl font-semibold group-hover:text-white transition-colors mb-2">
             {featured.title}

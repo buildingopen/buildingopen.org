@@ -73,7 +73,7 @@ export default function NewPostPage() {
     return (
       <div className="py-16 text-center">
         <p className="text-zinc-500 mb-4">Sign in to create a post.</p>
-        <Link href="/community" className="text-green-500 text-sm">
+        <Link href="/community" className="text-zinc-400 hover:text-white text-sm">
           Back to community
         </Link>
       </div>
@@ -104,7 +104,7 @@ export default function NewPostPage() {
                   onClick={() => setCategory(cat.value)}
                   className={`px-3 py-1.5 rounded-lg text-sm transition-colors ${
                     category === cat.value
-                      ? 'bg-green-500/10 text-green-500 border border-green-500/30'
+                      ? 'bg-zinc-800 text-white border border-zinc-600'
                       : 'bg-zinc-900 text-zinc-500 border border-zinc-800 hover:border-zinc-700'
                   }`}
                 >
@@ -126,7 +126,7 @@ export default function NewPostPage() {
               onChange={(e) => setTitle(e.target.value)}
               placeholder="What's on your mind?"
               required
-              className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-green-500"
+              className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-zinc-500"
             />
           </div>
 
@@ -141,7 +141,7 @@ export default function NewPostPage() {
               onChange={(e) => setBody(e.target.value)}
               placeholder="Add more context..."
               rows={6}
-              className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-green-500 resize-none"
+              className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-zinc-500 resize-none"
             />
           </div>
 

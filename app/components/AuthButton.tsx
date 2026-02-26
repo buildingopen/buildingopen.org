@@ -115,8 +115,8 @@ export default function AuthButton() {
             </p>
 
             {linkSent ? (
-              <div className="text-center py-4 bg-green-500/10 border border-green-500/20 rounded-lg">
-                <p className="text-green-500 font-medium mb-1">Check your email</p>
+              <div className="text-center py-4 bg-zinc-800 border border-zinc-700 rounded-lg">
+                <p className="text-white font-medium mb-1">Check your email</p>
                 <p className="text-sm text-zinc-400">We sent a magic link to {email}</p>
               </div>
             ) : (
@@ -130,7 +130,7 @@ export default function AuthButton() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@example.com"
-                    className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-green-500"
+                    className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-zinc-500"
                   />
                 </div>
                 <button

@@ -40,3 +40,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env*.local
+
+# scripts
+scripts/venv/
+scripts/.next/
+scripts/*.py
+
+# vercel project dump
+vercel_project.json

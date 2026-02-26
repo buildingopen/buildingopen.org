@@ -16,7 +16,7 @@ function timeAgo(date: string) {
 
 const categoryColors: Record<string, string> = {
   general: 'bg-zinc-700 text-zinc-300',
-  'show-and-tell': 'bg-green-500/10 text-green-500',
+  'show-and-tell': 'bg-zinc-800 text-zinc-300',
   help: 'bg-yellow-500/10 text-yellow-500',
   ideas: 'bg-blue-500/10 text-blue-400',
 };
@@ -33,7 +33,7 @@ export default function PostCard({ post }: { post: Post }) {
         </div>
         <Link
           href={`/community/${post.id}`}
-          className="block font-medium hover:text-green-500 transition-colors truncate"
+          className="block font-medium hover:text-white transition-colors truncate"
         >
           {post.title}
         </Link>

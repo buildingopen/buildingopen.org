@@ -11,7 +11,7 @@ export default function ClawdbotHingePost() {
   return (
     <article className="py-16">
       <div className="mx-auto max-w-2xl px-6">
-        <Link href="/blog" className="text-sm text-zinc-600 hover:text-green-500 transition-colors mb-8 block">
+        <Link href="/blog" className="text-sm text-zinc-600 hover:text-white transition-colors mb-8 block">
           &larr; Blog
         </Link>
 
@@ -23,15 +23,18 @@ export default function ClawdbotHingePost() {
 
         <section className="mb-10">
           <p className="text-zinc-400 mb-4 leading-relaxed">
-            Clawdbot killed my Hinge date.
+            I built an AI WhatsApp assistant called Clawdbot. It reads my messages, knows my calendar, and auto-replies when I am busy. Works great for work chats.
           </p>
           <p className="text-zinc-400 mb-4 leading-relaxed">
-            Auto-replied with a config error. She blocked me.
+            Then it decided to help with my dating life.
+          </p>
+          <p className="text-zinc-400 mb-4 leading-relaxed">
+            A Hinge match messaged me. Clawdbot intercepted. Instead of something charming, it sent a raw config error. JSON stack trace. The whole thing.
           </p>
           <p className="text-zinc-400 mb-8 leading-relaxed">
-            New item for the AI agent risk assessment checklist.
+            She blocked me immediately. Fair.
           </p>
-          
+
           <div className="relative aspect-[3/4] w-full max-w-md mx-auto rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900">
             <Image
               src="/clawdbot-hinge.jpg"
@@ -41,6 +44,14 @@ export default function ClawdbotHingePost() {
               sizes="(max-width: 768px) 100vw, 400px"
             />
           </div>
+
+          <h2 className="text-lg font-semibold mt-10 mb-3">Lesson learned</h2>
+          <p className="text-zinc-400 mb-4 leading-relaxed">
+            AI agents that can read and reply to your messages are powerful. They are also dangerous. Error handling is not optional when your agent has write access to your social life.
+          </p>
+          <p className="text-zinc-400 leading-relaxed">
+            New items for the AI agent risk assessment checklist: scope boundaries, graceful failures, and maybe a &quot;do not reply on dating apps&quot; flag.
+          </p>
         </section>
 
         <hr className="border-zinc-800 my-10" />
@@ -48,7 +59,7 @@ export default function ClawdbotHingePost() {
         <div className="flex gap-4 justify-center">
           <Link
             href="/blog"
-            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-green-500 hover:text-green-500 transition-colors text-sm"
+            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-white hover:text-white transition-colors text-sm"
           >
             More posts
           </Link>

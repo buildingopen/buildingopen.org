@@ -11,13 +11,13 @@ export default function TravelPlanningPost() {
   return (
     <article className="py-16">
       <div className="mx-auto max-w-2xl px-6">
-        <Link href="/blog" className="text-sm text-zinc-600 hover:text-green-500 transition-colors mb-8 block">
+        <Link href="/blog" className="text-sm text-zinc-600 hover:text-white transition-colors mb-8 block">
           &larr; Blog
         </Link>
 
         <header className="mb-12">
           <p className="text-sm text-zinc-600 mb-2">February 6, 2026</p>
-          <h1 className="text-3xl font-bold mb-3">What if AI could give you 10x better answers — with zero extra effort?</h1>
+          <h1 className="text-3xl font-bold mb-3">What if AI could give you 10x better answers - with zero extra effort?</h1>
           <p className="text-zinc-500">From planning a Japan trip to making startup hiring decisions.</p>
         </header>
 
@@ -130,7 +130,7 @@ export default function TravelPlanningPost() {
         <div className="flex gap-4 justify-center">
           <Link
             href="/blog"
-            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-green-500 hover:text-green-500 transition-colors text-sm"
+            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-white hover:text-white transition-colors text-sm"
           >
             More posts
           </Link>

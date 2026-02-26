@@ -7,12 +7,9 @@ import { useState } from 'react';
 const navItems = [
   { href: '/', label: 'Home' },
   { href: '/projects', label: 'Projects' },
-  { href: '/journey', label: 'Journey' },
-  { href: '/manifesto', label: 'Manifesto' },
   { href: '/tutorials', label: 'Tutorials' },
   { href: '/blog', label: 'Blog' },
   { href: '/community', label: 'Community' },
-  { href: '/badge', label: 'Badge' },
 ];
 
 export default function Header() {

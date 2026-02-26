@@ -10,7 +10,7 @@ export default function OpenDraftQuickstart() {
   return (
     <article className="py-16">
       <div className="mx-auto max-w-2xl px-6">
-        <Link href="/tutorials" className="text-sm text-zinc-600 hover:text-green-500 transition-colors mb-8 block">
+        <Link href="/tutorials" className="text-sm text-zinc-600 hover:text-white transition-colors mb-8 block">
           &larr; Tutorials
         </Link>
 
@@ -30,19 +30,19 @@ export default function OpenDraftQuickstart() {
           </p>
           <ul className="space-y-2 text-zinc-400 text-sm">
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span>20,000+ words across 40+ pages</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span>Real academic sources from OpenAlex</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span>Proper citations in APA, MLA, or Chicago format</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span>Export to .docx for editing in Word or Google Docs</span>
             </li>
           </ul>
@@ -52,12 +52,12 @@ export default function OpenDraftQuickstart() {
           <h2 className="text-lg font-semibold mb-3">Prerequisites</h2>
           <ul className="space-y-2 text-zinc-400 text-sm">
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">1.</span>
+              <span className="text-zinc-500 mt-0.5">1.</span>
               <span>Python 3.10 or higher</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">2.</span>
-              <span>A Gemini API key (free tier from <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer" className="text-green-500 hover:underline">Google AI Studio</a>)</span>
+              <span className="text-zinc-500 mt-0.5">2.</span>
+              <span>A Gemini API key (free tier from <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer" className="text-zinc-300 underline hover:text-white">Google AI Studio</a>)</span>
             </li>
           </ul>
         </section>
@@ -91,28 +91,28 @@ export default function OpenDraftQuickstart() {
           </p>
           <ul className="space-y-2 text-zinc-400 text-sm mt-3">
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">1.</span>
+              <span className="text-zinc-500 mt-0.5">1.</span>
               <span>Search OpenAlex for real academic sources relevant to your topic</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">2.</span>
+              <span className="text-zinc-500 mt-0.5">2.</span>
               <span>Generate an outline with sections and subsections</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">3.</span>
+              <span className="text-zinc-500 mt-0.5">3.</span>
               <span>Write each section using 19 AI agents working in parallel</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">4.</span>
+              <span className="text-zinc-500 mt-0.5">4.</span>
               <span>Format citations and generate a bibliography</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">5.</span>
+              <span className="text-zinc-500 mt-0.5">5.</span>
               <span>Export to .docx</span>
             </li>
           </ul>
           <p className="text-zinc-400 mt-4 leading-relaxed">
-            The whole process takes about 12 minutes.
+            The whole process takes about 10-15 minutes.
           </p>
         </section>
 
@@ -138,7 +138,7 @@ export default function OpenDraftQuickstart() {
           <a
             href="/sample-thesis.pdf"
             target="_blank"
-            className="inline-block px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-green-500 hover:text-green-500 transition-colors text-sm"
+            className="inline-block px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-white hover:text-white transition-colors text-sm"
           >
             Download sample PDF
           </a>
@@ -148,15 +148,15 @@ export default function OpenDraftQuickstart() {
           <h2 className="text-lg font-semibold mb-3">Next steps</h2>
           <ul className="space-y-2 text-zinc-400 text-sm">
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span>Read the code. The orchestration logic in <code className="text-sm bg-zinc-800 px-1.5 py-0.5 rounded">opendraft.py</code> is well-commented.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span>Customize the prompts to match your writing style or institution&apos;s requirements.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span>Star the repo and open issues if you find bugs or want features.</span>
             </li>
           </ul>
@@ -175,7 +175,7 @@ export default function OpenDraftQuickstart() {
           </a>
           <Link
             href="/tutorials"
-            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-green-500 hover:text-green-500 transition-colors text-sm"
+            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-white hover:text-white transition-colors text-sm"
           >
             More tutorials
           </Link>

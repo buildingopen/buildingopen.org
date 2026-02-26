@@ -26,6 +26,7 @@ export default function CommunityPage() {
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState('all');
   const [sort, setSort] = useState('hot');
+  const [search, setSearch] = useState('');
   const [user, setUser] = useState<{ id: string } | null>(null);
   const supabase = createClient();
 
@@ -41,6 +42,10 @@ export default function CommunityPage() {
 
       if (category !== 'all') {
         query = query.eq('category', category);
+      }
+
+      if (search.trim()) {
+        query = query.ilike('title', `%${search.trim()}%`);
       }
 
       if (sort === 'new') {
@@ -72,7 +77,7 @@ export default function CommunityPage() {
     }
     fetchPosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [category, sort]);
+  }, [category, sort, search]);
 
   return (
     <div className="py-10 md:py-16">
@@ -96,8 +101,19 @@ export default function CommunityPage() {
           </div>
         </div>
 
+        {/* Search */}
+        <div className="mb-4">
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search posts..."
+            className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-500 placeholder:text-zinc-600"
+          />
+        </div>
+
         {/* Category tabs */}
-        <div className="flex gap-1 mb-4 overflow-x-auto pb-1">
+        <div className="flex gap-1 mb-4 overflow-x-auto pb-1 scrollbar-hide">
           {categories.map((cat) => (
             <button
               key={cat.value}
@@ -121,7 +137,7 @@ export default function CommunityPage() {
               onClick={() => setSort(opt.value)}
               className={`px-2 py-1 rounded text-xs transition-colors ${
                 sort === opt.value
-                  ? 'text-green-500 bg-green-500/10'
+                  ? 'text-white bg-zinc-800'
                   : 'text-zinc-600 hover:text-zinc-400'
               }`}
             >
@@ -140,7 +156,7 @@ export default function CommunityPage() {
             <div className="text-center py-12 text-zinc-600">
               <p>No posts yet.</p>
               {user && (
-                <Link href="/community/new" className="text-green-500 text-sm mt-2 inline-block">
+                <Link href="/community/new" className="text-zinc-400 hover:text-white text-sm mt-2 inline-block">
                   Be the first to post
                 </Link>
               )}

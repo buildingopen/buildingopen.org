@@ -11,7 +11,7 @@ export default function OpenDraftSeoPost() {
   return (
     <article className="py-16">
       <div className="mx-auto max-w-2xl px-6">
-        <Link href="/blog" className="text-sm text-zinc-600 hover:text-green-500 transition-colors mb-8 block">
+        <Link href="/blog" className="text-sm text-zinc-600 hover:text-white transition-colors mb-8 block">
           &larr; Blog
         </Link>
 
@@ -28,21 +28,21 @@ export default function OpenDraftSeoPost() {
 
           <ol className="space-y-4 text-zinc-400 text-sm mb-6 mt-6">
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5 font-medium">1.</span>
+              <span className="text-zinc-500 mt-0.5 font-medium">1.</span>
               <div>
                 <strong className="text-white">Great product</strong>
                 <p className="mt-1">(you can&apos;t rank garbage)</p>
               </div>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5 font-medium">2.</span>
+              <span className="text-zinc-500 mt-0.5 font-medium">2.</span>
               <div>
                 <strong className="text-white">Technical SEO basics</strong>
-                <p className="mt-1">(schema, metadata, clean structure—so bots can crawl your site)</p>
+                <p className="mt-1">(schema, metadata, clean structure - so bots can crawl your site)</p>
               </div>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5 font-medium">3.</span>
+              <span className="text-zinc-500 mt-0.5 font-medium">3.</span>
               <div>
                 <strong className="text-white">Crystal clear language</strong>
                 <p className="mt-1">(if your copy is vague, how will Gemini know when to recommend you over competitors?)</p>
@@ -55,7 +55,7 @@ export default function OpenDraftSeoPost() {
           </p>
 
           <p className="text-zinc-400 mb-8 leading-relaxed">
-            <a href="https://opendraft.xyz" className="text-green-500 hover:underline" target="_blank" rel="noopener noreferrer">opendraft.xyz</a> now sits at #1 across Google, ChatGPT, Perplexity, and Gemini.
+            <a href="https://opendraft.xyz" className="text-zinc-300 underline hover:text-white" target="_blank" rel="noopener noreferrer">opendraft.xyz</a> now sits at #1 across Google, ChatGPT, Perplexity, and Gemini.
           </p>
 
           <div className="space-y-6 mb-8">
@@ -103,7 +103,7 @@ export default function OpenDraftSeoPost() {
         <div className="flex gap-4 justify-center">
           <Link
             href="/blog"
-            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-green-500 hover:text-green-500 transition-colors text-sm"
+            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-white hover:text-white transition-colors text-sm"
           >
             More posts
           </Link>

@@ -10,7 +10,7 @@ export default function OpenSlidesQuickstart() {
   return (
     <article className="py-16">
       <div className="mx-auto max-w-2xl px-6">
-        <Link href="/tutorials" className="text-sm text-zinc-600 hover:text-green-500 transition-colors mb-8 block">
+        <Link href="/tutorials" className="text-sm text-zinc-600 hover:text-white transition-colors mb-8 block">
           &larr; Tutorials
         </Link>
 
@@ -30,19 +30,19 @@ export default function OpenSlidesQuickstart() {
           </p>
           <ul className="space-y-2 text-zinc-400 text-sm">
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span>Auto-extract brand colors and fonts from any website</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span>Full creative control via HTML/CSS (no theme fighting)</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span>Export to PNG or PDF</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span>~300 lines of code, easy to understand and customize</span>
             </li>
           </ul>
@@ -52,7 +52,7 @@ export default function OpenSlidesQuickstart() {
           <h2 className="text-lg font-semibold mb-3">Prerequisites</h2>
           <ul className="space-y-2 text-zinc-400 text-sm">
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">1.</span>
+              <span className="text-zinc-500 mt-0.5">1.</span>
               <span>Python 3.9 or higher</span>
             </li>
           </ul>
@@ -154,15 +154,15 @@ export default function OpenSlidesQuickstart() {
           <h2 className="text-lg font-semibold mb-3">Next steps</h2>
           <ul className="space-y-2 text-zinc-400 text-sm">
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span>Check the <code className="bg-zinc-800 px-1.5 py-0.5 rounded text-xs">examples/</code> folder in the repo for full deck examples.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span>The library is ~300 lines. Read it, understand it, make it yours.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">&#x2022;</span>
+              <span className="text-zinc-500 mt-0.5">&#x2022;</span>
               <span>Use an AI coding tool to generate slides from a text prompt (describe what you want, it writes the HTML).</span>
             </li>
           </ul>
@@ -181,7 +181,7 @@ export default function OpenSlidesQuickstart() {
           </a>
           <Link
             href="/tutorials"
-            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-green-500 hover:text-green-500 transition-colors text-sm"
+            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-white hover:text-white transition-colors text-sm"
           >
             More tutorials
           </Link>

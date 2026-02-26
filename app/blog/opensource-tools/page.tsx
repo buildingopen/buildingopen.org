@@ -11,7 +11,7 @@ export default function OpenSourceToolsPost() {
   return (
     <article className="py-16">
       <div className="mx-auto max-w-2xl px-6">
-        <Link href="/blog" className="text-sm text-zinc-600 hover:text-green-500 transition-colors mb-8 block">
+        <Link href="/blog" className="text-sm text-zinc-600 hover:text-white transition-colors mb-8 block">
           &larr; Blog
         </Link>
 
@@ -26,22 +26,22 @@ export default function OpenSourceToolsPost() {
             Here&apos;s what happened:
           </p>
           <p className="text-zinc-400 mb-4 leading-relaxed">
-            Instead of paying $800+/year for software subscriptions, I built open-source repos that do the same thing—but better.
+            Instead of paying $800+/year for software subscriptions, I built open-source repos that do the same thing - but better.
           </p>
           <p className="text-zinc-400 mb-4 leading-relaxed">
             The workflow is simple:
           </p>
           <ol className="space-y-2 text-zinc-400 text-sm mb-8">
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">1.</span>
+              <span className="text-zinc-500 mt-0.5">1.</span>
               <span>Clone the repo</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">2.</span>
+              <span className="text-zinc-500 mt-0.5">2.</span>
               <span>Write a prompt</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">3.</span>
+              <span className="text-zinc-500 mt-0.5">3.</span>
               <span>Get production-ready output</span>
             </li>
           </ol>
@@ -53,37 +53,37 @@ export default function OpenSourceToolsPost() {
           <div className="space-y-4 mb-8">
             <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
               <h3 className="font-medium mb-1">
-                <a href="https://github.com/federicodeponte/openword" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition-colors">openword</a>
+                <a href="https://github.com/federicodeponte/openword" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">openword</a>
               </h3>
               <p className="text-sm text-zinc-400">Professional business letters &amp; contracts (replaces Word)</p>
             </div>
             <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
               <h3 className="font-medium mb-1">
-                <a href="https://github.com/federicodeponte/opendraft" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition-colors">opendraft</a>
+                <a href="https://github.com/federicodeponte/opendraft" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">opendraft</a>
               </h3>
               <p className="text-sm text-zinc-400">Academic thesis generation with 19 AI agents (replaces research tools)</p>
             </div>
             <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
               <h3 className="font-medium mb-1">
-                <a href="https://github.com/federicodeponte/openfigma" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition-colors">openfigma</a>
+                <a href="https://github.com/federicodeponte/openfigma" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">openfigma</a>
               </h3>
               <p className="text-sm text-zinc-400">Social graphics &amp; marketing visuals (replaces Figma/Canva)</p>
             </div>
             <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
               <h3 className="font-medium mb-1">
-                <a href="https://github.com/federicodeponte/openblog" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition-colors">openblog</a>
+                <a href="https://github.com/federicodeponte/openblog" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">openblog</a>
               </h3>
               <p className="text-sm text-zinc-400">5-stage SEO content pipeline (replaces n8n + content tools)</p>
             </div>
             <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
               <h3 className="font-medium mb-1">
-                <a href="https://github.com/federicodeponte/openkeyword" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition-colors">openkeyword</a>
+                <a href="https://github.com/federicodeponte/openkeyword" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">openkeyword</a>
               </h3>
               <p className="text-sm text-zinc-400">AI-powered keyword research (replaces Ahrefs/SEMrush)</p>
             </div>
             <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
               <h3 className="font-medium mb-1">
-                <a href="https://github.com/federicodeponte/openinvoice" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition-colors">openinvoice</a>
+                <a href="https://github.com/federicodeponte/openinvoice" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">openinvoice</a>
               </h3>
               <p className="text-sm text-zinc-400">Gmail invoice extraction (replaces manual bookkeeping)</p>
             </div>
@@ -118,7 +118,7 @@ export default function OpenSourceToolsPost() {
         <div className="flex gap-4 justify-center">
           <Link
             href="/blog"
-            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-green-500 hover:text-green-500 transition-colors text-sm"
+            className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-white hover:text-white transition-colors text-sm"
           >
             More posts
           </Link>

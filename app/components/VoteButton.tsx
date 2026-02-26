@@ -60,7 +60,7 @@ export default function VoteButton({
       <button
         onClick={() => handleVote(1)}
         className={`p-1 rounded transition-colors ${
-          voted === 1 ? 'text-green-500' : 'text-zinc-600 hover:text-zinc-400'
+          voted === 1 ? 'text-white' : 'text-zinc-600 hover:text-zinc-400'
         }`}
         aria-label="Upvote"
       >
@@ -68,7 +68,7 @@ export default function VoteButton({
           <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
         </svg>
       </button>
-      <span className={`text-xs font-medium ${count > 0 ? 'text-green-500' : count < 0 ? 'text-red-400' : 'text-zinc-500'}`}>
+      <span className={`text-xs font-medium ${count > 0 ? 'text-white' : count < 0 ? 'text-red-400' : 'text-zinc-500'}`}>
         {count}
       </span>
       <button
