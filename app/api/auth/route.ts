@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
   const password = formData.get('password') as string
 
   if (password === PASSWORD) {
-    const response = NextResponse.redirect(new URL('/', request.url))
+    const response = NextResponse.redirect(new URL('/', request.url), 303)
     response.cookies.set('bo_auth', '1', {
       path: '/',
       maxAge: 60 * 60 * 24 * 365,
@@ -16,5 +16,5 @@ export async function POST(request: NextRequest) {
     return response
   }
 
-  return NextResponse.redirect(new URL('/?error=1', request.url))
+  return NextResponse.redirect(new URL('/?error=1', request.url), 303)
 }
