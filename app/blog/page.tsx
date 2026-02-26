@@ -10,6 +10,13 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "agent-protocol",
+    title: "The Agent Protocol Layer",
+    description: "A protocol specification for agent-to-world interaction. Five primitives. One open standard. TCP/IP for the agent era.",
+    date: "February 27, 2026",
+    image: null,
+  },
+  {
     slug: "founder-habits",
     title: "I treated my life like a product. Here's what I removed.",
     description: "2 years into my 2nd startup. The habits that moved the needle most aren't what you'd expect.",
