@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const blogPosts = [
+    'agent-protocol',
     'clawdbot-hinge',
     'golf-vs-datacenters',
     'goodbye-powerpoint',

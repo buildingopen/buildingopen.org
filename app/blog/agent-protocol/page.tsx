@@ -387,7 +387,19 @@ Different adapters. Same five primitives. Same protocol.`}</pre>
           <p>Licensed under Apache 2.0</p>
         </div>
 
-        <div className="flex gap-4 justify-center mt-8">
+        <div className="mb-10 mt-10">
+          <p className="text-xs uppercase tracking-wider text-zinc-500 mb-4">Related posts</p>
+          <div className="space-y-3">
+            <Link href="/blog/claude-code-context" className="block text-sm text-zinc-400 hover:text-white transition-colors">
+              Why Claude Code is my new best friend &rarr;
+            </Link>
+            <Link href="/blog/clawdbot-hinge" className="block text-sm text-zinc-400 hover:text-white transition-colors">
+              Clawdbot killed my Hinge date &rarr;
+            </Link>
+          </div>
+        </div>
+
+        <div className="flex gap-4 justify-center">
           <Link
             href="/blog"
             className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-white hover:text-white transition-colors text-sm"

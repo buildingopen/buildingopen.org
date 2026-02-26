@@ -43,13 +43,13 @@ export default function GoodbyePowerpointPost() {
           <h2 className="text-white font-semibold text-lg mt-8 mb-2">The new way</h2>
 
           <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5 my-4 font-mono text-sm text-zinc-300">
-            <p className="mb-2 text-green-500">&gt; &quot;A fintech startup for African payments&quot;</p>
+            <p className="mb-2 text-green-400">&gt; &quot;A fintech startup for African payments&quot;</p>
             <p className="mb-4 pl-4 text-zinc-500">→ Title slide appears.</p>
 
-            <p className="mb-2 text-green-500">&gt; &quot;Show the problem we&apos;re solving&quot;</p>
+            <p className="mb-2 text-green-400">&gt; &quot;Show the problem we&apos;re solving&quot;</p>
             <p className="mb-4 pl-4 text-zinc-500">→ Data viz, done.</p>
 
-            <p className="mb-2 text-green-500">&gt; &quot;Add our traction&quot;</p>
+            <p className="mb-2 text-green-400">&gt; &quot;Add our traction&quot;</p>
             <p className="pl-4 text-zinc-500">→ Growth charts, done.</p>
           </div>
 
