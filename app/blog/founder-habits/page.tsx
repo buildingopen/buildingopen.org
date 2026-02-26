@@ -60,7 +60,7 @@ export default function FounderHabitsPost() {
           </p>
 
           <p className="leading-relaxed">
-            <span className="text-white font-medium">Freelancers.</span> This is the one people push back on the most. I stopped delegating to freelancers entirely. The new rule: if AI can&apos;t do it, it&apos;s not a priority. Managing people is expensive in time and context. AI doesn&apos;t need onboarding, doesn&apos;t have timezone issues, and doesn&apos;t ghost you mid-project. The quality ceiling is lower for some tasks, but the speed and consistency made up for it everywhere that mattered.
+            <span className="text-white font-medium">No founders associate.</span> Either I do it with AI or it has no priority. Most early-stage founders hire an FA to offload ops work. I decided against it. The coordination cost of managing another person, even a good one, is higher than people admit. AI handles 80% of what an FA would do, instantly, without onboarding or timezone gaps. The remaining 20% either wasn&apos;t important or forced me to build a better system.
           </p>
 
           <h2 className="text-white font-semibold text-lg mt-8 mb-2">What I added</h2>
