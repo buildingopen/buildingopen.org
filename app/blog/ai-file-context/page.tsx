@@ -16,8 +16,12 @@ export default function TravelPlanningPost() {
         </Link>
 
         <header className="mb-12">
-          <p className="text-sm text-zinc-600 mb-2">February 6, 2026</p>
-          <h1 className="text-3xl font-bold mb-3">What if AI could give you 10x better answers - with zero extra effort?</h1>
+          <div className="flex items-center gap-3 mb-2">
+            <span className="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-400 rounded">AI Workflow</span>
+            <span className="text-xs text-zinc-600">4 min read</span>
+            <span className="text-xs text-zinc-600">February 6, 2026</span>
+          </div>
+          <h1 className="text-3xl font-bold mb-3">What if AI could give you 10x better answers, with zero extra effort?</h1>
           <p className="text-zinc-500">From planning a Japan trip to making startup hiring decisions.</p>
         </header>
 
@@ -120,19 +124,38 @@ export default function TravelPlanningPost() {
             How did I figure this out? Trial and error. Lots of &quot;dumb&quot; questions that led somewhere useful.
           </p>
 
-          <p className="text-zinc-400 leading-relaxed font-medium">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6 mt-4">
+            <p className="text-zinc-300 font-medium mb-3">The principle</p>
+            <p className="text-sm leading-relaxed">
+              AI without context gives you generic answers. AI with your context gives you your answers. The difference is not the model. It is the input.
+            </p>
+          </div>
+
+          <p className="text-zinc-400 leading-relaxed font-medium mt-6">
             That&apos;s the real trick: just start. Pick any AI that can read your files. The learning happens along the way.
           </p>
         </section>
 
         <hr className="border-zinc-800 my-10" />
 
+        <div className="mb-10">
+          <p className="text-xs uppercase tracking-wider text-zinc-500 mb-4">Related posts</p>
+          <div className="space-y-3">
+            <Link href="/blog/claude-code-context" className="block text-sm text-zinc-400 hover:text-white transition-colors">
+              Why Claude Code is my new best friend &rarr;
+            </Link>
+            <Link href="/blog/opensource-tools" className="block text-sm text-zinc-400 hover:text-white transition-colors">
+              Replacing $800+ of software subscriptions with open source &rarr;
+            </Link>
+          </div>
+        </div>
+
         <div className="flex gap-4 justify-center">
           <Link
             href="/blog"
             className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-white hover:text-white transition-colors text-sm"
           >
-            More posts
+            All posts
           </Link>
         </div>
       </div>

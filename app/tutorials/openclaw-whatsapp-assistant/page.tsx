@@ -167,12 +167,24 @@ export default function OpenClawTutorial() {
 
         <hr className="border-zinc-800 my-10" />
 
+        <div className="mb-10">
+          <p className="text-xs uppercase tracking-wider text-zinc-500 mb-4">Related tutorials</p>
+          <div className="space-y-3">
+            <Link href="/tutorials/opendraft-quickstart" className="block text-sm text-zinc-400 hover:text-white transition-colors">
+              Generate your first research paper with OpenDraft &rarr;
+            </Link>
+            <Link href="/tutorials/openslides-quickstart" className="block text-sm text-zinc-400 hover:text-white transition-colors">
+              Create a slide deck with OpenSlides &rarr;
+            </Link>
+          </div>
+        </div>
+
         <div className="flex gap-4 justify-center">
           <Link
             href="/tutorials"
             className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-white hover:text-white transition-colors text-sm"
           >
-            More tutorials
+            All tutorials
           </Link>
         </div>
       </div>

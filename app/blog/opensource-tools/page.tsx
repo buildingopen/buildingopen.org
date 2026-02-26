@@ -16,7 +16,11 @@ export default function OpenSourceToolsPost() {
         </Link>
 
         <header className="mb-12">
-          <p className="text-sm text-zinc-600 mb-2">January 13, 2026</p>
+          <div className="flex items-center gap-3 mb-2">
+            <span className="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-400 rounded">Tools</span>
+            <span className="text-xs text-zinc-600">4 min read</span>
+            <span className="text-xs text-zinc-600">January 13, 2026</span>
+          </div>
           <h1 className="text-3xl font-bold mb-3">Replacing $800+ of Software Subscriptions with Open Source</h1>
           <p className="text-zinc-500">6 months ago, I stopped using Word, Excel, PowerPoint, Figma, and n8n. I replaced them all with Claude Code.</p>
         </header>
@@ -115,12 +119,24 @@ export default function OpenSourceToolsPost() {
 
         <hr className="border-zinc-800 my-10" />
 
+        <div className="mb-10">
+          <p className="text-xs uppercase tracking-wider text-zinc-500 mb-4">Related posts</p>
+          <div className="space-y-3">
+            <Link href="/blog/goodbye-powerpoint" className="block text-sm text-zinc-400 hover:text-white transition-colors">
+              I genuinely stopped using PowerPoint &rarr;
+            </Link>
+            <Link href="/blog/opendraft-seo" className="block text-sm text-zinc-400 hover:text-white transition-colors">
+              Cracking SEO & AEO: the formula for compounding visibility &rarr;
+            </Link>
+          </div>
+        </div>
+
         <div className="flex gap-4 justify-center">
           <Link
             href="/blog"
             className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-white hover:text-white transition-colors text-sm"
           >
-            More posts
+            All posts
           </Link>
         </div>
       </div>

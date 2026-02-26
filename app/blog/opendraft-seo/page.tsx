@@ -16,7 +16,11 @@ export default function OpenDraftSeoPost() {
         </Link>
 
         <header className="mb-12">
-          <p className="text-sm text-zinc-600 mb-2">January 29, 2026</p>
+          <div className="flex items-center gap-3 mb-2">
+            <span className="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-400 rounded">Growth</span>
+            <span className="text-xs text-zinc-600">4 min read</span>
+            <span className="text-xs text-zinc-600">January 29, 2026</span>
+          </div>
           <h1 className="text-3xl font-bold mb-3">Cracking SEO & AEO: The Formula for Compounding Visibility</h1>
           <p className="text-zinc-500">How opendraft.xyz sits at #1 across Google, ChatGPT, Perplexity, and Gemini.</p>
         </header>
@@ -100,12 +104,24 @@ export default function OpenDraftSeoPost() {
 
         <hr className="border-zinc-800 my-10" />
 
+        <div className="mb-10">
+          <p className="text-xs uppercase tracking-wider text-zinc-500 mb-4">Related posts</p>
+          <div className="space-y-3">
+            <Link href="/blog/opensource-tools" className="block text-sm text-zinc-400 hover:text-white transition-colors">
+              Replacing $800+ of software subscriptions with open source &rarr;
+            </Link>
+            <Link href="/blog/goodbye-powerpoint" className="block text-sm text-zinc-400 hover:text-white transition-colors">
+              I genuinely stopped using PowerPoint &rarr;
+            </Link>
+          </div>
+        </div>
+
         <div className="flex gap-4 justify-center">
           <Link
             href="/blog"
             className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-white hover:text-white transition-colors text-sm"
           >
-            More posts
+            All posts
           </Link>
         </div>
       </div>

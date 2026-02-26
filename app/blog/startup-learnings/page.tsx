@@ -16,7 +16,11 @@ export default function StartupLearningsPost() {
         </Link>
 
         <header className="mb-12">
-          <p className="text-sm text-zinc-600 mb-2">February 4, 2026</p>
+          <div className="flex items-center gap-3 mb-2">
+            <span className="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-400 rounded">Founder Life</span>
+            <span className="text-xs text-zinc-600">3 min read</span>
+            <span className="text-xs text-zinc-600">February 4, 2026</span>
+          </div>
           <h1 className="text-3xl font-bold mb-3">4 pivots in 1.5 years: what I&apos;d tell myself before starting</h1>
           <p className="text-zinc-500">Venture studio. Marketing agency. Marketing SaaS. AI visibility SaaS.</p>
         </header>
@@ -55,22 +59,34 @@ export default function StartupLearningsPost() {
             No technical co-founder. No budget. We opened Cursor and built it ourselves. Kept it brutally simple. Once we had something real, the right people showed up. 4 pivots later, profitable in year 1.
           </p>
 
-          <p className="text-zinc-400 mb-4 leading-relaxed font-medium">
-            The gap between thinking about starting and starting is where most founders die.
-          </p>
-          <p className="text-zinc-400 leading-relaxed font-medium">
-            And burnout? It doesn&apos;t come from working too hard. It comes from forgetting why you started.
-          </p>
+          <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6 mt-4">
+            <p className="text-zinc-300 font-medium mb-3">The uncomfortable truth</p>
+            <p className="text-sm text-zinc-400 leading-relaxed">
+              The gap between thinking about starting and starting is where most founders die. And burnout does not come from working too hard. It comes from forgetting why you started.
+            </p>
+          </div>
         </section>
 
         <hr className="border-zinc-800 my-10" />
+
+        <div className="mb-10">
+          <p className="text-xs uppercase tracking-wider text-zinc-500 mb-4">Related posts</p>
+          <div className="space-y-3">
+            <Link href="/blog/founder-habits" className="block text-sm text-zinc-400 hover:text-white transition-colors">
+              I treated my life like a product. Here&apos;s what I removed. &rarr;
+            </Link>
+            <Link href="/blog/scaile-india" className="block text-sm text-zinc-400 hover:text-white transition-colors">
+              SCAILE goes to India &rarr;
+            </Link>
+          </div>
+        </div>
 
         <div className="flex gap-4 justify-center">
           <Link
             href="/blog"
             className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-white hover:text-white transition-colors text-sm"
           >
-            More posts
+            All posts
           </Link>
         </div>
       </div>

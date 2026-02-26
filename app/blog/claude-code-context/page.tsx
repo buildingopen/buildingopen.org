@@ -16,7 +16,11 @@ export default function ClaudeCodeContextPost() {
         </Link>
 
         <header className="mb-12">
-          <p className="text-sm text-zinc-600 mb-2">February 6, 2026</p>
+          <div className="flex items-center gap-3 mb-2">
+            <span className="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-400 rounded">AI Workflow</span>
+            <span className="text-xs text-zinc-600">3 min read</span>
+            <span className="text-xs text-zinc-600">February 6, 2026</span>
+          </div>
           <h1 className="text-3xl font-bold mb-3">My friends are jealous of my new best friend.</h1>
           <p className="text-zinc-500">Why I moved everything (coding, decisions, life strategy) to Claude Code.</p>
         </header>
@@ -86,12 +90,24 @@ export default function ClaudeCodeContextPost() {
 
         <hr className="border-zinc-800 my-10" />
 
+        <div className="mb-10">
+          <p className="text-xs uppercase tracking-wider text-zinc-500 mb-4">Related posts</p>
+          <div className="space-y-3">
+            <Link href="/blog/ai-file-context" className="block text-sm text-zinc-400 hover:text-white transition-colors">
+              Better AI answers with file context &rarr;
+            </Link>
+            <Link href="/blog/clawdbot-hinge" className="block text-sm text-zinc-400 hover:text-white transition-colors">
+              Clawdbot killed my Hinge date &rarr;
+            </Link>
+          </div>
+        </div>
+
         <div className="flex gap-4 justify-center">
           <Link
             href="/blog"
             className="px-5 py-2.5 border border-zinc-700 rounded-lg hover:border-white hover:text-white transition-colors text-sm"
           >
-            More posts
+            All posts
           </Link>
         </div>
       </div>
