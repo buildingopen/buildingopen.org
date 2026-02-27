@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import {
+  Callout,
+  Figure,
+  PullQuote,
+  SectionDivider,
+  StatRow,
+} from "../../components/blog";
 
 export const metadata: Metadata = {
   title: "Cracking SEO & AEO: The Formula for Compounding Visibility - Building Open",
@@ -25,12 +31,12 @@ export default function OpenDraftSeoPost() {
           <p className="text-zinc-500">How opendraft.xyz sits at #1 across Google, ChatGPT, Perplexity, and Gemini.</p>
         </header>
 
-        <section className="mb-10">
-          <p className="text-zinc-400 mb-4 leading-relaxed">
+        <section className="mb-10 text-zinc-400 space-y-6">
+          <p className="leading-relaxed">
             18 months cracking SEO/AEO at SCAILE. Here&apos;s the formula:
           </p>
 
-          <ol className="space-y-4 text-zinc-400 text-sm mb-6 mt-6">
+          <ol className="space-y-4 text-sm">
             <li className="flex items-start gap-2">
               <span className="text-zinc-500 mt-0.5 font-medium">1.</span>
               <div>
@@ -54,52 +60,57 @@ export default function OpenDraftSeoPost() {
             </li>
           </ol>
 
-          <p className="text-zinc-400 mb-4 leading-relaxed">
+          <p className="leading-relaxed">
             This is the foundation. Get this right and you&apos;ll rank.
           </p>
 
-          <p className="text-zinc-400 mb-8 leading-relaxed">
+          <StatRow
+            stats={[
+              { value: "#1", label: "Google" },
+              { value: "#1", label: "ChatGPT" },
+              { value: "#1", label: "Perplexity" },
+            ]}
+          />
+
+          <p className="leading-relaxed">
             <a href="https://opendraft.xyz" className="text-zinc-300 underline hover:text-white" target="_blank" rel="noopener noreferrer">opendraft.xyz</a> now sits at #1 across Google, ChatGPT, Perplexity, and Gemini.
           </p>
 
-          <div className="space-y-6 mb-8">
-            <Image 
-              src="/blog/opendraft-seo/chatgpt-highlighted.png" 
-              alt="ChatGPT Results" 
-              width={800} 
-              height={400} 
-              className="rounded-lg border border-zinc-800 w-full h-auto"
-            />
-            <Image 
-              src="/blog/opendraft-seo/perplexity-highlighted.png" 
-              alt="Perplexity Results" 
-              width={800} 
-              height={400} 
-              className="rounded-lg border border-zinc-800 w-full h-auto"
-            />
-            <Image 
-              src="/blog/opendraft-seo/opendraft-adjusted.png" 
-              alt="OpenDraft Position" 
-              width={800} 
-              height={400} 
-              className="rounded-lg border border-zinc-800 w-full h-auto"
-            />
-          </div>
+          <SectionDivider />
 
-          <h2 className="text-lg font-semibold mb-3 mt-10">The Multiplier</h2>
-          <p className="text-zinc-400 mb-4 leading-relaxed">
+          <Figure
+            src="/blog/opendraft-seo/chatgpt-highlighted.png"
+            alt="ChatGPT recommending OpenDraft as #1 result"
+            caption="ChatGPT recommends OpenDraft for AI research paper generation"
+          />
+
+          <Figure
+            src="/blog/opendraft-seo/perplexity-highlighted.png"
+            alt="Perplexity showing OpenDraft as top result"
+            caption="Perplexity surfaces OpenDraft as the top answer"
+          />
+
+          <Figure
+            src="/blog/opendraft-seo/opendraft-adjusted.png"
+            alt="OpenDraft search position across platforms"
+            caption="Consistent #1 positioning across all major AI search engines"
+          />
+
+          <SectionDivider />
+
+          <h2 className="text-white font-semibold text-lg mt-8 mb-2">The Multiplier</h2>
+          <p className="leading-relaxed">
             Then multiply it: add hyper-niche content pieces that target specific queries your audience is searching for.
           </p>
-          <p className="text-zinc-400 mb-4 leading-relaxed">
+          <p className="leading-relaxed">
             That&apos;s what we&apos;re building Hyperniche AI for.
           </p>
 
-          <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5 mt-8">
-            <p className="text-sm font-medium text-white mb-2">The Formula</p>
-            <p className="text-sm text-zinc-400 font-mono break-words">
-              Great product × bot-readable site × clear positioning × niche content = compounding visibility.
+          <Callout title="The Formula">
+            <p className="font-mono break-words">
+              Great product x bot-readable site x clear positioning x niche content = compounding visibility.
             </p>
-          </div>
+          </Callout>
         </section>
 
         <hr className="border-zinc-800 my-10" />

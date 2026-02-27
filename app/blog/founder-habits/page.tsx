@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  Callout,
+  PullQuote,
+  SectionDivider,
+  StatRow,
+} from "../../components/blog";
 
 export const metadata: Metadata = {
   title: "I treated my life like a product. Here's what I removed. - Building Open",
@@ -29,6 +35,14 @@ export default function FounderHabitsPost() {
             2 years on my 2nd startup. 250k ARR, led +20 people, worked across 4 continents in 2025.
           </p>
 
+          <StatRow
+            stats={[
+              { value: "250k", label: "ARR" },
+              { value: "20+", label: "people led" },
+              { value: "4", label: "continents" },
+            ]}
+          />
+
           <p className="leading-relaxed">
             I lost my electric toothbrush charger in Seoul. Didn&apos;t order a new one for 6 months. Sounds ridiculous, but it made me realize something: I was optimizing everything in my startup and nothing in my actual life.
           </p>
@@ -37,7 +51,21 @@ export default function FounderHabitsPost() {
             So I ran an experiment. I treated my personal defaults the same way I&apos;d treat a product: strip out everything that doesn&apos;t serve the user.
           </p>
 
+          <SectionDivider />
+
           <h2 className="text-white font-semibold text-lg mt-8 mb-2">What I removed</h2>
+
+          <Callout title="The removal list">
+            <ul className="space-y-3">
+              <li><span className="text-zinc-300 font-medium">Reels and TikTok</span> - Gone since January 2025</li>
+              <li><span className="text-zinc-300 font-medium">Color on devices</span> - Black and white mode only</li>
+              <li><span className="text-zinc-300 font-medium">All notifications</span> - If urgent, someone will call</li>
+              <li><span className="text-zinc-300 font-medium">WhatsApp groups</span> - Every group archived</li>
+              <li><span className="text-zinc-300 font-medium">Fast food</span> - Vegetarian since September</li>
+              <li><span className="text-zinc-300 font-medium">Alcohol</span> - Maybe 6-7 times the entire year</li>
+              <li><span className="text-zinc-300 font-medium">Founders associate</span> - AI handles 80% of it</li>
+            </ul>
+          </Callout>
 
           <p className="leading-relaxed">
             <span className="text-white font-medium">Reels and TikTok.</span> Gone since January 2025. Full year without short-form content. I didn&apos;t miss a single thing. What I got back was the ability to sit with boredom, which turns out is where most good ideas come from.
@@ -67,6 +95,8 @@ export default function FounderHabitsPost() {
             <span className="text-white font-medium">No founders associate.</span> Either I do it with AI or it has no priority. Most early-stage founders hire an FA to offload ops work. I decided against it. The coordination cost of managing another person, even a good one, is higher than people admit. AI handles 80% of what an FA would do, instantly, without onboarding or timezone gaps. The remaining 20% either wasn&apos;t important or forced me to build a better system.
           </p>
 
+          <SectionDivider />
+
           <h2 className="text-white font-semibold text-lg mt-8 mb-2">What I added</h2>
 
           <p className="leading-relaxed">
@@ -89,6 +119,8 @@ export default function FounderHabitsPost() {
             <span className="text-white font-medium">Sunday nature.</span> One day a week, outside, no laptop. Not negotiable. This started as a break from burnout and turned into the day where I do my best strategic thinking, away from Slack and code editors.
           </p>
 
+          <SectionDivider />
+
           <h2 className="text-white font-semibold text-lg mt-8 mb-2">Small tools that helped</h2>
 
           <p className="leading-relaxed">
@@ -103,6 +135,8 @@ export default function FounderHabitsPost() {
             <span className="text-white font-medium">A virtual machine</span> for running code and AI, so my laptop being open and with me is never the bottleneck. I can work from a cafe on a light machine because the heavy compute happens elsewhere.
           </p>
 
+          <SectionDivider />
+
           <h2 className="text-white font-semibold text-lg mt-8 mb-2">The compound effect</h2>
 
           <p className="leading-relaxed">
@@ -113,12 +147,9 @@ export default function FounderHabitsPost() {
             Together they rewired how I operate. Not through discipline or motivation, but by removing friction and noise until the right moves became obvious.
           </p>
 
-          <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6 mt-10">
-            <p className="text-zinc-300 font-medium mb-3">The uncomfortable truth about founder productivity</p>
-            <p className="text-sm leading-relaxed">
-              It&apos;s not about adding systems. It&apos;s about having so little noise that the right moves become obvious. Most founders are over-tooled and under-disciplined on the basics.
-            </p>
-          </div>
+          <PullQuote>
+            It&apos;s not about adding systems. It&apos;s about having so little noise that the right moves become obvious.
+          </PullQuote>
 
           <h2 className="text-white font-semibold text-lg mt-8 mb-2">What I want to change this year</h2>
 

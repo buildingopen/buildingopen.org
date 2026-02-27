@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import {
+  Callout,
+  PullQuote,
+  SectionDivider,
+  StatRow,
+} from "../../components/blog";
 
 export const metadata: Metadata = {
   title: "Replacing $800+ of Software Subscriptions with Open Source - Building Open",
@@ -25,17 +31,26 @@ export default function OpenSourceToolsPost() {
           <p className="text-zinc-500">6 months ago, I stopped using Word, Excel, PowerPoint, Figma, and n8n. I replaced them all with Claude Code.</p>
         </header>
 
-        <section className="mb-10">
-          <p className="text-zinc-400 mb-4 leading-relaxed">
+        <section className="mb-10 text-zinc-400 space-y-6">
+          <p className="leading-relaxed">
             Here&apos;s what happened:
           </p>
-          <p className="text-zinc-400 mb-4 leading-relaxed">
+          <p className="leading-relaxed">
             Instead of paying $800+/year for software subscriptions, I built open-source repos that do the same thing - but better.
           </p>
-          <p className="text-zinc-400 mb-4 leading-relaxed">
+
+          <StatRow
+            stats={[
+              { value: "$800+", label: "saved per year" },
+              { value: "6", label: "tools replaced" },
+              { value: "3", label: "step workflow" },
+            ]}
+          />
+
+          <p className="leading-relaxed">
             The workflow is simple:
           </p>
-          <ol className="space-y-2 text-zinc-400 text-sm mb-8">
+          <ol className="space-y-2 text-sm">
             <li className="flex items-start gap-2">
               <span className="text-zinc-500 mt-0.5">1.</span>
               <span>Clone the repo</span>
@@ -51,9 +66,11 @@ export default function OpenSourceToolsPost() {
           </ol>
         </section>
 
+        <SectionDivider />
+
         <section className="mb-10">
           <h2 className="text-lg font-semibold mb-3">Here&apos;s what I built:</h2>
-          
+
           <div className="space-y-4 mb-8">
             <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
               <h3 className="font-medium mb-1">
@@ -93,19 +110,22 @@ export default function OpenSourceToolsPost() {
             </div>
           </div>
 
-          <p className="text-zinc-400 mb-4 leading-relaxed font-semibold">
-            All free. All open source.
-          </p>
-          <p className="text-zinc-400 mb-8 leading-relaxed">
-            Clone them, prompt them, ship faster.
-          </p>
+          <PullQuote>
+            All free. All open source. Clone them, prompt them, ship faster.
+          </PullQuote>
         </section>
 
+        <SectionDivider />
+
         <section className="mb-10">
-          <div className="space-y-6">
+          <Callout title="The philosophy">
+            If a tool can be built with AI in a weekend, it has no business being a $20/month subscription. The value is in the workflow, not the wrapper.
+          </Callout>
+
+          <div className="space-y-6 mt-8">
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
               <div key={num} className="rounded-xl overflow-hidden border border-zinc-800 bg-zinc-900">
-                <Image 
+                <Image
                   src={`/opensource-tools/slide-${num.toString().padStart(2, '0')}.png`}
                   alt={`Slide ${num}`}
                   width={1080}

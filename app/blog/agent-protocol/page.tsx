@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  Callout,
+  PullQuote,
+  SectionDivider,
+} from "../../components/blog";
 
 export const metadata: Metadata = {
   title: "The Agent Protocol Layer - Building Open",
@@ -42,9 +47,9 @@ export default function AgentProtocolPost() {
             MCP solved part of this. It gave agents a standard way to access tools and data sources. But MCP operates within the model&apos;s context: it connects agents to information. What&apos;s missing is the layer that connects agents to the real world, the layer where money moves, messages get sent, and actions have consequences.
           </p>
 
-          <p className="leading-relaxed">
-            This is the gap. Not another agent framework. Not another orchestration tool. A protocol for agent-to-world interaction.
-          </p>
+          <PullQuote>
+            MCP is the nervous system. The Agent Protocol Layer is the hands.
+          </PullQuote>
 
           <pre className="bg-zinc-900 border border-zinc-800 rounded-lg p-6 text-sm text-zinc-300 overflow-x-auto leading-relaxed">{`┌─────────────────────────────────────────────────┐
 │                   AI Agent                       │
@@ -65,12 +70,10 @@ export default function AgentProtocolPost() {
   Banks    Email    APIs    Forms    Databases
          SMS/WhatsApp    Gov Systems`}</pre>
 
-          <p className="leading-relaxed font-medium text-zinc-300">
-            MCP is the nervous system. The Agent Protocol Layer is the hands.
-          </p>
+          <SectionDivider />
 
           {/* 2. The Five Primitives */}
-          <h2 className="text-white font-semibold text-xl mt-12 mb-2">2. The Five Primitives</h2>
+          <h2 className="text-white font-semibold text-xl mt-8 mb-2">2. The Five Primitives</h2>
 
           <p className="leading-relaxed">
             Every agent-to-world interaction reduces to five primitives. They are orthogonal (each solves one problem), composable (they combine for complex workflows), and universal (they apply regardless of agent framework or provider).
@@ -131,6 +134,8 @@ export default function AgentProtocolPost() {
             The <code className="text-zinc-300 bg-zinc-800 px-1.5 py-0.5 rounded text-xs">requires_confirmation</code> field introduces a human-in-the-loop checkpoint. Agents operate autonomously within bounds, but flag high-stakes actions for approval.
           </p>
 
+          <SectionDivider />
+
           {/* 2.3 Payments */}
           <h3 className="text-white font-semibold text-lg mt-8 mb-2">2.3 Payments</h3>
 
@@ -183,6 +188,8 @@ export default function AgentProtocolPost() {
             The <code className="text-zinc-300 bg-zinc-800 px-1.5 py-0.5 rounded text-xs">channel_preference</code> array lets agents try the best channel first and fall back gracefully. The <code className="text-zinc-300 bg-zinc-800 px-1.5 py-0.5 rounded text-xs">reply_to</code> field lets any system send structured responses back to the agent, regardless of the originating channel.
           </p>
 
+          <SectionDivider />
+
           {/* 2.5 Actions */}
           <h3 className="text-white font-semibold text-lg mt-8 mb-2">2.5 Actions</h3>
 
@@ -224,8 +231,10 @@ export default function AgentProtocolPost() {
             This is the hardest primitive. Browser automation is fragile; forms change without notice; CAPTCHAs exist. The protocol doesn&apos;t pretend to solve all of this. What it does is standardize the interface so that solutions are reusable. An adapter that handles German government portals today works for every agent tomorrow, not just the one that built it.
           </p>
 
+          <SectionDivider />
+
           {/* 3. How They Compose */}
-          <h2 className="text-white font-semibold text-xl mt-12 mb-2">3. How They Compose</h2>
+          <h2 className="text-white font-semibold text-xl mt-8 mb-2">3. How They Compose</h2>
 
           <p className="leading-relaxed">
             The primitives are designed to combine. Here&apos;s a complete workflow.
@@ -239,28 +248,26 @@ export default function AgentProtocolPost() {
             No custom integration. The airline accepted a standard identity token. The agent used a registered adapter. The payment went through a standard gateway. Five primitives, one workflow, every step auditable.
           </p>
 
-          <p className="leading-relaxed">Now change the context:</p>
+          <Callout title="Same protocol, different world">
+            <p className="mb-3">A farmer in Kenya has an agent negotiate seed prices across three suppliers.</p>
+            <ul className="space-y-1">
+              <li><span className="text-zinc-300">Identity:</span> cooperative membership credential</li>
+              <li><span className="text-zinc-300">Permissions:</span> max 50,000 KES per transaction</li>
+              <li><span className="text-zinc-300">Action:</span> adapter for supplier&apos;s USSD ordering system</li>
+              <li><span className="text-zinc-300">Payment:</span> M-Pesa, not Stripe</li>
+              <li><span className="text-zinc-300">Comms:</span> confirmation via SMS, not WhatsApp</li>
+            </ul>
+            <p className="mt-3 text-zinc-300 font-medium">Different adapters. Same five primitives. Same protocol.</p>
+          </Callout>
 
-          <pre className="bg-zinc-900 border border-zinc-800 rounded-lg p-6 text-sm text-zinc-300 overflow-x-auto leading-relaxed">{`Same protocol. Different world.
-
-A farmer in Kenya has an agent negotiate seed prices
-across three suppliers.
-
-  Identity:     cooperative membership credential
-                (did:web:kenyacoop.org)
-  Permissions:  max 50,000 KES per transaction
-  Action:       adapter for supplier's USSD ordering system
-  Payment:      M-Pesa, not Stripe
-  Comms:        confirmation via SMS, not WhatsApp
-
-Different adapters. Same five primitives. Same protocol.`}</pre>
-
-          <p className="leading-relaxed font-medium text-zinc-300">
+          <PullQuote>
             The farmer didn&apos;t need someone to build an app for her. She needed the protocol to exist.
-          </p>
+          </PullQuote>
+
+          <SectionDivider />
 
           {/* 4. Security Model */}
-          <h2 className="text-white font-semibold text-xl mt-12 mb-2">4. Security Model</h2>
+          <h2 className="text-white font-semibold text-xl mt-8 mb-2">4. Security Model</h2>
 
           <p className="leading-relaxed">
             A protocol that moves money and submits government forms on someone&apos;s behalf requires an explicit threat model.
@@ -286,8 +293,10 @@ Different adapters. Same five primitives. Same protocol.`}</pre>
             <span className="text-zinc-300 font-medium">Audit trail.</span> Every primitive interaction produces a signed log entry: who (identity), what (action), when (timestamp), result (success/failure), and policy_ref (which permission authorized it). The principal can audit their agent&apos;s full activity history.
           </p>
 
+          <SectionDivider />
+
           {/* 5. What Exists vs. What's Missing */}
-          <h2 className="text-white font-semibold text-xl mt-12 mb-2">5. What Exists vs. What&apos;s Missing</h2>
+          <h2 className="text-white font-semibold text-xl mt-8 mb-2">5. What Exists vs. What&apos;s Missing</h2>
 
           <div className="overflow-x-auto">
             <table className="w-full text-sm border border-zinc-800 rounded-lg overflow-hidden">
@@ -337,8 +346,10 @@ Different adapters. Same five primitives. Same protocol.`}</pre>
             The tools exist in pieces. Email APIs, payment processors, identity providers. What&apos;s missing is the protocol that unifies them under a single, agent-native interface. Today&apos;s integrations are human-oriented: they assume a person is clicking buttons, entering credentials, confirming transactions. The Agent Protocol Layer makes these interactions first-class for software agents.
           </p>
 
+          <SectionDivider />
+
           {/* 6. Why Open */}
-          <h2 className="text-white font-semibold text-xl mt-12 mb-2">6. Why Open</h2>
+          <h2 className="text-white font-semibold text-xl mt-8 mb-2">6. Why Open</h2>
 
           <p className="leading-relaxed">
             The usual argument for open protocols is interoperability. That&apos;s true but insufficient. The real argument is about <em className="text-zinc-300">who agents can serve</em>.
@@ -356,24 +367,25 @@ Different adapters. Same five primitives. Same protocol.`}</pre>
             The protocol spec and reference implementations are Apache 2.0. The business model sits above the protocol: managed infrastructure for teams that don&apos;t want to run their own identity resolvers and payment gateways, plus enterprise compliance tooling. The protocol gets adopted because it&apos;s free. The company gets paid because operating infrastructure is work most teams don&apos;t want to do.
           </p>
 
+          <SectionDivider />
+
           {/* 7. Next Steps */}
-          <h2 className="text-white font-semibold text-xl mt-12 mb-2">7. Next Steps</h2>
+          <h2 className="text-white font-semibold text-xl mt-8 mb-2">7. Next Steps</h2>
 
           <p className="leading-relaxed">
             This is a draft specification. The primitives are defined; the implementations are not.
           </p>
 
-          <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6 mt-4">
-            <p className="text-zinc-300 font-medium mb-3">What&apos;s needed</p>
-            <ul className="text-sm space-y-2">
+          <Callout title="What's needed">
+            <ol className="space-y-2">
               <li><span className="text-zinc-300">1.</span> Reference implementation of Identity + Permissions (the foundation everything else builds on)</li>
               <li><span className="text-zinc-300">2.</span> Adapter registry with at least three verified adapters as proof of concept</li>
               <li><span className="text-zinc-300">3.</span> Payment gateway for two providers (Stripe + one mobile money provider)</li>
               <li><span className="text-zinc-300">4.</span> Communication gateway for email + one messaging platform</li>
               <li><span className="text-zinc-300">5.</span> SDK in Python and TypeScript</li>
               <li><span className="text-zinc-300">6.</span> Security audit of the identity, permission, and credential isolation model</li>
-            </ul>
-          </div>
+            </ol>
+          </Callout>
 
           <p className="leading-relaxed mt-6 font-medium text-zinc-300">
             The protocol works when the farmer in Kenya and the enterprise in Frankfurt use the same five primitives. That only happens if it&apos;s open, and if it&apos;s built by more than one person.

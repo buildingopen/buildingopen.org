@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  Callout,
+  Figure,
+  PullQuote,
+  SectionDivider,
+  StatRow,
+} from "../../components/blog";
 
 export const metadata: Metadata = {
   title: "I genuinely stopped using PowerPoint - Building Open",
@@ -32,6 +39,14 @@ export default function GoodbyePowerpointPost() {
             Spending days aligning boxes feels insane when you can build a whole app in the same time. So I made an app for building slides.
           </p>
 
+          <Figure
+            src="/openslides-demo.png"
+            alt="OpenSlides demo: text prompt to branded deck"
+            caption="From plain text to branded deck in seconds"
+          />
+
+          <SectionDivider />
+
           <h2 className="text-white font-semibold text-lg mt-8 mb-2">The old way</h2>
           <p className="leading-relaxed">
             Open PowerPoint. Pick a template that almost works. Spend 2 hours nudging boxes. Realize the font sizes are inconsistent. Fix those. Export. Client says &quot;can you make it more modern?&quot; Start over.
@@ -40,37 +55,47 @@ export default function GoodbyePowerpointPost() {
             This loop used to eat entire days. For a 10-slide deck. It never felt like real work, just formatting tax.
           </p>
 
+          <SectionDivider />
+
           <h2 className="text-white font-semibold text-lg mt-8 mb-2">The new way</h2>
 
           <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5 my-4 font-mono text-sm text-zinc-300">
             <p className="mb-2 text-green-400">&gt; &quot;A fintech startup for African payments&quot;</p>
-            <p className="mb-4 pl-4 text-zinc-500">→ Title slide appears.</p>
+            <p className="mb-4 pl-4 text-zinc-500">&rarr; Title slide appears.</p>
 
             <p className="mb-2 text-green-400">&gt; &quot;Show the problem we&apos;re solving&quot;</p>
-            <p className="mb-4 pl-4 text-zinc-500">→ Data viz, done.</p>
+            <p className="mb-4 pl-4 text-zinc-500">&rarr; Data viz, done.</p>
 
             <p className="mb-2 text-green-400">&gt; &quot;Add our traction&quot;</p>
-            <p className="pl-4 text-zinc-500">→ Growth charts, done.</p>
+            <p className="pl-4 text-zinc-500">&rarr; Growth charts, done.</p>
           </div>
 
-          <p className="leading-relaxed font-medium text-white">
+          <StatRow
+            stats={[
+              { value: "3", label: "prompts" },
+              { value: "2 min", label: "total time" },
+              { value: "0", label: "boxes aligned" },
+            ]}
+          />
+
+          <PullQuote>
             Three prompts. Full deck. 2 minutes.
-          </p>
+          </PullQuote>
+
           <p className="leading-relaxed">
             No Figma. No templates. Just prompts. The AI handles layout, typography, color. You handle the story.
           </p>
+
+          <SectionDivider />
 
           <h2 className="text-white font-semibold text-lg mt-8 mb-2">Why it matters</h2>
           <p className="leading-relaxed">
             The point is not that slides are bad. The point is that the time between having an idea and presenting it should be minutes, not days. Most of the friction in traditional tools is visual formatting, not thinking. Remove the formatting and you get back to what actually matters: the content.
           </p>
 
-          <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6 mt-4">
-            <p className="text-zinc-300 font-medium mb-3">The shift</p>
-            <p className="text-sm leading-relaxed">
-              Presentation tools used to be design tools. Now they are communication tools. The value is in what you say, not how you align it.
-            </p>
-          </div>
+          <Callout title="The shift">
+            Presentation tools used to be design tools. Now they are communication tools. The value is in what you say, not how you align it.
+          </Callout>
 
           <p className="leading-relaxed">
             Open source. Free forever.

@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  PullQuote,
+  SectionDivider,
+} from "../components/blog";
 
 export const metadata: Metadata = {
   title: "Manifesto - Building Open",
@@ -21,7 +25,7 @@ export default function ManifestoPage() {
           <p className="text-zinc-400 leading-relaxed">Building Open exists to level the playing field. We build tools, create educational content, and foster a community where anyone can learn to create, regardless of where they started.</p>
         </section>
 
-        <hr className="border-zinc-800 my-8" />
+        <SectionDivider />
 
         <section className="mb-10">
           <h2 className="text-lg font-semibold mb-3">What We Believe</h2>
@@ -30,7 +34,11 @@ export default function ManifestoPage() {
           <p className="text-zinc-400 leading-relaxed"><strong className="text-white">Together is faster.</strong> Open source isn&apos;t charity. It&apos;s how good software gets built. When hundreds of people contribute their perspective, the result is better than anything one team could build alone.</p>
         </section>
 
-        <hr className="border-zinc-800 my-8" />
+        <PullQuote>
+          The student in Lagos deserves the same tools as the one in London.
+        </PullQuote>
+
+        <SectionDivider />
 
         <section className="mb-10">
           <h2 className="text-lg font-semibold mb-3">What We Do</h2>
@@ -43,7 +51,7 @@ export default function ManifestoPage() {
           <p className="text-zinc-400 leading-relaxed"><strong className="text-white">Community</strong> - A space to ask questions, share what you&apos;ve built, and learn from others on the same journey.</p>
         </section>
 
-        <hr className="border-zinc-800 my-8" />
+        <SectionDivider />
 
         <section className="mb-10">
           <h2 className="text-lg font-semibold mb-3">The Invitation</h2>

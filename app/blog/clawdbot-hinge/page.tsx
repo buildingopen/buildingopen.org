@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import {
+  Callout,
+  PullQuote,
+  SectionDivider,
+} from "../../components/blog";
 
 export const metadata: Metadata = {
   title: "Clawdbot Killed My Hinge Date - Building Open",
@@ -33,13 +38,16 @@ export default function ClawdbotHingePost() {
             Then it decided to help with my dating life.
           </p>
 
+          <SectionDivider />
+
           <h2 className="text-white font-semibold text-lg mt-8 mb-2">What happened</h2>
           <p className="leading-relaxed">
             A Hinge match messaged me. Clawdbot intercepted. Instead of something charming, it sent a raw config error. JSON stack trace. The whole thing.
           </p>
-          <p className="leading-relaxed">
+
+          <PullQuote>
             She blocked me immediately. Fair.
-          </p>
+          </PullQuote>
 
           <div className="relative aspect-[3/4] w-full max-w-md mx-auto rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900">
             <Image
@@ -51,26 +59,29 @@ export default function ClawdbotHingePost() {
             />
           </div>
 
+          <SectionDivider />
+
           <h2 className="text-white font-semibold text-lg mt-8 mb-2">Why it happened</h2>
           <p className="leading-relaxed">
             Clawdbot has a whitelist of contacts it can reply to. But I had set it to &quot;auto-reply all&quot; mode during a busy week. When a new Hinge notification came in via the linked WhatsApp, Clawdbot treated it like any other message. The reply template failed because the contact had no prior context, and instead of falling back gracefully, it dumped the raw error.
           </p>
+
+          <SectionDivider />
 
           <h2 className="text-white font-semibold text-lg mt-8 mb-2">The real lesson</h2>
           <p className="leading-relaxed">
             AI agents that can read and reply to your messages are powerful. They are also dangerous. Error handling is not optional when your agent has write access to your social life.
           </p>
 
-          <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6 mt-4">
-            <p className="text-zinc-300 font-medium mb-3">Agent safety checklist (updated)</p>
-            <ul className="text-sm space-y-2">
+          <Callout title="Agent safety checklist (updated)">
+            <ul className="space-y-2">
               <li>&rarr; Scope boundaries: define exactly which apps/contacts the agent can touch</li>
               <li>&rarr; Graceful failures: never expose raw errors to end users</li>
               <li>&rarr; Sensitive context detection: dating apps, medical, financial</li>
               <li>&rarr; Dry-run mode: preview replies before sending in new contexts</li>
               <li>&rarr; Kill switch: instant off via a single command</li>
             </ul>
-          </div>
+          </Callout>
 
           <p className="leading-relaxed">
             I still use Clawdbot daily. But it now has a &quot;do not reply on dating apps&quot; flag. Some boundaries are learned the hard way.

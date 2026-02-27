@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import {
+  Callout,
+  Figure,
+  PullQuote,
+  SectionDivider,
+} from "../../components/blog";
 
 export const metadata: Metadata = {
   title: "Claude Code Context: Why AI is My Co-Founder",
@@ -29,21 +34,23 @@ export default function ClaudeCodeContextPost() {
           <p className="leading-relaxed">
             Three months ago, I moved everything to Claude Code. Not just coding. Everything.
           </p>
-          
+
           <p className="leading-relaxed">
             Brainstorming. Company decisions. Life strategy. Even therapy, sometimes.
           </p>
 
-          <Image 
-            src="/blog/claude-code-context/visual.png" 
-            alt="Claude Code Context" 
-            width={800} 
-            height={600} 
-            className="rounded-lg border border-zinc-800 w-full h-auto my-8"
+          <Figure
+            src="/blog/claude-code-context/visual.png"
+            alt="Claude Code context visualization"
+            caption="Full context, full memory, full world"
+            width={800}
+            height={600}
           />
 
+          <SectionDivider />
+
           <h2 className="text-white font-semibold text-lg mt-8 mb-2">The Sandbox vs. The World</h2>
-          
+
           <p className="leading-relaxed">
             ChatGPT lives in a sandbox. Upload docs. Write prompts. Get output. Hit the limit? Start over. It forgets you exist.
           </p>
@@ -56,10 +63,12 @@ export default function ClaudeCodeContextPost() {
             <li>My travel plans? GitHub repo.</li>
             <li>My life strategy? Local folder.</li>
           </ul>
-          
-          <p className="leading-relaxed font-medium text-zinc-300">
+
+          <PullQuote>
             One command. Full context.
-          </p>
+          </PullQuote>
+
+          <SectionDivider />
 
           <h2 className="text-white font-semibold text-lg mt-8 mb-2">Associate vs. Co-Founder</h2>
 
@@ -71,20 +80,19 @@ export default function ClaudeCodeContextPost() {
             Claude Code is a Co-Founder. It thinks with me. Disagrees with me. Outsmarts me sometimes.
           </p>
 
-          <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6 mt-10">
-            <p className="text-zinc-300 font-medium mb-3">The Bottom Line</p>
-            <p className="text-sm leading-relaxed mb-4">
+          <Callout title="The Bottom Line">
+            <p className="mb-4">
               If you&apos;re still using AI like a search bar, you&apos;re missing the point.
             </p>
-            <ul className="text-sm text-zinc-400 space-y-1">
+            <ul className="space-y-1">
               <li>&rarr; Give it context.</li>
               <li>&rarr; Give it memory.</li>
               <li>&rarr; Give it your world.</li>
             </ul>
-            <p className="text-white font-medium mt-4 text-sm">
+            <p className="text-zinc-300 font-medium mt-4">
               It becomes something else entirely.
             </p>
-          </div>
+          </Callout>
 
         </section>
 

@@ -35,48 +35,56 @@ const posts = [
     title: "Golf courses use 30x more water than all US data centers",
     description: "I was worried about my AI carbon footprint. Then I fact-checked it.",
     date: "February 18, 2026",
+    image: null,
   },
   {
     slug: "goodbye-powerpoint",
     title: "I genuinely stopped using PowerPoint",
     description: "Spending days aligning boxes feels insane when you can build a whole app in the same time. So I made an app for building slides.",
     date: "February 10, 2026",
+    image: "/openslides-demo.png",
   },
   {
     slug: "ai-file-context",
     title: "Better AI answers with file context",
     description: "How to give AI 10x better answers with file context. Stop asking generic questions.",
     date: "February 6, 2026",
+    image: "/blog/fuji-bg.jpg",
   },
   {
     slug: "claude-code-context",
     title: "Why Claude Code is my new best friend",
     description: "If you're still using AI like a search bar, you're missing the point. Give it context. Give it memory.",
     date: "February 6, 2026",
+    image: "/blog/claude-code-context/visual.png",
   },
   {
     slug: "startup-learnings",
     title: "4 pivots in 1.5 years: what I'd tell myself before starting",
     description: "Venture studio. Marketing agency. Marketing SaaS. AI visibility SaaS. Here's what I learned.",
     date: "February 4, 2026",
+    image: "/blog/pivot-visual.png",
   },
   {
     slug: "scaile-india",
     title: "SCAILE goes to India",
     description: "One country, producing more unicorns than any country in Europe. I understand why now.",
     date: "February 3, 2026",
+    image: null,
   },
   {
     slug: "opendraft-seo",
     title: "How OpenDraft hit #1 on Google, ChatGPT, Perplexity, and Gemini",
     description: "18 months of SEO and AEO learnings distilled into a simple formula.",
     date: "January 29, 2026",
+    image: "/blog/opendraft-seo/chatgpt-highlighted.png",
   },
   {
     slug: "opensource-tools",
     title: "Why I stopped paying for software",
     description: "I replaced Word, Excel, PowerPoint, Figma, and n8n with open source tools I built myself. Here's why.",
     date: "January 13, 2026",
+    image: "/opensource-tools/slide-01.png",
   },
 ];
 
@@ -137,13 +145,26 @@ export default function BlogPage() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group block border-b border-zinc-800 pb-8"
+              className="group flex gap-4 border-b border-zinc-800 pb-8"
             >
-              <p className="text-sm text-zinc-500 mb-1">{post.date}</p>
-              <h2 className="text-lg font-semibold group-hover:text-white transition-colors mb-2">
-                {post.title}
-              </h2>
-              <p className="text-zinc-400 text-sm">{post.description}</p>
+              {post.image && (
+                <div className="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    sizes="96px"
+                    className="object-cover"
+                  />
+                </div>
+              )}
+              <div className="min-w-0">
+                <p className="text-sm text-zinc-500 mb-1">{post.date}</p>
+                <h2 className="text-lg font-semibold group-hover:text-white transition-colors mb-2">
+                  {post.title}
+                </h2>
+                <p className="text-zinc-400 text-sm">{post.description}</p>
+              </div>
             </Link>
           ))}
         </div>
