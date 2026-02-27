@@ -157,7 +157,7 @@ export default function PostPage() {
   }
 
   return (
-    <div className="py-10 md:py-16">
+    <div className="py-16">
       <div className="mx-auto max-w-3xl px-6">
         {/* Back link */}
         <Link

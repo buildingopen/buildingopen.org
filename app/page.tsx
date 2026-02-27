@@ -151,10 +151,10 @@ export default function Home() {
         {/* CTA */}
         <Link
           href="/blog"
-          className="bg-green-500 hover:bg-green-400 transition-colors p-8 flex flex-col justify-center"
+          className="bg-green-500/90 hover:bg-green-500 transition-colors p-8 flex flex-col justify-center"
         >
-          <h3 className="text-lg font-semibold text-black">Read the blog</h3>
-          <p className="text-black/60 text-sm mt-1">Stories from building in the open.</p>
+          <h3 className="text-base font-semibold text-black">Read the blog</h3>
+          <p className="text-black/50 text-sm mt-1">Stories from building in the open.</p>
         </Link>
       </FadeIn>
 
