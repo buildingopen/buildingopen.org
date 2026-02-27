@@ -10,19 +10,19 @@ export default function AgentProtocolPost() {
   return (
     <article className="py-16">
       <div className="mx-auto max-w-2xl px-6">
-        <Link href="/blog" className="text-sm text-zinc-600 hover:text-white transition-colors mb-8 block">
+        <Link href="/blog" className="text-sm text-zinc-500 hover:text-white transition-colors mb-8 block">
           &larr; Blog
         </Link>
 
         <header className="mb-12">
           <div className="flex items-center gap-3 mb-2">
             <span className="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-400 rounded">Protocol</span>
-            <span className="text-xs text-zinc-600">8 min read</span>
-            <span className="text-xs text-zinc-600">February 27, 2026</span>
+            <span className="text-xs text-zinc-500">8 min read</span>
+            <span className="text-xs text-zinc-500">February 27, 2026</span>
           </div>
           <h1 className="text-3xl font-bold mb-3">The Agent Protocol Layer</h1>
           <p className="text-zinc-500 italic">A protocol specification for agent-to-world interaction.</p>
-          <p className="text-xs text-zinc-600 mt-3">Version 0.1 (Draft) &middot; RFC</p>
+          <p className="text-xs text-zinc-500 mt-3">Version 0.1 (Draft) &middot; RFC</p>
         </header>
 
         <section className="mb-10 text-zinc-400 space-y-6">
@@ -383,7 +383,7 @@ Different adapters. Same five primitives. Same protocol.`}</pre>
 
         <hr className="border-zinc-800 my-10" />
 
-        <div className="text-center text-sm text-zinc-600">
+        <div className="text-center text-sm text-zinc-500">
           <p>Licensed under Apache 2.0</p>
         </div>
 

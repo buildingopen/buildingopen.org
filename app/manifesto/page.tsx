@@ -21,12 +21,16 @@ export default function ManifestoPage() {
           <p className="text-zinc-400 leading-relaxed">Building Open exists to level the playing field. We build tools, create educational content, and foster a community where anyone can learn to create, regardless of where they started.</p>
         </section>
 
+        <hr className="border-zinc-800 my-8" />
+
         <section className="mb-10">
           <h2 className="text-lg font-semibold mb-3">What We Believe</h2>
           <p className="text-zinc-400 mb-3 leading-relaxed"><strong className="text-white">Opportunity should not be gated.</strong> The student in Lagos deserves the same tools as the one in London. The self-taught developer deserves the same resources as the CS graduate.</p>
           <p className="text-zinc-400 mb-3 leading-relaxed"><strong className="text-white">Transparency builds trust.</strong> We work in public. Our code is open. Our decisions are visible. When you can see how something works, you can learn from it, improve it, make it yours.</p>
           <p className="text-zinc-400 leading-relaxed"><strong className="text-white">Together is faster.</strong> Open source isn&apos;t charity. It&apos;s how good software gets built. When hundreds of people contribute their perspective, the result is better than anything one team could build alone.</p>
         </section>
+
+        <hr className="border-zinc-800 my-8" />
 
         <section className="mb-10">
           <h2 className="text-lg font-semibold mb-3">What We Do</h2>
@@ -39,6 +43,8 @@ export default function ManifestoPage() {
           <p className="text-zinc-400 leading-relaxed"><strong className="text-white">Community</strong> - A space to ask questions, share what you&apos;ve built, and learn from others on the same journey.</p>
         </section>
 
+        <hr className="border-zinc-800 my-8" />
+
         <section className="mb-10">
           <h2 className="text-lg font-semibold mb-3">The Invitation</h2>
           <p className="text-zinc-400 mb-3 leading-relaxed"><strong className="text-white">If you need tools:</strong> Use them. They&apos;re free. No trials, no paywalls.</p>
@@ -47,9 +53,7 @@ export default function ManifestoPage() {
           <p className="text-zinc-400 leading-relaxed"><strong className="text-white">If you want to build something bigger:</strong> Do it. Fork our code. Start your own project. That&apos;s not competition, that&apos;s the goal.</p>
         </section>
 
-        <hr className="border-zinc-800 my-10" />
-
-        <div className="flex gap-4 justify-center">
+        <div className="flex gap-4 justify-center mt-10">
           <Link
             href="/projects"
             className="px-5 py-2.5 bg-green-500 text-black font-medium rounded-lg hover:bg-green-400 transition-colors"

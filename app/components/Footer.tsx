@@ -31,9 +31,15 @@ export default function Footer() {
             >
               Contact
             </a>
+            <a
+              href="/journey"
+              className="hover:text-white transition-colors"
+            >
+              Journey
+            </a>
           </div>
         </div>
-        <p className="text-center md:text-right text-xs text-zinc-700 mt-4">&copy; 2026 Building Open</p>
+        <p className="text-center md:text-right text-xs text-zinc-600 mt-4">&copy; 2026 Building Open</p>
       </div>
     </footer>
   );

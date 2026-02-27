@@ -153,7 +153,7 @@ export default function Home() {
           href="/blog"
           className="bg-green-500 hover:bg-green-400 transition-colors p-8 flex flex-col justify-center"
         >
-          <h3 className="text-xl font-bold text-black">Read the blog</h3>
+          <h3 className="text-lg font-semibold text-black">Read the blog</h3>
           <p className="text-black/60 text-sm mt-1">Stories from building in the open.</p>
         </Link>
       </FadeIn>

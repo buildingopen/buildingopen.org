@@ -106,27 +106,30 @@ export default function BlogPage() {
         <p className="text-zinc-500 mb-12">Thoughts on building, open source, and the things we learn along the way.</p>
 
         {/* Featured post */}
-        <Link
-          href={`/blog/${featured.slug}`}
-          className="group block mb-12"
-        >
-          {featured.image && (
-            <div className="relative aspect-[2/1] rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800 mb-4">
-              <Image
-                src={featured.image}
-                alt={featured.title}
-                fill
-                sizes="(max-width: 672px) 100vw, 672px"
-                className="object-cover object-top"
-              />
-            </div>
-          )}
-          <p className="text-sm text-zinc-600 mb-1">{featured.date}</p>
-          <h2 className="text-xl font-semibold group-hover:text-white transition-colors mb-2">
-            {featured.title}
-          </h2>
-          <p className="text-zinc-400 text-sm">{featured.description}</p>
-        </Link>
+        <div className="border border-zinc-800 rounded-lg p-6 mb-12">
+          <p className="text-xs uppercase tracking-wider text-zinc-500 mb-4">Latest</p>
+          <Link
+            href={`/blog/${featured.slug}`}
+            className="group block"
+          >
+            {featured.image && (
+              <div className="relative aspect-[2/1] rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800 mb-4">
+                <Image
+                  src={featured.image}
+                  alt={featured.title}
+                  fill
+                  sizes="(max-width: 672px) 100vw, 672px"
+                  className="object-cover object-top"
+                />
+              </div>
+            )}
+            <p className="text-sm text-zinc-500 mb-1">{featured.date}</p>
+            <h2 className="text-xl font-semibold group-hover:text-white transition-colors mb-2">
+              {featured.title}
+            </h2>
+            <p className="text-zinc-400 text-sm">{featured.description}</p>
+          </Link>
+        </div>
 
         {/* Remaining posts */}
         <div className="space-y-8">
@@ -136,7 +139,7 @@ export default function BlogPage() {
               href={`/blog/${post.slug}`}
               className="group block border-b border-zinc-800 pb-8"
             >
-              <p className="text-sm text-zinc-600 mb-1">{post.date}</p>
+              <p className="text-sm text-zinc-500 mb-1">{post.date}</p>
               <h2 className="text-lg font-semibold group-hover:text-white transition-colors mb-2">
                 {post.title}
               </h2>

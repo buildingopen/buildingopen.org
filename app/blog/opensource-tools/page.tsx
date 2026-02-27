@@ -11,15 +11,15 @@ export default function OpenSourceToolsPost() {
   return (
     <article className="py-16">
       <div className="mx-auto max-w-2xl px-6">
-        <Link href="/blog" className="text-sm text-zinc-600 hover:text-white transition-colors mb-8 block">
+        <Link href="/blog" className="text-sm text-zinc-500 hover:text-white transition-colors mb-8 block">
           &larr; Blog
         </Link>
 
         <header className="mb-12">
           <div className="flex items-center gap-3 mb-2">
             <span className="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-400 rounded">Tools</span>
-            <span className="text-xs text-zinc-600">4 min read</span>
-            <span className="text-xs text-zinc-600">January 13, 2026</span>
+            <span className="text-xs text-zinc-500">4 min read</span>
+            <span className="text-xs text-zinc-500">January 13, 2026</span>
           </div>
           <h1 className="text-3xl font-bold mb-3">Replacing $800+ of Software Subscriptions with Open Source</h1>
           <p className="text-zinc-500">6 months ago, I stopped using Word, Excel, PowerPoint, Figma, and n8n. I replaced them all with Claude Code.</p>

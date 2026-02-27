@@ -10,15 +10,15 @@ export default function GolfVsDatacentersPost() {
   return (
     <article className="py-16">
       <div className="mx-auto max-w-2xl px-6">
-        <Link href="/blog" className="text-sm text-zinc-600 hover:text-white transition-colors mb-8 block">
+        <Link href="/blog" className="text-sm text-zinc-500 hover:text-white transition-colors mb-8 block">
           &larr; Blog
         </Link>
 
         <header className="mb-12">
           <div className="flex items-center gap-3 mb-2">
             <span className="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-400 rounded">Data</span>
-            <span className="text-xs text-zinc-600">5 min read</span>
-            <span className="text-xs text-zinc-600">February 18, 2026</span>
+            <span className="text-xs text-zinc-500">5 min read</span>
+            <span className="text-xs text-zinc-500">February 18, 2026</span>
           </div>
           <h1 className="text-3xl font-bold mb-3">Golf courses use 30x more water than all US data centers</h1>
           <p className="text-zinc-500">I was worried about my AI carbon footprint. Then I fact-checked it.</p>

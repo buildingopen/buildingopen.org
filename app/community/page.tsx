@@ -80,7 +80,7 @@ export default function CommunityPage() {
   }, [category, sort, search]);
 
   return (
-    <div className="py-10 md:py-16">
+    <div className="py-16">
       <div className="mx-auto max-w-3xl px-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
@@ -147,7 +147,7 @@ export default function CommunityPage() {
         </div>
 
         {/* Posts */}
-        <div className="space-y-2">
+        <div className="space-y-3">
           {loading ? (
             <div className="text-center py-12">
               <div className="inline-block w-5 h-5 border-2 border-zinc-600 border-t-green-500 rounded-full animate-spin" />

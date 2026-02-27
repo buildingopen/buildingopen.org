@@ -40,7 +40,7 @@ export default function PostCard({ post }: { post: Post }) {
         {post.body && (
           <p className="text-sm text-zinc-500 mt-1 line-clamp-2">{post.body}</p>
         )}
-        <div className="flex items-center gap-3 mt-2 text-xs text-zinc-600">
+        <div className="flex items-center gap-3 mt-2 text-xs text-zinc-500">
           <div className="flex items-center gap-1.5">
             {post.author_avatar && (
               // eslint-disable-next-line @next/next/no-img-element

@@ -81,7 +81,7 @@ export default function NewPostPage() {
   }
 
   return (
-    <div className="py-10 md:py-16">
+    <div className="py-16">
       <div className="mx-auto max-w-2xl px-6">
         <Link
           href="/community"

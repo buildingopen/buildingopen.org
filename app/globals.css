@@ -145,6 +145,12 @@ a:focus-visible, button:focus-visible {
   display: none;
 }
 
+/* Code block overflow on mobile */
+article pre, article .font-mono {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
