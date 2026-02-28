@@ -57,7 +57,16 @@ const passwordPage = `<!DOCTYPE html>
 </html>`
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
+  const { pathname, search } = request.nextUrl
+  const host = request.headers.get('host') || ''
+
+  // Redirect .com to .org (permanent 301)
+  if (host.includes('buildingopen.com')) {
+    return NextResponse.redirect(
+      `https://buildingopen.org${pathname}${search}`,
+      { status: 301 }
+    )
+  }
 
   if (
     pathname.startsWith('/api/') ||
