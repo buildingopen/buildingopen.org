@@ -3,17 +3,17 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Projects - Building Open",
-  description: "Free and open source tools: OpenDraft for research papers, OpenSlides for presentations, OpenWord for documents.",
+  description: "Free and open source tools: OpenPaper for research papers, OpenSlides for presentations, OpenWord for documents.",
 };
 
 const projects = [
   {
-    id: "opendraft",
-    title: "OpenDraft",
-    tagline: "AI research paper generator",
-    description: "Generate a 40-page academic paper with proper citations in under 15 minutes. Real sources from OpenAlex, exports to .docx.",
-    features: ["20,000+ words", "Real academic sources", "APA/MLA/Chicago citations", "Export to Word"],
-    href: "https://github.com/federicodeponte/opendraft",
+    id: "openpaper",
+    title: "OpenPaper",
+    tagline: "AI research team",
+    description: "18-agent pipeline that produces thesis-level research papers with verified citations from 200M+ academic papers. Full generation in ~10 minutes.",
+    features: ["5-100 page papers", "Verified citations from 200M+ sources", "18 specialized AI agents", "Export to .docx"],
+    href: "https://openpaper.dev",
     image: "/thesis-page-01.png",
   },
   {

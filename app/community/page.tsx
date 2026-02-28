@@ -12,7 +12,6 @@ const categories = [
   { value: 'general', label: 'General' },
   { value: 'show-and-tell', label: 'Show & Tell' },
   { value: 'help', label: 'Help' },
-  { value: 'ideas', label: 'Ideas' },
 ];
 
 const sortOptions = [

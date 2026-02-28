@@ -6,10 +6,10 @@ import { FadeIn, StaggerContainer, StaggerItem } from "./components/animations/F
 
 const projects = [
   {
-    name: "OpenDraft",
-    tagline: "40-page research paper in ~15 min",
+    name: "OpenPaper",
+    tagline: "AI research team, 18 agents",
     image: "/thesis-page-01.png",
-    href: "/projects#opendraft",
+    href: "/projects#openpaper",
     featured: true,
   },
   {
@@ -37,12 +37,12 @@ export default function Home() {
           </h1>
           <p className="text-zinc-500 mt-2">Use them. Learn from them. Make them yours.</p>
           <a
-            href="https://github.com/federicodeponte/opendraft"
+            href="https://openpaper.dev"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 mt-4 px-5 py-2.5 bg-green-500 hover:bg-green-400 text-black text-sm font-medium rounded transition-colors"
           >
-            Try OpenDraft &rarr;
+            Try OpenPaper &rarr;
           </a>
         </div>
       </FadeIn>
@@ -100,15 +100,15 @@ export default function Home() {
           </div>
           <div>
             <p className="text-zinc-300 text-lg leading-relaxed mb-4">
-              OpenDraft generates 40-page papers with real citations. Clone it, run it, get a paper.
+              OpenPaper generates thesis-level papers with verified citations from 200M+ academic sources. 18 agents, one pipeline.
             </p>
             <a
-              href="https://github.com/federicodeponte/opendraft"
+              href="https://openpaper.dev"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-zinc-500 hover:text-white transition-colors"
             >
-              See the code on GitHub &rarr;
+              Try it at openpaper.dev &rarr;
             </a>
           </div>
         </div>
