@@ -18,7 +18,10 @@ export default function VoteButton({
 
   const handleVote = async (value: 1 | -1) => {
     const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
+    if (!user) {
+      window.dispatchEvent(new CustomEvent('auth-required'));
+      return;
+    }
 
     const newValue = voted === value ? 0 : value;
     const delta = newValue - voted;

@@ -9,7 +9,6 @@ const categories = [
   { value: 'general', label: 'General' },
   { value: 'show-and-tell', label: 'Show & Tell' },
   { value: 'help', label: 'Help' },
-  { value: 'ideas', label: 'Ideas' },
 ];
 
 export default function NewPostPage() {
@@ -43,7 +42,7 @@ export default function NewPostPage() {
         title: title.trim(),
         body: body.trim() || null,
         category,
-        author_name: user.user_metadata?.user_name || user.user_metadata?.email || 'Anonymous',
+        author_name: user.user_metadata?.user_name || user.user_metadata?.email?.split('@')[0] || 'Anonymous',
         author_avatar: user.user_metadata?.avatar_url || null,
         author_id: user.id,
       })

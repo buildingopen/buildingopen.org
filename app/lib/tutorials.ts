@@ -7,7 +7,7 @@ export const tutorials = [
   },
   {
     slug: "opendraft-quickstart",
-    title: "Generate your first research paper with OpenDraft",
+    title: "Generate your first research paper with OpenPaper",
     description: "Go from a topic to a 40-page paper with proper citations in under 15 minutes.",
     difficulty: "Beginner" as const,
   },

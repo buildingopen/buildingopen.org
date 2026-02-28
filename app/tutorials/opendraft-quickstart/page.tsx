@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Generate your first research paper with OpenDraft - Building Open",
+  title: "Generate your first research paper with OpenPaper - Building Open",
   description: "Go from a topic to a 40-page research paper with proper citations in under 15 minutes.",
 };
 
-export default function OpenDraftQuickstart() {
+export default function OpenPaperQuickstart() {
   return (
     <article className="py-16">
       <div className="mx-auto max-w-2xl px-6">
@@ -19,7 +19,7 @@ export default function OpenDraftQuickstart() {
             <span className="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-400 rounded">Beginner</span>
             <span className="text-xs text-zinc-600">~15 min</span>
           </div>
-          <h1 className="text-3xl font-bold mb-3">Generate your first research paper with OpenDraft</h1>
+          <h1 className="text-3xl font-bold mb-3">Generate your first research paper with OpenPaper</h1>
           <p className="text-zinc-500">From a topic to a 40-page paper with proper citations in under 15 minutes.</p>
         </header>
 
@@ -87,7 +87,7 @@ export default function OpenDraftQuickstart() {
             <p>python opendraft.py --topic &quot;Your research topic here&quot;</p>
           </div>
           <p className="text-zinc-400 mt-4 leading-relaxed">
-            That&apos;s it. OpenDraft will:
+            That&apos;s it. OpenPaper will:
           </p>
           <ul className="space-y-2 text-zinc-400 text-sm mt-3">
             <li className="flex items-start gap-2">
@@ -183,7 +183,7 @@ export default function OpenDraftQuickstart() {
             rel="noopener noreferrer"
             className="px-5 py-2.5 bg-green-500 text-black font-medium rounded-lg hover:bg-green-400 transition-colors text-sm"
           >
-            Get OpenDraft
+            Get OpenPaper
           </a>
           <Link
             href="/tutorials"

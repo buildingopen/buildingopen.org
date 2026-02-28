@@ -174,7 +174,7 @@ export default function OpenSlidesQuickstart() {
           <p className="text-xs uppercase tracking-wider text-zinc-500 mb-4">Related tutorials</p>
           <div className="space-y-3">
             <Link href="/tutorials/opendraft-quickstart" className="block text-sm text-zinc-400 hover:text-white transition-colors">
-              Generate your first research paper with OpenDraft &rarr;
+              Generate your first research paper with OpenPaper &rarr;
             </Link>
             <Link href="/tutorials/openclaw-whatsapp-assistant" className="block text-sm text-zinc-400 hover:text-white transition-colors">
               Build your own AI WhatsApp assistant &rarr;

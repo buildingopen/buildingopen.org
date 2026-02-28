@@ -36,7 +36,7 @@ export default function NewIdeaPage() {
         body: body.trim() || null,
         category: 'ideas',
         stage: 'idea',
-        author_name: user.user_metadata?.user_name || user.user_metadata?.email || 'Anonymous',
+        author_name: user.user_metadata?.user_name || user.user_metadata?.email?.split('@')[0] || 'Anonymous',
         author_avatar: user.user_metadata?.avatar_url || null,
         author_id: user.id,
       })

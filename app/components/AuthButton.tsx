@@ -23,7 +23,13 @@ export default function AuthButton() {
       setUser(session?.user ?? null);
     });
 
-    return () => subscription.unsubscribe();
+    const handleAuthRequired = () => setShowModal(true);
+    window.addEventListener('auth-required', handleAuthRequired);
+
+    return () => {
+      subscription.unsubscribe();
+      window.removeEventListener('auth-required', handleAuthRequired);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -35,7 +41,7 @@ export default function AuthButton() {
     await supabase.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: `${window.location.origin}/community`,
+        emailRedirectTo: window.location.href,
       },
     });
     
