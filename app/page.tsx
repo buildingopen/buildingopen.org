@@ -92,7 +92,7 @@ export default function Home() {
           <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800">
             <Image
               src="/thesis-page-02.png"
-              alt="OpenDraft generated research paper"
+              alt="OpenPaper generated research paper"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover object-top"
