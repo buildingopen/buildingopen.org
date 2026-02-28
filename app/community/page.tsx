@@ -38,7 +38,7 @@ export default function CommunityPage() {
   useEffect(() => {
     async function fetchPosts() {
       setLoading(true);
-      let query = supabase.from('posts').select('*');
+      let query = supabase.from('posts').select('*').is('stage', null);
 
       if (category !== 'all') {
         query = query.eq('category', category);

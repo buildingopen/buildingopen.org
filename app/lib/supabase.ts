@@ -17,6 +17,7 @@ export type Post = {
   author_avatar: string | null;
   author_id: string | null;
   category: string;
+  stage: 'idea' | 'prototype' | 'live' | null;
   upvotes: number;
   comment_count: number;
   created_at: string;
