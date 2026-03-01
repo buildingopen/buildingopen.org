@@ -21,6 +21,7 @@ export default function OpenPaperQuickstart() {
           </div>
           <h1 className="text-3xl font-bold mb-3">Generate your first research paper with OpenPaper</h1>
           <p className="text-zinc-500">From a topic to a 40-page paper with proper citations in under 15 minutes.</p>
+          <p className="text-xs text-zinc-600 mt-3">Note: The repository still uses the original name &quot;OpenDraft.&quot;</p>
         </header>
 
         <section className="mb-10">
