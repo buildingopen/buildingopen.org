@@ -57,7 +57,7 @@ export default function IdeasPage() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-2xl font-bold">Idea House</h1>
-            <p className="text-sm text-zinc-500 mt-1">Submit ideas, watch them become real.</p>
+            <p className="text-sm text-zinc-500 mt-1">Building Open&apos;s public product pipeline.</p>
           </div>
           <div className="flex items-center gap-3">
             <AuthButton />
@@ -71,6 +71,12 @@ export default function IdeasPage() {
             )}
           </div>
         </div>
+
+        <p className="text-sm text-zinc-500 mb-8 max-w-2xl">
+          Anyone can submit a product idea. Vote on the ones you want to see built.
+          Ideas that gain traction move to <span className="text-yellow-500">Prototype</span>, then
+          to <span className="text-green-400">Live</span> when they ship.
+        </p>
 
         {loading ? (
           <div className="text-center py-12">
