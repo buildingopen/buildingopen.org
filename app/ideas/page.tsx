@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { createClient } from '../lib/supabase';
 import IdeaCard from '../components/IdeaCard';
+import IdeaDrawer from '../components/IdeaDrawer';
 import StageBadge from '../components/StageBadge';
 import AuthButton from '../components/AuthButton';
 import type { Post } from '../lib/supabase';
@@ -21,6 +22,7 @@ export default function IdeasPage() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<(typeof stages)[number]>('idea');
   const [user, setUser] = useState<{ id: string } | null>(null);
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   const supabase = createClient();
 
   useEffect(() => {
@@ -103,7 +105,9 @@ export default function IdeasPage() {
                 {grouped[activeTab].length === 0 ? (
                   <p className="text-sm text-zinc-600 text-center py-8">No ideas in this stage yet.</p>
                 ) : (
-                  grouped[activeTab].map((post) => <IdeaCard key={post.id} post={post} />)
+                  grouped[activeTab].map((post) => (
+                    <IdeaCard key={post.id} post={post} onSelect={setSelectedPost} />
+                  ))
                 )}
               </div>
             </div>
@@ -120,7 +124,9 @@ export default function IdeasPage() {
                     {grouped[s].length === 0 ? (
                       <p className="text-sm text-zinc-600 text-center py-6">None yet</p>
                     ) : (
-                      grouped[s].map((post) => <IdeaCard key={post.id} post={post} />)
+                      grouped[s].map((post) => (
+                        <IdeaCard key={post.id} post={post} onSelect={setSelectedPost} />
+                      ))
                     )}
                   </div>
                 </div>
@@ -129,6 +135,9 @@ export default function IdeasPage() {
           </>
         )}
       </div>
+
+      {/* Drawer */}
+      <IdeaDrawer post={selectedPost} onClose={() => setSelectedPost(null)} />
     </div>
   );
 }

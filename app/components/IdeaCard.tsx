@@ -1,19 +1,18 @@
-import Link from 'next/link';
 import VoteButton from './VoteButton';
 import { timeAgo } from '../lib/supabase';
 import type { Post } from '../lib/supabase';
 
-export default function IdeaCard({ post }: { post: Post }) {
+export default function IdeaCard({ post, onSelect }: { post: Post; onSelect?: (post: Post) => void }) {
   return (
     <div className="flex gap-3 p-3 rounded-lg border border-zinc-800 hover:border-zinc-700 transition-colors bg-zinc-900/50">
       <VoteButton postId={post.id} initialCount={post.upvotes} />
       <div className="flex-1 min-w-0">
-        <Link
-          href={`/ideas/${post.id}`}
-          className="block font-medium text-sm hover:text-white transition-colors truncate"
+        <button
+          onClick={() => onSelect?.(post)}
+          className="block font-medium text-sm hover:text-white transition-colors truncate text-left w-full"
         >
           {post.title}
-        </Link>
+        </button>
         <div className="flex items-center gap-2 mt-1.5 text-xs text-zinc-500">
           <span>{post.author_name}</span>
           <span>{timeAgo(post.created_at)}</span>
