@@ -1,24 +1,12 @@
 import Link from 'next/link';
 import VoteButton from './VoteButton';
+import { timeAgo } from '../lib/supabase';
 import type { Post } from '../lib/supabase';
-
-function timeAgo(date: string) {
-  const seconds = Math.floor((Date.now() - new Date(date).getTime()) / 1000);
-  if (seconds < 60) return 'just now';
-  const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) return `${minutes}m ago`;
-  const hours = Math.floor(minutes / 60);
-  if (hours < 24) return `${hours}h ago`;
-  const days = Math.floor(hours / 24);
-  if (days < 30) return `${days}d ago`;
-  return new Date(date).toLocaleDateString();
-}
 
 const categoryColors: Record<string, string> = {
   general: 'bg-zinc-700 text-zinc-300',
   'show-and-tell': 'bg-zinc-800 text-zinc-300',
   help: 'bg-yellow-500/10 text-yellow-500',
-  ideas: 'bg-blue-500/10 text-blue-400',
 };
 
 export default function PostCard({ post }: { post: Post }) {
@@ -44,7 +32,7 @@ export default function PostCard({ post }: { post: Post }) {
           <div className="flex items-center gap-1.5">
             {post.author_avatar && (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={post.author_avatar} alt="" className="w-4 h-4 rounded-full" />
+              <img src={post.author_avatar} alt={`${post.author_name}'s avatar`} className="w-4 h-4 rounded-full" />
             )}
             <span>{post.author_name}</span>
           </div>

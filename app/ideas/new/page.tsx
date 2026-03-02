@@ -95,7 +95,7 @@ export default function NewIdeaPage() {
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="What if we built..."
+              placeholder="What if we built..." maxLength={200}
               required
               className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-zinc-500"
             />
@@ -109,7 +109,7 @@ export default function NewIdeaPage() {
               id="body"
               value={body}
               onChange={(e) => setBody(e.target.value)}
-              placeholder="Describe the idea, why it matters, how it could work..."
+              placeholder="Describe the idea, why it matters, how it could work..." maxLength={10000}
               rows={6}
               className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-zinc-500 resize-none"
             />

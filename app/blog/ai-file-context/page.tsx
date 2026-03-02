@@ -8,7 +8,7 @@ import {
 } from "../../components/blog";
 
 export const metadata: Metadata = {
-  title: "10x better answers with zero extra effort - Travel & Startups",
+  title: "10x better answers with zero extra effort - Building Open",
   description: "How providing context folders changes AI from generic to personalized. From Tokyo hostels to startup hiring decisions.",
 };
 

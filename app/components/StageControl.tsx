@@ -25,7 +25,7 @@ export default function StageControl({
   const supabase = createClient();
 
   const isAuthor = userId && authorId && userId === authorId;
-  const isAdmin = userEmail === 'depontefede@gmail.com';
+  const isAdmin = userEmail === process.env.NEXT_PUBLIC_ADMIN_EMAIL;
   const canControl = isAuthor || isAdmin;
 
   const currentIndex = stages.indexOf(stage);

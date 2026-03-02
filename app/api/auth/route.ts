@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const PASSWORD = 'open'
+const PASSWORD = process.env.AUTH_PASSWORD || 'open'
 
 export async function POST(request: NextRequest) {
   const formData = await request.formData()

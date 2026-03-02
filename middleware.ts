@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const PASSWORD = 'open'
 
 const passwordPage = `<!DOCTYPE html>
 <html lang="en">

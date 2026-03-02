@@ -2,25 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { createClient } from '../../lib/supabase';
+import { createClient, timeAgo } from '../../lib/supabase';
 import VoteButton from '../../components/VoteButton';
 import CommentThread from '../../components/CommentThread';
 import AuthButton from '../../components/AuthButton';
 import StageBadge from '../../components/StageBadge';
 import StageControl from '../../components/StageControl';
 import type { Post, Comment } from '../../lib/supabase';
-
-function timeAgo(date: string) {
-  const seconds = Math.floor((Date.now() - new Date(date).getTime()) / 1000);
-  if (seconds < 60) return 'just now';
-  const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) return `${minutes}m ago`;
-  const hours = Math.floor(minutes / 60);
-  if (hours < 24) return `${hours}h ago`;
-  const days = Math.floor(hours / 24);
-  if (days < 30) return `${days}d ago`;
-  return new Date(date).toLocaleDateString();
-}
 
 function buildTree(comments: Comment[]): Comment[] {
   const map = new Map<string, Comment>();
@@ -149,7 +137,7 @@ export default function IdeaDetail({ id }: { id: string }) {
             <div className="flex items-center gap-2 text-xs text-zinc-500 mb-4">
               {post.author_avatar && (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={post.author_avatar} alt="" className="w-5 h-5 rounded-full" />
+                <img src={post.author_avatar} alt={`${post.author_name}'s avatar`} className="w-5 h-5 rounded-full" />
               )}
               <span>{post.author_name}</span>
               <span>·</span>

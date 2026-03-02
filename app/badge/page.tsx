@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback } from 'react';
 
 const CANVAS_SIZE = 800;
 const LOGO_WIDTH = 90;
@@ -42,12 +42,6 @@ export default function BadgePage() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [hasImage, setHasImage] = useState(false);
   const [dragging, setDragging] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [fontLoaded, setFontLoaded] = useState(false);
-
-  useEffect(() => {
-    document.fonts.ready.then(() => setFontLoaded(true));
-  }, []);
 
   const processImage = useCallback((file: File) => {
     const reader = new FileReader();

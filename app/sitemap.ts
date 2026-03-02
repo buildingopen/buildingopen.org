@@ -1,7 +1,12 @@
 import type { MetadataRoute } from 'next';
+import { createClient } from '@supabase/supabase-js';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://buildingopen.org';
+  const supabase = createClient(supabaseUrl, supabaseKey);
 
   const staticPages = [
     '',
@@ -35,6 +40,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'openslides-quickstart',
   ];
 
+  // Fetch dynamic community posts (non-idea posts)
+  const { data: communityPosts } = await supabase
+    .from('posts')
+    .select('id, created_at')
+    .is('stage', null)
+    .order('created_at', { ascending: false });
+
+  // Fetch dynamic idea posts
+  const { data: ideaPosts } = await supabase
+    .from('posts')
+    .select('id, created_at')
+    .not('stage', 'is', null)
+    .order('created_at', { ascending: false });
+
   return [
     ...staticPages.map((path) => ({
       url: `${baseUrl}${path}`,
@@ -53,6 +72,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.6,
+    })),
+    ...(communityPosts ?? []).map((post) => ({
+      url: `${baseUrl}/community/${post.id}`,
+      lastModified: new Date(post.created_at),
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
+    })),
+    ...(ideaPosts ?? []).map((post) => ({
+      url: `${baseUrl}/ideas/${post.id}`,
+      lastModified: new Date(post.created_at),
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
     })),
   ];
 }

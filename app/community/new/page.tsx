@@ -123,7 +123,7 @@ export default function NewPostPage() {
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="What's on your mind?"
+              placeholder="What's on your mind?" maxLength={200}
               required
               className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-zinc-500"
             />
@@ -138,7 +138,7 @@ export default function NewPostPage() {
               id="body"
               value={body}
               onChange={(e) => setBody(e.target.value)}
-              placeholder="Add more context..."
+              placeholder="Add more context..." maxLength={10000}
               rows={6}
               className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-zinc-500 resize-none"
             />

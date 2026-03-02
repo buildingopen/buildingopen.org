@@ -73,7 +73,7 @@ export default function AuthButton() {
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={user.user_metadata.avatar_url}
-            alt=""
+            alt="Profile"
             className="w-7 h-7 rounded-full"
           />
         ) : (

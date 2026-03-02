@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createClient } from '../lib/supabase';
 
 export default function VoteButton({
@@ -15,6 +15,24 @@ export default function VoteButton({
   const [count, setCount] = useState(initialCount);
   const [voted, setVoted] = useState<1 | -1 | 0>(0);
   const supabase = createClient();
+
+  // Restore user's existing vote on mount
+  useEffect(() => {
+    (async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      let query = supabase.from('votes').select('value').eq('user_id', user.id);
+      if (postId) query = query.eq('post_id', postId);
+      else query = query.is('post_id', null);
+      if (commentId) query = query.eq('comment_id', commentId);
+      else query = query.is('comment_id', null);
+
+      const { data } = await query.maybeSingle();
+      if (data) setVoted(data.value as 1 | -1);
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleVote = async (value: 1 | -1) => {
     const { data: { user } } = await supabase.auth.getUser();
@@ -50,11 +68,19 @@ export default function VoteButton({
       });
     }
 
-    // Update count on the parent record
+    // Recalculate actual count from votes table (avoids stale closure race condition)
+    const targetId = postId || commentId;
     const table = postId ? 'posts' : 'comments';
-    const id = postId || commentId;
-    if (id) {
-      await supabase.from(table).update({ upvotes: count + delta }).eq('id', id);
+    const column = postId ? 'post_id' : 'comment_id';
+    if (targetId) {
+      const { data: votes } = await supabase
+        .from('votes')
+        .select('value')
+        .eq(column, targetId);
+
+      const actualCount = votes?.reduce((sum, v) => sum + v.value, 0) ?? 0;
+      await supabase.from(table).update({ upvotes: actualCount }).eq('id', targetId);
+      setCount(actualCount);
     }
   };
 
