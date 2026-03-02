@@ -60,6 +60,12 @@ export default function NewPostPage() {
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'Enter' && title.trim() && !submitting) {
+      handleSubmit(e);
+    }
+  };
+
   if (loading) {
     return (
       <div className="py-16 text-center">
@@ -86,12 +92,12 @@ export default function NewPostPage() {
           href="/community"
           className="text-sm text-zinc-500 hover:text-white transition-colors mb-6 inline-block"
         >
-          ← Back
+          &#8592; Back
         </Link>
 
         <h1 className="text-xl font-bold mb-6">New Post</h1>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} onKeyDown={handleKeyDown} className="space-y-4">
           {/* Category */}
           <div>
             <label className="text-sm text-zinc-400 mb-1.5 block">Category</label>
@@ -123,10 +129,17 @@ export default function NewPostPage() {
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="What's on your mind?" maxLength={200}
+              placeholder="What's on your mind?"
+              maxLength={200}
               required
+              autoFocus
               className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-zinc-500"
             />
+            <div className="flex justify-end mt-1">
+              <span className={`text-xs ${title.length > 180 ? 'text-yellow-500' : 'text-zinc-600'}`}>
+                {title.length}/200
+              </span>
+            </div>
           </div>
 
           {/* Body */}
@@ -138,19 +151,28 @@ export default function NewPostPage() {
               id="body"
               value={body}
               onChange={(e) => setBody(e.target.value)}
-              placeholder="Add more context..." maxLength={10000}
+              placeholder="Add more context..."
+              maxLength={10000}
               rows={6}
               className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-zinc-500 resize-none"
             />
+            <div className="flex justify-end mt-1">
+              <span className={`text-xs ${body.length > 9500 ? 'text-yellow-500' : 'text-zinc-600'}`}>
+                {body.length.toLocaleString()}/10,000
+              </span>
+            </div>
           </div>
 
           {error && <p className="text-red-400 text-sm">{error}</p>}
 
-          <div className="flex justify-end">
+          <div className="flex items-center justify-end gap-3">
+            <span className="text-xs text-zinc-600 hidden sm:block">
+              {navigator.platform?.includes('Mac') ? '\u2318' : 'Ctrl'}+Enter to submit
+            </span>
             <button
               type="submit"
               disabled={submitting || !title.trim()}
-              className="px-6 py-3 bg-green-500 text-black font-medium rounded-lg hover:bg-green-400 transition-colors disabled:opacity-50"
+              className="px-6 py-3 bg-green-500 text-black font-medium rounded-lg hover:bg-green-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {submitting ? 'Posting...' : 'Post'}
             </button>

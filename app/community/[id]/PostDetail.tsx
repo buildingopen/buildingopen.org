@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { createClient, timeAgo } from '../../lib/supabase';
 import VoteButton from '../../components/VoteButton';
 import CommentThread from '../../components/CommentThread';
+import ConfirmModal from '../../components/ConfirmModal';
 import AuthButton from '../../components/AuthButton';
 import type { Post, Comment } from '../../lib/supabase';
 
@@ -38,6 +39,7 @@ export default function PostDetail({ id }: { id: string }) {
   const [editTitle, setEditTitle] = useState('');
   const [editBody, setEditBody] = useState('');
   const [deleting, setDeleting] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [user, setUser] = useState<{ id: string; user_metadata: Record<string, string> } | null>(null);
   const supabase = createClient();
 
@@ -66,7 +68,7 @@ export default function PostDetail({ id }: { id: string }) {
   }, [id]);
 
   const handleDelete = async () => {
-    if (!isAuthor || !confirm('Delete this post? This cannot be undone.')) return;
+    if (!isAuthor) return;
     setDeleting(true);
     await supabase.from('comments').delete().eq('post_id', id);
     await supabase.from('posts').delete().eq('id', id);
@@ -150,7 +152,7 @@ export default function PostDetail({ id }: { id: string }) {
           href="/community"
           className="text-sm text-zinc-500 hover:text-white transition-colors mb-6 inline-block"
         >
-          ← Back
+          &#8592; Back
         </Link>
 
         {/* Post */}
@@ -214,11 +216,10 @@ export default function PostDetail({ id }: { id: string }) {
                         Edit
                       </button>
                       <button
-                        onClick={handleDelete}
-                        disabled={deleting}
+                        onClick={() => setShowDeleteConfirm(true)}
                         className="text-zinc-600 hover:text-red-400 transition-colors"
                       >
-                        {deleting ? 'Deleting...' : 'Delete'}
+                        Delete
                       </button>
                     </>
                   )}
@@ -268,6 +269,16 @@ export default function PostDetail({ id }: { id: string }) {
         {/* Comments */}
         <CommentThread comments={comments} postId={post.id} />
       </div>
+
+      <ConfirmModal
+        open={showDeleteConfirm}
+        title="Delete post"
+        message="This will permanently delete the post and all its comments. This cannot be undone."
+        confirmLabel="Delete"
+        loading={deleting}
+        onConfirm={handleDelete}
+        onCancel={() => setShowDeleteConfirm(false)}
+      />
     </div>
   );
 }

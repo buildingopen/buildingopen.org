@@ -62,6 +62,14 @@ export default function PostDrawer({
     return () => window.removeEventListener('keydown', handleEsc);
   }, [post, onClose]);
 
+  // Lock body scroll when drawer is open
+  useEffect(() => {
+    if (post) {
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = ''; };
+    }
+  }, [post]);
+
   if (!post) return null;
 
   return (

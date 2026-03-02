@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { createClient } from '../lib/supabase';
 import PostCard from '../components/PostCard';
@@ -79,6 +79,18 @@ export default function CommunityPage() {
     fetchPosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category, sort, search]);
+
+  // Sync vote changes from drawers back to the list
+  const handleVoteChanged = useCallback((e: Event) => {
+    const { postId, count } = (e as CustomEvent).detail;
+    setPosts((prev) => prev.map((p) => p.id === postId ? { ...p, upvotes: count } : p));
+    setSelectedPost((prev) => prev && prev.id === postId ? { ...prev, upvotes: count } : prev);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('vote-changed', handleVoteChanged);
+    return () => window.removeEventListener('vote-changed', handleVoteChanged);
+  }, [handleVoteChanged]);
 
   return (
     <div className="py-16">

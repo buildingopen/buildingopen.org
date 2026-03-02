@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { createClient } from '../lib/supabase';
 import IdeaCard from '../components/IdeaCard';
@@ -47,6 +47,18 @@ export default function IdeasPage() {
     fetchIdeas();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Sync vote changes from drawers/detail views back to the list
+  const handleVoteChanged = useCallback((e: Event) => {
+    const { postId, count } = (e as CustomEvent).detail;
+    setPosts((prev) => prev.map((p) => p.id === postId ? { ...p, upvotes: count } : p));
+    setSelectedPost((prev) => prev && prev.id === postId ? { ...prev, upvotes: count } : prev);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('vote-changed', handleVoteChanged);
+    return () => window.removeEventListener('vote-changed', handleVoteChanged);
+  }, [handleVoteChanged]);
 
   const filtered = search.trim()
     ? posts.filter((p) => p.title.toLowerCase().includes(search.toLowerCase()))

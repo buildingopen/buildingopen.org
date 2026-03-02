@@ -17,6 +17,11 @@ export default function VoteButton({
   const [voted, setVoted] = useState<1 | -1 | 0>(0);
   const supabase = createClient();
 
+  // Sync initialCount when parent updates it (e.g. from vote-changed event)
+  useEffect(() => {
+    setCount(initialCount);
+  }, [initialCount]);
+
   // Restore user's existing vote on mount
   useEffect(() => {
     (async () => {
@@ -69,7 +74,7 @@ export default function VoteButton({
       });
     }
 
-    // Recalculate actual count from votes table (avoids stale closure race condition)
+    // Recalculate actual count from votes table
     const targetId = postId || commentId;
     const table = postId ? 'posts' : 'comments';
     const column = postId ? 'post_id' : 'comment_id';
@@ -83,6 +88,13 @@ export default function VoteButton({
       await supabase.from(table).update({ upvotes: actualCount }).eq('id', targetId);
       setCount(actualCount);
       showToast(newValue === 0 ? "Vote removed" : newValue === 1 ? "Upvoted" : "Downvoted");
+
+      // Broadcast vote change so list views can sync
+      if (postId) {
+        window.dispatchEvent(new CustomEvent('vote-changed', {
+          detail: { postId, count: actualCount },
+        }));
+      }
     }
   };
 

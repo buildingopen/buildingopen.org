@@ -54,6 +54,12 @@ export default function NewIdeaPage() {
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'Enter' && title.trim() && !submitting) {
+      handleSubmit(e);
+    }
+  };
+
   if (loading) {
     return (
       <div className="py-16 text-center">
@@ -85,7 +91,7 @@ export default function NewIdeaPage() {
 
         <h1 className="text-xl font-bold mb-6">Submit an Idea</h1>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} onKeyDown={handleKeyDown} className="space-y-4">
           <div>
             <label htmlFor="title" className="text-sm text-zinc-400 mb-1.5 block">
               Title
@@ -95,10 +101,17 @@ export default function NewIdeaPage() {
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="What if we built..." maxLength={200}
+              placeholder="What if we built..."
+              maxLength={200}
               required
+              autoFocus
               className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-zinc-500"
             />
+            <div className="flex justify-end mt-1">
+              <span className={`text-xs ${title.length > 180 ? 'text-yellow-500' : 'text-zinc-600'}`}>
+                {title.length}/200
+              </span>
+            </div>
           </div>
 
           <div>
@@ -109,19 +122,28 @@ export default function NewIdeaPage() {
               id="body"
               value={body}
               onChange={(e) => setBody(e.target.value)}
-              placeholder="Describe the idea, why it matters, how it could work..." maxLength={10000}
+              placeholder="Describe the idea, why it matters, how it could work..."
+              maxLength={10000}
               rows={6}
               className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-zinc-500 resize-none"
             />
+            <div className="flex justify-end mt-1">
+              <span className={`text-xs ${body.length > 9500 ? 'text-yellow-500' : 'text-zinc-600'}`}>
+                {body.length.toLocaleString()}/10,000
+              </span>
+            </div>
           </div>
 
           {error && <p className="text-red-400 text-sm">{error}</p>}
 
-          <div className="flex justify-end">
+          <div className="flex items-center justify-end gap-3">
+            <span className="text-xs text-zinc-600 hidden sm:block">
+              {navigator.platform?.includes('Mac') ? '\u2318' : 'Ctrl'}+Enter to submit
+            </span>
             <button
               type="submit"
               disabled={submitting || !title.trim()}
-              className="px-6 py-3 bg-green-500 text-black font-medium rounded-lg hover:bg-green-400 transition-colors disabled:opacity-50"
+              className="px-6 py-3 bg-green-500 text-black font-medium rounded-lg hover:bg-green-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {submitting ? 'Submitting...' : 'Submit Idea'}
             </button>
