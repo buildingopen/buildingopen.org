@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { createClient } from '../lib/supabase';
+import { showToast } from './Toast';
 
 export default function VoteButton({
   postId,
@@ -81,6 +82,7 @@ export default function VoteButton({
       const actualCount = votes?.reduce((sum, v) => sum + v.value, 0) ?? 0;
       await supabase.from(table).update({ upvotes: actualCount }).eq('id', targetId);
       setCount(actualCount);
+      showToast(newValue === 0 ? "Vote removed" : newValue === 1 ? "Upvoted" : "Downvoted");
     }
   };
 

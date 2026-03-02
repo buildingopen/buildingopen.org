@@ -7,6 +7,7 @@ import IdeaCard from '../components/IdeaCard';
 import IdeaDrawer from '../components/IdeaDrawer';
 import StageBadge from '../components/StageBadge';
 import AuthButton from '../components/AuthButton';
+import { CardSkeletonList } from '../components/Skeleton';
 import type { Post } from '../lib/supabase';
 
 const stages = ['idea', 'prototype', 'live'] as const;
@@ -23,6 +24,7 @@ export default function IdeasPage() {
   const [activeTab, setActiveTab] = useState<(typeof stages)[number]>('idea');
   const [user, setUser] = useState<{ id: string } | null>(null);
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+  const [search, setSearch] = useState('');
   const supabase = createClient();
 
   useEffect(() => {
@@ -46,16 +48,19 @@ export default function IdeasPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const filtered = search.trim()
+    ? posts.filter((p) => p.title.toLowerCase().includes(search.toLowerCase()))
+    : posts;
+
   const grouped = {
-    idea: posts.filter((p) => p.stage === 'idea'),
-    prototype: posts.filter((p) => p.stage === 'prototype'),
-    live: posts.filter((p) => p.stage === 'live'),
+    idea: filtered.filter((p) => p.stage === 'idea'),
+    prototype: filtered.filter((p) => p.stage === 'prototype'),
+    live: filtered.filter((p) => p.stage === 'live'),
   };
 
   return (
     <div className="py-16">
       <div className="mx-auto max-w-5xl px-6">
-        {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-2xl font-bold">Idea House</h1>
@@ -74,15 +79,32 @@ export default function IdeasPage() {
           </div>
         </div>
 
-        <p className="text-sm text-zinc-500 mb-8 max-w-2xl">
+        <p className="text-sm text-zinc-500 mb-6 max-w-2xl">
           Anyone can submit a product idea. Vote on the ones you want to see built.
           Ideas that gain traction move to <span className="text-yellow-500">Prototype</span>, then
           to <span className="text-green-400">Live</span> when they ship.
         </p>
 
+        <div className="mb-6">
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Filter ideas..."
+            className="w-full max-w-sm bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-500 placeholder:text-zinc-600"
+          />
+        </div>
+
         {loading ? (
-          <div className="text-center py-12">
-            <div className="inline-block w-5 h-5 border-2 border-zinc-600 border-t-green-500 rounded-full animate-spin" />
+          <div className="hidden md:grid md:grid-cols-3 gap-4">
+            {stages.map((s) => (
+              <div key={s} className={`rounded-xl border ${stageColors[s]} bg-zinc-900/30 p-4`}>
+                <div className="flex items-center justify-between mb-4">
+                  <StageBadge stage={s} />
+                </div>
+                <CardSkeletonList count={2} />
+              </div>
+            ))}
           </div>
         ) : (
           <>
@@ -136,7 +158,6 @@ export default function IdeasPage() {
         )}
       </div>
 
-      {/* Drawer */}
       <IdeaDrawer post={selectedPost} onClose={() => setSelectedPost(null)} />
     </div>
   );

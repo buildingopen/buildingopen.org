@@ -3,6 +3,7 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Toast from "./components/Toast";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -73,6 +74,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Toast />
       </body>
     </html>
   );

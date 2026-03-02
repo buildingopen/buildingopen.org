@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import VoteButton from './VoteButton';
 import { timeAgo } from '../lib/supabase';
 import type { Post } from '../lib/supabase';
@@ -9,7 +8,7 @@ const categoryColors: Record<string, string> = {
   help: 'bg-yellow-500/10 text-yellow-500',
 };
 
-export default function PostCard({ post }: { post: Post }) {
+export default function PostCard({ post, onSelect }: { post: Post; onSelect?: (post: Post) => void }) {
   return (
     <div className="flex gap-3 p-4 rounded-lg border border-zinc-800 hover:border-zinc-700 transition-colors bg-zinc-900/50">
       <VoteButton postId={post.id} initialCount={post.upvotes} />
@@ -19,12 +18,12 @@ export default function PostCard({ post }: { post: Post }) {
             {post.category.replace(/-/g, ' ')}
           </span>
         </div>
-        <Link
-          href={`/community/${post.id}`}
-          className="block font-medium hover:text-white transition-colors truncate"
+        <button
+          onClick={() => onSelect?.(post)}
+          className="block font-medium hover:text-white transition-colors truncate text-left w-full"
         >
           {post.title}
-        </Link>
+        </button>
         {post.body && (
           <p className="text-sm text-zinc-500 mt-1 line-clamp-2">{post.body}</p>
         )}

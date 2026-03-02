@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { createClient } from '../lib/supabase';
 import PostCard from '../components/PostCard';
+import PostDrawer from '../components/PostDrawer';
 import AuthButton from '../components/AuthButton';
+import { CardSkeletonList } from '../components/Skeleton';
 import type { Post } from '../lib/supabase';
 
 const categories = [
@@ -27,6 +29,7 @@ export default function CommunityPage() {
   const [sort, setSort] = useState('hot');
   const [search, setSearch] = useState('');
   const [user, setUser] = useState<{ id: string } | null>(null);
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   const supabase = createClient();
 
   useEffect(() => {
@@ -52,7 +55,6 @@ export default function CommunityPage() {
       } else if (sort === 'top') {
         query = query.order('upvotes', { ascending: false });
       } else {
-        // Hot: combination of upvotes and recency
         query = query.order('created_at', { ascending: false });
       }
 
@@ -81,7 +83,6 @@ export default function CommunityPage() {
   return (
     <div className="py-16">
       <div className="mx-auto max-w-3xl px-6">
-        {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-2xl font-bold">Community</h1>
@@ -100,7 +101,6 @@ export default function CommunityPage() {
           </div>
         </div>
 
-        {/* Search */}
         <div className="mb-4">
           <input
             type="text"
@@ -111,7 +111,6 @@ export default function CommunityPage() {
           />
         </div>
 
-        {/* Category tabs */}
         <div className="flex gap-1 mb-4 overflow-x-auto pb-1 scrollbar-hide">
           {categories.map((cat) => (
             <button
@@ -128,7 +127,6 @@ export default function CommunityPage() {
           ))}
         </div>
 
-        {/* Sort */}
         <div className="flex gap-1 mb-6">
           {sortOptions.map((opt) => (
             <button
@@ -145,12 +143,9 @@ export default function CommunityPage() {
           ))}
         </div>
 
-        {/* Posts */}
         <div className="space-y-3">
           {loading ? (
-            <div className="text-center py-12">
-              <div className="inline-block w-5 h-5 border-2 border-zinc-600 border-t-green-500 rounded-full animate-spin" />
-            </div>
+            <CardSkeletonList count={4} />
           ) : posts.length === 0 ? (
             <div className="text-center py-12 text-zinc-600">
               <p>No posts yet.</p>
@@ -161,10 +156,14 @@ export default function CommunityPage() {
               )}
             </div>
           ) : (
-            posts.map((post) => <PostCard key={post.id} post={post} />)
+            posts.map((post) => (
+              <PostCard key={post.id} post={post} onSelect={setSelectedPost} />
+            ))
           )}
         </div>
       </div>
+
+      <PostDrawer post={selectedPost} onClose={() => setSelectedPost(null)} />
     </div>
   );
 }
