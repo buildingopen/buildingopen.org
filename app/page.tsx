@@ -131,6 +131,7 @@ export default function Home() {
             <div className="flex gap-3 mt-2">
               <a href="https://github.com/federicodeponte" target="_blank" rel="noopener noreferrer" className="text-xs text-zinc-500 hover:text-white">GitHub</a>
               <a href="https://linkedin.com/in/federicodeponte" target="_blank" rel="noopener noreferrer" className="text-xs text-zinc-500 hover:text-white">LinkedIn</a>
+              <Link href="/badge" className="text-xs text-green-500 hover:text-green-400">Get yours &rarr;</Link>
             </div>
           </div>
         </div>
