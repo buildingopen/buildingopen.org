@@ -2,27 +2,174 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
-import { createClient } from '../lib/supabase';
+import { createClient, timeAgo } from '../lib/supabase';
 import IdeaCard from '../components/IdeaCard';
 import IdeaDrawer from '../components/IdeaDrawer';
 import StageBadge from '../components/StageBadge';
 import AuthButton from '../components/AuthButton';
+import VoteButton from '../components/VoteButton';
 import { CardSkeletonList } from '../components/Skeleton';
 import type { Post } from '../lib/supabase';
 
-const stages = ['idea', 'prototype', 'live', 'rejected'] as const;
+const pipelineStages = ['idea', 'prototype', 'live'] as const;
+type PipelineStage = (typeof pipelineStages)[number];
 
-const stageColors = {
-  idea: 'border-blue-500/30',
-  prototype: 'border-yellow-500/30',
-  live: 'border-green-500/30',
-  rejected: 'border-red-500/30',
+const stageConfig = {
+  idea: {
+    label: 'Idea',
+    tagline: 'Waiting for traction',
+    step: 1,
+    dotClass: 'border-blue-500/50 text-blue-400 bg-blue-500/10',
+    labelClass: 'text-blue-400',
+    emptyBorder: 'border-blue-500/10',
+  },
+  prototype: {
+    label: 'Prototype',
+    tagline: 'Being built and tested',
+    step: 2,
+    dotClass: 'border-yellow-500/50 text-yellow-500 bg-yellow-500/10',
+    labelClass: 'text-yellow-500',
+    emptyBorder: 'border-yellow-500/10',
+  },
+  live: {
+    label: 'Live',
+    tagline: 'Shipped and available',
+    step: 3,
+    dotClass: 'border-green-500/50 text-green-400 bg-green-500/10',
+    labelClass: 'text-green-400',
+    emptyBorder: 'border-green-500/10',
+  },
 } as const;
+
+/* ── Pipeline card: richer than IdeaCard, shows body preview ── */
+function PipelineCard({ post, onSelect }: { post: Post; onSelect: (post: Post) => void }) {
+  return (
+    <div
+      onClick={() => onSelect(post)}
+      className="card-glow group p-4 rounded-xl border border-zinc-800/80 bg-zinc-900/40 hover:bg-zinc-800/40 hover:border-zinc-700/80 transition-all duration-200 cursor-pointer"
+    >
+      <div className="flex gap-3">
+        <VoteButton postId={post.id} initialCount={post.upvotes} />
+        <div className="flex-1 min-w-0">
+          <h3 className="font-semibold text-[13px] text-zinc-200 group-hover:text-white transition-colors">
+            {post.title}
+          </h3>
+          {post.body && (
+            <p className="text-xs text-zinc-500 mt-1.5 line-clamp-2 leading-relaxed">
+              {post.body}
+            </p>
+          )}
+          <div className="flex items-center gap-1.5 mt-2.5 text-[11px] text-zinc-600">
+            <span>{post.author_name}</span>
+            <span className="text-zinc-700">·</span>
+            <span>{timeAgo(post.created_at)}</span>
+            {post.comment_count > 0 && (
+              <>
+                <span className="text-zinc-700">·</span>
+                <span className="flex items-center gap-0.5">
+                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                  {post.comment_count}
+                </span>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Post-mortem card: expandable rejection reasoning ── */
+function PostMortemCard({ post, onSelect }: { post: Post; onSelect: (post: Post) => void }) {
+  const [expanded, setExpanded] = useState(false);
+  const body = post.body || '';
+  const maxLen = 300;
+  const isLong = body.length > maxLen;
+  const displayBody = expanded || !isLong ? body : body.slice(0, maxLen) + '...';
+
+  return (
+    <div className="card-glow group relative p-5 md:p-6 rounded-xl border border-red-500/[0.08] bg-red-500/[0.015] hover:border-red-500/[0.15] hover:bg-red-500/[0.03] transition-all duration-200">
+      <div className="flex gap-4">
+        <VoteButton postId={post.id} initialCount={post.upvotes} />
+        <div className="flex-1 min-w-0">
+          <div className="flex items-start gap-2.5">
+            <svg className="w-4 h-4 text-red-500/40 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            <div className="flex-1 min-w-0">
+              <button
+                onClick={() => onSelect(post)}
+                className="font-semibold text-zinc-300 group-hover:text-white transition-colors text-left"
+              >
+                {post.title}
+              </button>
+              <div className="flex items-center gap-1.5 mt-1 text-[11px] text-zinc-600">
+                <span>{post.author_name}</span>
+                <span className="text-zinc-700">·</span>
+                <span>{timeAgo(post.created_at)}</span>
+              </div>
+            </div>
+          </div>
+          {body && (
+            <div className="mt-3 ml-[26px]">
+              <p className="text-sm text-zinc-500 leading-relaxed whitespace-pre-wrap">
+                {displayBody}
+              </p>
+              {isLong && (
+                <button
+                  onClick={() => setExpanded(!expanded)}
+                  className="text-xs text-zinc-600 hover:text-zinc-400 mt-2 transition-colors"
+                >
+                  {expanded ? 'Show less' : 'Read full reasoning'}
+                </button>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Progress track connecting the three pipeline stages ── */
+function ProgressTrack({ counts }: { counts: Record<PipelineStage, number> }) {
+  return (
+    <div className="hidden md:flex items-center mb-10">
+      {pipelineStages.map((s, i) => (
+        <div key={s} className="contents">
+          <div className="flex items-center gap-2.5">
+            <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold border-2 ${stageConfig[s].dotClass}`}>
+              {stageConfig[s].step}
+            </div>
+            <div className="flex items-baseline gap-1.5">
+              <span className={`text-sm font-semibold ${stageConfig[s].labelClass}`}>
+                {stageConfig[s].label}
+              </span>
+              <span className="text-[10px] text-zinc-600">
+                {counts[s]}
+              </span>
+            </div>
+          </div>
+          {i < pipelineStages.length - 1 && (
+            <div className="flex-1 mx-6 flex items-center">
+              <div className="w-full h-px bg-zinc-800" />
+              <svg className="w-3 h-3 text-zinc-700 shrink-0 -ml-px" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function IdeasPage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<(typeof stages)[number]>('idea');
+  const [activeTab, setActiveTab] = useState<PipelineStage>('idea');
   const [user, setUser] = useState<{ id: string } | null>(null);
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   const [search, setSearch] = useState('');
@@ -49,7 +196,6 @@ export default function IdeasPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Sync vote changes from drawers/detail views back to the list
   const handleVoteChanged = useCallback((e: Event) => {
     const { postId, count } = (e as CustomEvent).detail;
     setPosts((prev) => prev.map((p) => p.id === postId ? { ...p, upvotes: count } : p));
@@ -65,27 +211,36 @@ export default function IdeasPage() {
     ? posts.filter((p) => p.title.toLowerCase().includes(search.toLowerCase()))
     : posts;
 
-  const grouped = {
+  const pipeline = {
     idea: filtered.filter((p) => p.stage === 'idea'),
     prototype: filtered.filter((p) => p.stage === 'prototype'),
     live: filtered.filter((p) => p.stage === 'live'),
-    rejected: filtered.filter((p) => p.stage === 'rejected'),
+  };
+  const rejected = filtered.filter((p) => p.stage === 'rejected');
+
+  const counts = {
+    idea: pipeline.idea.length,
+    prototype: pipeline.prototype.length,
+    live: pipeline.live.length,
   };
 
   return (
-    <div className="py-16">
-      <div className="mx-auto max-w-5xl px-6">
-        <div className="flex items-center justify-between mb-8">
+    <div className="py-16 md:py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        {/* ── Header ── */}
+        <div className="flex items-start justify-between mb-4">
           <div>
-            <h1 className="text-2xl font-bold">Idea House</h1>
-            <p className="text-sm text-zinc-500 mt-1">Building Open&apos;s public product pipeline.</p>
+            <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Idea House</h1>
+            <p className="text-sm text-zinc-500 mt-1.5 max-w-md">
+              Our public product pipeline. Submit ideas, vote on what matters, watch them ship.
+            </p>
           </div>
           <div className="flex items-center gap-3">
             <AuthButton />
             {user && (
               <Link
                 href="/ideas/new"
-                className="px-4 py-2 bg-green-500 text-black text-sm font-medium rounded-lg hover:bg-green-400 transition-colors"
+                className="btn-shine px-4 py-2 bg-green-500 text-black text-sm font-medium rounded-lg hover:bg-green-400 transition-colors"
               >
                 Submit Idea
               </Link>
@@ -93,27 +248,22 @@ export default function IdeasPage() {
           </div>
         </div>
 
-        <p className="text-sm text-zinc-500 mb-6 max-w-2xl">
-          Anyone can submit a product idea. Vote on the ones you want to see built.
-          Ideas that gain traction move to <span className="text-yellow-500">Prototype</span>, then
-          to <span className="text-green-400">Live</span> when they ship. Some end up <span className="text-red-400">Rejected</span> with an explanation why.
-        </p>
-
-        <div className="mb-6">
+        {/* ── Search ── */}
+        <div className="mb-10">
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Filter ideas..."
-            className="w-full max-w-sm bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-500 placeholder:text-zinc-600"
+            className="w-full max-w-sm bg-zinc-900/80 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-600 placeholder:text-zinc-600 transition-colors"
           />
         </div>
 
         {loading ? (
-          <div className="hidden md:grid md:grid-cols-4 gap-4">
-            {stages.map((s) => (
-              <div key={s} className={`rounded-xl border ${stageColors[s]} bg-zinc-900/30 p-4`}>
-                <div className="flex items-center justify-between mb-4">
+          <div className="grid md:grid-cols-3 gap-6">
+            {pipelineStages.map((s) => (
+              <div key={s}>
+                <div className="flex items-center gap-2 mb-4">
                   <StageBadge stage={s} />
                 </div>
                 <CardSkeletonList count={2} />
@@ -122,10 +272,13 @@ export default function IdeasPage() {
           </div>
         ) : (
           <>
-            {/* Mobile: tabs */}
-            <div className="md:hidden mb-4">
+            {/* ── Progress track (desktop) ── */}
+            <ProgressTrack counts={counts} />
+
+            {/* ── Mobile tabs ── */}
+            <div className="md:hidden mb-6">
               <div className="flex gap-1 bg-zinc-900 rounded-lg p-1">
-                {stages.map((s) => (
+                {pipelineStages.map((s) => (
                   <button
                     key={s}
                     onClick={() => setActiveTab(s)}
@@ -133,41 +286,60 @@ export default function IdeasPage() {
                       activeTab === s ? 'bg-zinc-800 text-white' : 'text-zinc-500'
                     }`}
                   >
-                    <StageBadge stage={s} /> <span className="ml-1 text-zinc-600">{grouped[s].length}</span>
+                    <StageBadge stage={s} /> <span className="ml-1 text-zinc-600">{pipeline[s].length}</span>
                   </button>
                 ))}
               </div>
-              <div className="mt-4 space-y-2">
-                {grouped[activeTab].length === 0 ? (
+              <div className="mt-4 space-y-3">
+                {pipeline[activeTab].length === 0 ? (
                   <p className="text-sm text-zinc-600 text-center py-8">No ideas in this stage yet.</p>
                 ) : (
-                  grouped[activeTab].map((post) => (
+                  pipeline[activeTab].map((post) => (
                     <IdeaCard key={post.id} post={post} onSelect={setSelectedPost} />
                   ))
                 )}
               </div>
             </div>
 
-            {/* Desktop: kanban columns */}
-            <div className="hidden md:grid md:grid-cols-4 gap-4">
-              {stages.map((s) => (
-                <div key={s} className={`rounded-xl border ${stageColors[s]} bg-zinc-900/30 p-4`}>
-                  <div className="flex items-center justify-between mb-4">
-                    <StageBadge stage={s} />
-                    <span className="text-xs text-zinc-600">{grouped[s].length}</span>
-                  </div>
-                  <div className="space-y-2">
-                    {grouped[s].length === 0 ? (
-                      <p className="text-sm text-zinc-600 text-center py-6">None yet</p>
-                    ) : (
-                      grouped[s].map((post) => (
-                        <IdeaCard key={post.id} post={post} onSelect={setSelectedPost} />
-                      ))
-                    )}
-                  </div>
+            {/* ── Desktop pipeline columns ── */}
+            <div className="hidden md:grid md:grid-cols-3 gap-8">
+              {pipelineStages.map((s) => (
+                <div key={s} className="space-y-3">
+                  {pipeline[s].length === 0 ? (
+                    <div className={`rounded-xl border border-dashed ${stageConfig[s].emptyBorder} p-10 text-center`}>
+                      <p className="text-xs text-zinc-600">{stageConfig[s].tagline}</p>
+                      <p className="text-[11px] text-zinc-700 mt-1">No ideas yet</p>
+                    </div>
+                  ) : (
+                    pipeline[s].map((post) => (
+                      <PipelineCard key={post.id} post={post} onSelect={setSelectedPost} />
+                    ))
+                  )}
                 </div>
               ))}
             </div>
+
+            {/* ── Post-Mortems ── */}
+            {rejected.length > 0 && (
+              <div className="mt-20 pt-12 border-t border-zinc-800/50">
+                <div className="flex items-center gap-3 mb-1.5">
+                  <div className="w-7 h-7 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center">
+                    <svg className="w-3.5 h-3.5 text-red-400/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </div>
+                  <h2 className="text-lg font-bold text-zinc-300">Post-Mortems</h2>
+                </div>
+                <p className="text-sm text-zinc-500 mb-8 ml-10 max-w-lg">
+                  Ideas we explored and decided to kill. Every rejection has a reason, because failed experiments are worth sharing too.
+                </p>
+                <div className="space-y-4 max-w-3xl">
+                  {rejected.map((post) => (
+                    <PostMortemCard key={post.id} post={post} onSelect={setSelectedPost} />
+                  ))}
+                </div>
+              </div>
+            )}
           </>
         )}
       </div>
