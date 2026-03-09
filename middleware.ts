@@ -72,7 +72,8 @@ export function middleware(request: NextRequest) {
     pathname.startsWith('/_next/') ||
     pathname.startsWith('/favicon') ||
     pathname === '/logo.svg' ||
-    pathname === '/og-image.png'
+    pathname === '/og-image.png' ||
+    pathname.startsWith('/openqueen')
   ) {
     return NextResponse.next()
   }
