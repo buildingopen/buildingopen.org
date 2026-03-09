@@ -19,12 +19,11 @@ const projects = [
   {
     id: "openslides",
     title: "OpenSlides",
-    tagline: "Text prompt to slide deck",
-    description: "Generate branded presentation decks from a simple text prompt. Professional layouts, consistent styling.",
-    features: ["Multiple layouts", "Brand colors", "Export to PPTX", "Custom templates"],
-    href: "https://github.com/federicodeponte/openslides",
+    tagline: "Brand-first AI slide decks",
+    description: "Point it at any website. Get a pitch deck in that brand's exact colors, fonts, and style. 100+ curated brands, real SVG logos, one command.",
+    features: ["100+ curated brands", "Real SVG logos", "LLM-powered generation", "Export to PNG/PDF"],
+    href: "https://openslides.buildingopen.org",
     image: "/openslides-demo.png",
-    comingSoon: true,
   },
   {
     id: "openword",
