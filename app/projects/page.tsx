@@ -8,6 +8,16 @@ export const metadata: Metadata = {
 
 const projects = [
   {
+    id: "openqueen",
+    title: "OpenQueen",
+    tagline: "Coding agent controlled by WhatsApp",
+    description: "Send a message from WhatsApp. Gemini compiles it into a task, Claude executes it, and you get notified when done. All while you're away from your desk.",
+    features: ["WhatsApp + Telegram transport", "Gemini orchestrates Claude/Codex", "Parallel task runner", "30-second install"],
+    href: "https://github.com/buildingopen/openqueen",
+    landingHref: "/openqueen",
+    image: "/openqueen-demo.png",
+  },
+  {
     id: "openpaper",
     title: "OpenPaper",
     tagline: "AI research team",
@@ -73,14 +83,24 @@ export default function ProjectsPage() {
                     Coming soon
                   </span>
                 ) : (
-                  <a
-                    href={project.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block px-5 py-2 bg-green-500 text-black font-medium rounded-lg hover:bg-green-400 transition-colors text-sm"
-                  >
-                    View on GitHub
-                  </a>
+                  <div className="flex gap-3">
+                    {"landingHref" in project && (
+                      <a
+                        href={(project as { landingHref: string }).landingHref}
+                        className="inline-block px-5 py-2 bg-green-500 text-black font-medium rounded-lg hover:bg-green-400 transition-colors text-sm"
+                      >
+                        Learn more
+                      </a>
+                    )}
+                    <a
+                      href={project.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block px-5 py-2 bg-zinc-800 text-zinc-300 font-medium rounded-lg hover:bg-zinc-700 transition-colors text-sm"
+                    >
+                      GitHub
+                    </a>
+                  </div>
                 )}
               </div>
             </div>
