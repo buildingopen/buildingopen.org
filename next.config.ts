@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         destination: '/blog/ai-file-context',
         permanent: true,
       },
+      {
+        source: '/openqueen',
+        destination: '/openqueen/index.html',
+        permanent: false,
+      },
     ];
   },
 };
