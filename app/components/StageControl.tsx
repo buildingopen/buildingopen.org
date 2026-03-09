@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { createClient } from '../lib/supabase';
 import StageBadge from './StageBadge';
 
-const stages = ['idea', 'prototype', 'live'] as const;
+const stages = ['rejected', 'idea', 'prototype', 'live'] as const;
 type Stage = (typeof stages)[number];
 
 export default function StageControl({

@@ -10,12 +10,13 @@ import AuthButton from '../components/AuthButton';
 import { CardSkeletonList } from '../components/Skeleton';
 import type { Post } from '../lib/supabase';
 
-const stages = ['idea', 'prototype', 'live'] as const;
+const stages = ['idea', 'prototype', 'live', 'rejected'] as const;
 
 const stageColors = {
   idea: 'border-blue-500/30',
   prototype: 'border-yellow-500/30',
   live: 'border-green-500/30',
+  rejected: 'border-red-500/30',
 } as const;
 
 export default function IdeasPage() {
@@ -68,6 +69,7 @@ export default function IdeasPage() {
     idea: filtered.filter((p) => p.stage === 'idea'),
     prototype: filtered.filter((p) => p.stage === 'prototype'),
     live: filtered.filter((p) => p.stage === 'live'),
+    rejected: filtered.filter((p) => p.stage === 'rejected'),
   };
 
   return (
@@ -94,7 +96,7 @@ export default function IdeasPage() {
         <p className="text-sm text-zinc-500 mb-6 max-w-2xl">
           Anyone can submit a product idea. Vote on the ones you want to see built.
           Ideas that gain traction move to <span className="text-yellow-500">Prototype</span>, then
-          to <span className="text-green-400">Live</span> when they ship.
+          to <span className="text-green-400">Live</span> when they ship. Some end up <span className="text-red-400">Rejected</span> with an explanation why.
         </p>
 
         <div className="mb-6">
@@ -108,7 +110,7 @@ export default function IdeasPage() {
         </div>
 
         {loading ? (
-          <div className="hidden md:grid md:grid-cols-3 gap-4">
+          <div className="hidden md:grid md:grid-cols-4 gap-4">
             {stages.map((s) => (
               <div key={s} className={`rounded-xl border ${stageColors[s]} bg-zinc-900/30 p-4`}>
                 <div className="flex items-center justify-between mb-4">
@@ -147,7 +149,7 @@ export default function IdeasPage() {
             </div>
 
             {/* Desktop: kanban columns */}
-            <div className="hidden md:grid md:grid-cols-3 gap-4">
+            <div className="hidden md:grid md:grid-cols-4 gap-4">
               {stages.map((s) => (
                 <div key={s} className={`rounded-xl border ${stageColors[s]} bg-zinc-900/30 p-4`}>
                   <div className="flex items-center justify-between mb-4">
