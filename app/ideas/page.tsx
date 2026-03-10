@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { createClient, timeAgo } from '../lib/supabase';
 import IdeaCard from '../components/IdeaCard';
@@ -22,6 +22,8 @@ const stageConfig = {
     dotClass: 'border-blue-500/50 text-blue-400 bg-blue-500/10',
     labelClass: 'text-blue-400',
     emptyBorder: 'border-blue-500/10',
+    cardAccent: 'hover:border-blue-500/20',
+    cardBg: 'bg-zinc-900/40',
   },
   prototype: {
     label: 'Prototype',
@@ -30,6 +32,8 @@ const stageConfig = {
     dotClass: 'border-yellow-500/50 text-yellow-500 bg-yellow-500/10',
     labelClass: 'text-yellow-500',
     emptyBorder: 'border-yellow-500/10',
+    cardAccent: 'hover:border-yellow-500/20',
+    cardBg: 'bg-zinc-900/30',
   },
   live: {
     label: 'Live',
@@ -38,15 +42,68 @@ const stageConfig = {
     dotClass: 'border-green-500/50 text-green-400 bg-green-500/10',
     labelClass: 'text-green-400',
     emptyBorder: 'border-green-500/10',
+    cardAccent: 'hover:border-green-500/20',
+    cardBg: 'bg-green-500/[0.02]',
   },
 } as const;
 
-/* ── Pipeline card: richer than IdeaCard, shows body preview ── */
-function PipelineCard({ post, onSelect }: { post: Post; onSelect: (post: Post) => void }) {
+/* ── Smart truncation: cut at sentence boundary ── */
+function truncateAtSentence(text: string, maxLen: number): { truncated: string; wasTruncated: boolean } {
+  if (text.length <= maxLen) return { truncated: text, wasTruncated: false };
+  const sub = text.slice(0, maxLen);
+  // Find the last sentence-ending punctuation
+  const lastPeriod = Math.max(sub.lastIndexOf('. '), sub.lastIndexOf('.\n'));
+  if (lastPeriod > maxLen * 0.4) {
+    return { truncated: text.slice(0, lastPeriod + 1), wasTruncated: true };
+  }
+  // Fallback: cut at last space
+  const lastSpace = sub.lastIndexOf(' ');
+  return { truncated: text.slice(0, lastSpace > 0 ? lastSpace : maxLen) + '...', wasTruncated: true };
+}
+
+/* ── Card with mouse-tracking glow ── */
+function GlowCard({ children, className, onClick, style }: {
+  children: React.ReactNode;
+  className: string;
+  onClick?: () => void;
+  style?: React.CSSProperties;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    ref.current.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+    ref.current.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+  };
+
   return (
     <div
+      ref={ref}
+      onClick={onClick}
+      onMouseMove={handleMouseMove}
+      className={`card-glow ${className}`}
+      style={style}
+    >
+      {children}
+    </div>
+  );
+}
+
+/* ── Pipeline card: richer than IdeaCard, stage-aware styling ── */
+function PipelineCard({ post, stage, onSelect, index }: {
+  post: Post;
+  stage: PipelineStage;
+  onSelect: (post: Post) => void;
+  index: number;
+}) {
+  const config = stageConfig[stage];
+
+  return (
+    <GlowCard
       onClick={() => onSelect(post)}
-      className="card-glow group p-4 rounded-xl border border-zinc-800/80 bg-zinc-900/40 hover:bg-zinc-800/40 hover:border-zinc-700/80 transition-all duration-200 cursor-pointer"
+      className={`group p-4 rounded-xl border border-zinc-800/80 ${config.cardBg} hover:bg-zinc-800/40 ${config.cardAccent} transition-all duration-200 cursor-pointer hover:scale-[1.01] animate-fade-in-up`}
+      style={{ animationDelay: `${index * 60}ms` }}
     >
       <div className="flex gap-3">
         <VoteButton postId={post.id} initialCount={post.upvotes} />
@@ -77,20 +134,22 @@ function PipelineCard({ post, onSelect }: { post: Post; onSelect: (post: Post) =
           </div>
         </div>
       </div>
-    </div>
+    </GlowCard>
   );
 }
 
 /* ── Post-mortem card: expandable rejection reasoning ── */
-function PostMortemCard({ post, onSelect }: { post: Post; onSelect: (post: Post) => void }) {
+function PostMortemCard({ post, onSelect, index }: { post: Post; onSelect: (post: Post) => void; index: number }) {
   const [expanded, setExpanded] = useState(false);
   const body = post.body || '';
-  const maxLen = 300;
-  const isLong = body.length > maxLen;
-  const displayBody = expanded || !isLong ? body : body.slice(0, maxLen) + '...';
+  const { truncated, wasTruncated } = truncateAtSentence(body, 350);
+  const displayBody = expanded ? body : truncated;
 
   return (
-    <div className="card-glow group relative p-5 md:p-6 rounded-xl border border-red-500/[0.08] bg-red-500/[0.015] hover:border-red-500/[0.15] hover:bg-red-500/[0.03] transition-all duration-200">
+    <GlowCard
+      className={`group relative p-5 md:p-6 rounded-xl border border-red-500/[0.08] bg-red-500/[0.015] hover:border-red-500/[0.15] hover:bg-red-500/[0.03] transition-all duration-200 hover:scale-[1.005] animate-fade-in-up`}
+      style={{ animationDelay: `${index * 80 + 200}ms` }}
+    >
       <div className="flex gap-4">
         <VoteButton postId={post.id} initialCount={post.upvotes} />
         <div className="flex-1 min-w-0">
@@ -117,7 +176,7 @@ function PostMortemCard({ post, onSelect }: { post: Post; onSelect: (post: Post)
               <p className="text-sm text-zinc-500 leading-relaxed whitespace-pre-wrap">
                 {displayBody}
               </p>
-              {isLong && (
+              {wasTruncated && (
                 <button
                   onClick={() => setExpanded(!expanded)}
                   className="text-xs text-zinc-600 hover:text-zinc-400 mt-2 transition-colors"
@@ -129,22 +188,22 @@ function PostMortemCard({ post, onSelect }: { post: Post; onSelect: (post: Post)
           )}
         </div>
       </div>
-    </div>
+    </GlowCard>
   );
 }
 
 /* ── Progress track connecting the three pipeline stages ── */
 function ProgressTrack({ counts }: { counts: Record<PipelineStage, number> }) {
   return (
-    <div className="hidden md:flex items-center mb-10">
+    <div className="hidden md:flex items-center mb-10 animate-fade-in-up">
       {pipelineStages.map((s, i) => (
         <div key={s} className="contents">
           <div className="flex items-center gap-2.5">
-            <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold border-2 ${stageConfig[s].dotClass}`}>
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border-2 ${stageConfig[s].dotClass} shadow-sm`}>
               {stageConfig[s].step}
             </div>
             <div className="flex items-baseline gap-1.5">
-              <span className={`text-sm font-semibold ${stageConfig[s].labelClass}`}>
+              <span className={`text-sm font-semibold ${stageConfig[s].labelClass} font-[family-name:var(--font-space-grotesk)]`}>
                 {stageConfig[s].label}
               </span>
               <span className="text-[10px] text-zinc-600">
@@ -153,9 +212,9 @@ function ProgressTrack({ counts }: { counts: Record<PipelineStage, number> }) {
             </div>
           </div>
           {i < pipelineStages.length - 1 && (
-            <div className="flex-1 mx-6 flex items-center">
-              <div className="w-full h-px bg-zinc-800" />
-              <svg className="w-3 h-3 text-zinc-700 shrink-0 -ml-px" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <div className="flex-1 mx-5 flex items-center">
+              <div className="w-full h-[2px] bg-zinc-800 rounded-full" />
+              <svg className="w-4 h-4 text-zinc-600 shrink-0 -ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </div>
@@ -228,9 +287,9 @@ export default function IdeasPage() {
     <div className="py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-6">
         {/* ── Header ── */}
-        <div className="flex items-start justify-between mb-4">
+        <div className="flex items-start justify-between mb-4 animate-fade-in-up">
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Idea House</h1>
+            <h1 className="text-2xl md:text-3xl font-bold tracking-tight font-[family-name:var(--font-space-grotesk)]">Idea House</h1>
             <p className="text-sm text-zinc-500 mt-1.5 max-w-md">
               Our public product pipeline. Submit ideas, vote on what matters, watch them ship.
             </p>
@@ -249,7 +308,7 @@ export default function IdeasPage() {
         </div>
 
         {/* ── Search ── */}
-        <div className="mb-10">
+        <div className="mb-10 animate-fade-in-up-delay-1">
           <input
             type="text"
             value={search}
@@ -306,13 +365,13 @@ export default function IdeasPage() {
               {pipelineStages.map((s) => (
                 <div key={s} className="space-y-3">
                   {pipeline[s].length === 0 ? (
-                    <div className={`rounded-xl border border-dashed ${stageConfig[s].emptyBorder} p-10 text-center`}>
+                    <div className={`rounded-xl border border-dashed ${stageConfig[s].emptyBorder} p-10 text-center animate-fade-in-up`}>
                       <p className="text-xs text-zinc-600">{stageConfig[s].tagline}</p>
                       <p className="text-[11px] text-zinc-700 mt-1">No ideas yet</p>
                     </div>
                   ) : (
-                    pipeline[s].map((post) => (
-                      <PipelineCard key={post.id} post={post} onSelect={setSelectedPost} />
+                    pipeline[s].map((post, i) => (
+                      <PipelineCard key={post.id} post={post} stage={s} onSelect={setSelectedPost} index={i} />
                     ))
                   )}
                 </div>
@@ -321,21 +380,21 @@ export default function IdeasPage() {
 
             {/* ── Post-Mortems ── */}
             {rejected.length > 0 && (
-              <div className="mt-20 pt-12 border-t border-zinc-800/50">
-                <div className="flex items-center gap-3 mb-1.5">
-                  <div className="w-7 h-7 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center">
+              <div className="mt-14 pt-10 border-t border-zinc-800/50">
+                <div className="flex items-center gap-3 mb-1.5 animate-fade-in-up" style={{ animationDelay: '150ms' }}>
+                  <div className="w-8 h-8 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center">
                     <svg className="w-3.5 h-3.5 text-red-400/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </div>
-                  <h2 className="text-lg font-bold text-zinc-300">Post-Mortems</h2>
+                  <h2 className="text-lg font-bold text-zinc-300 font-[family-name:var(--font-space-grotesk)]">Post-Mortems</h2>
                 </div>
-                <p className="text-sm text-zinc-500 mb-8 ml-10 max-w-lg">
+                <p className="text-sm text-zinc-500 mb-8 ml-11 max-w-lg animate-fade-in-up" style={{ animationDelay: '200ms' }}>
                   Ideas we explored and decided to kill. Every rejection has a reason, because failed experiments are worth sharing too.
                 </p>
                 <div className="space-y-4 max-w-3xl">
-                  {rejected.map((post) => (
-                    <PostMortemCard key={post.id} post={post} onSelect={setSelectedPost} />
+                  {rejected.map((post, i) => (
+                    <PostMortemCard key={post.id} post={post} onSelect={setSelectedPost} index={i} />
                   ))}
                 </div>
               </div>
