@@ -42,8 +42,8 @@ const stageConfig = {
     dotClass: 'border-green-500/50 text-green-400 bg-green-500/10',
     labelClass: 'text-green-400',
     emptyBorder: 'border-green-500/10',
-    cardAccent: 'hover:border-green-500/20',
-    cardBg: 'bg-green-500/[0.04]',
+    cardAccent: 'border-green-500/[0.08] hover:border-green-500/20',
+    cardBg: 'bg-green-500/[0.05]',
   },
 } as const;
 
@@ -117,7 +117,7 @@ function PipelineCard({ post, stage, onSelect, index }: {
   return (
     <GlowCard
       onClick={() => onSelect(post)}
-      className={`group p-4 rounded-xl border border-zinc-800/80 ${config.cardBg} hover:bg-zinc-800/40 ${config.cardAccent} transition-all duration-200 cursor-pointer hover:scale-[1.01] animate-fade-in-up`}
+      className={`group p-4 rounded-xl border border-zinc-800/80 ${config.cardBg} hover:bg-zinc-800/40 ${config.cardAccent} transition-all duration-200 cursor-pointer hover:scale-[1.01] hover:shadow-lg hover:shadow-black/25 animate-fade-in-up`}
       style={{ animationDelay: `${index * 40}ms` }}
     >
       <div className="flex gap-3">
@@ -157,7 +157,7 @@ function PipelineCard({ post, stage, onSelect, index }: {
 function PostMortemCard({ post, onSelect, index }: { post: Post; onSelect: (post: Post) => void; index: number }) {
   const [expanded, setExpanded] = useState(false);
   const body = post.body || '';
-  const { truncated, wasTruncated } = truncateAtSentence(body, 350);
+  const { truncated, wasTruncated } = truncateAtSentence(body, 280);
   const displayBody = expanded ? body : truncated;
 
   return (
@@ -189,15 +189,33 @@ function PostMortemCard({ post, onSelect, index }: { post: Post; onSelect: (post
           {body && (
             <div className="mt-3 ml-[26px]">
               <p className="text-sm text-zinc-500 leading-relaxed whitespace-pre-wrap">
-                {displayBody}
+                {truncated}
               </p>
               {wasTruncated && (
-                <button
-                  onClick={() => setExpanded(!expanded)}
-                  className="text-xs text-zinc-600 hover:text-zinc-400 mt-2 transition-colors"
-                >
-                  {expanded ? 'Show less' : 'Read full reasoning'}
-                </button>
+                <>
+                  <div
+                    className="grid transition-[grid-template-rows] duration-300 ease-out"
+                    style={{ gridTemplateRows: expanded ? '1fr' : '0fr' }}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="text-sm text-zinc-500 leading-relaxed whitespace-pre-wrap pt-1">
+                        {body.slice(truncated.length).replace(/^\n+/, '')}
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setExpanded(!expanded)}
+                    className="text-xs text-zinc-600 hover:text-zinc-400 mt-2 transition-colors inline-flex items-center gap-1"
+                  >
+                    {expanded ? 'Show less' : 'Read full reasoning'}
+                    <svg
+                      className={`w-3 h-3 transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
+                      fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                </>
               )}
             </div>
           )}
@@ -228,8 +246,8 @@ function ProgressTrack({ counts }: { counts: Record<PipelineStage, number> }) {
           </div>
           {i < pipelineStages.length - 1 && (
             <div className="flex-1 mx-5 flex items-center">
-              <div className="w-full h-[2px] bg-zinc-800 rounded-full" />
-              <svg className="w-4 h-4 text-zinc-600 shrink-0 -ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <div className="w-full h-[2px] bg-zinc-700/80 rounded-full" />
+              <svg className="w-4 h-4 text-zinc-500 shrink-0 -ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </div>
