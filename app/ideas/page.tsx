@@ -12,6 +12,66 @@ import { CardSkeletonList } from '../components/Skeleton';
 import type { Post } from '../lib/supabase';
 
 const pipelineStages = ['idea', 'prototype', 'live'] as const;
+
+/* ── Per-project icons (matched by title substring) ── */
+function IdeaIcon({ title, className = '' }: { title: string; className?: string }) {
+  const t = title.toLowerCase();
+  const base = `shrink-0 ${className}`;
+
+  // Brief – lightning bolt (AI-powered digests)
+  if (t.includes('brief')) return (
+    <svg className={base} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+    </svg>
+  );
+
+  // Agent Protocol Layer – connected nodes
+  if (t.includes('agent protocol') || t.includes('protocol layer')) return (
+    <svg className={base} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="6" cy="6" r="3" /><circle cx="18" cy="6" r="3" /><circle cx="12" cy="18" r="3" />
+      <path d="M8.5 7.5L10.5 16M15.5 7.5L13.5 16M9 6h6" />
+    </svg>
+  );
+
+  // Execution Layer – terminal/deploy
+  if (t.includes('execution layer')) return (
+    <svg className={base} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="4 17 10 11 4 5" /><line x1="12" y1="19" x2="20" y2="19" />
+    </svg>
+  );
+
+  // OpenPaper – paper with checkmark
+  if (t.includes('openpaper')) return (
+    <svg className={base} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" /><polyline points="14 2 14 8 20 8" />
+      <path d="M9 15l2 2 4-4" />
+    </svg>
+  );
+
+  // Rocketlist – rocket
+  if (t.includes('rocketlist')) return (
+    <svg className={base} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z" />
+      <path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z" />
+      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" /><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+    </svg>
+  );
+
+  // BlackDoc – document with redaction bars
+  if (t.includes('blackdoc') || t.includes('redaction')) return (
+    <svg className={base} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" /><polyline points="14 2 14 8 20 8" />
+      <rect x="8" y="12" width="8" height="2" rx="0.5" fill="currentColor" /><rect x="8" y="16" width="5" height="2" rx="0.5" fill="currentColor" />
+    </svg>
+  );
+
+  // Default – lightbulb
+  return (
+    <svg className={base} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 18h6M10 22h4" /><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0018 8 6 6 0 006 8c0 1 .23 2.23 1.5 3.5C8.46 12.35 8.82 13 9 14" />
+    </svg>
+  );
+}
 type PipelineStage = (typeof pipelineStages)[number];
 
 const stageConfig = {
@@ -123,9 +183,12 @@ function PipelineCard({ post, stage, onSelect, index }: {
       <div className="flex gap-3">
         <VoteButton postId={post.id} initialCount={post.upvotes} />
         <div className="flex-1 min-w-0">
-          <h3 className="font-semibold text-[13px] text-zinc-200 group-hover:text-white transition-colors">
-            {post.title}
-          </h3>
+          <div className="flex items-center gap-2">
+            <IdeaIcon title={post.title} className="w-4 h-4 text-zinc-500 group-hover:text-zinc-300 transition-colors" />
+            <h3 className="font-semibold text-[13px] text-zinc-200 group-hover:text-white transition-colors">
+              {post.title}
+            </h3>
+          </div>
           {post.body && (
             <p className="text-xs text-zinc-500 mt-1.5 line-clamp-2 leading-relaxed">
               {post.body}
@@ -169,9 +232,7 @@ function PostMortemCard({ post, onSelect, index }: { post: Post; onSelect: (post
         <VoteButton postId={post.id} initialCount={post.upvotes} />
         <div className="flex-1 min-w-0">
           <div className="flex items-start gap-2.5">
-            <svg className="w-4 h-4 text-red-500/40 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <IdeaIcon title={post.title} className="w-[18px] h-[18px] text-red-400/50 mt-0.5" />
             <div className="flex-1 min-w-0">
               <button
                 onClick={() => onSelect(post)}
