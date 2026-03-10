@@ -43,18 +43,33 @@ const stageConfig = {
     labelClass: 'text-green-400',
     emptyBorder: 'border-green-500/10',
     cardAccent: 'hover:border-green-500/20',
-    cardBg: 'bg-green-500/[0.02]',
+    cardBg: 'bg-green-500/[0.04]',
   },
 } as const;
 
-/* ── Smart truncation: cut at sentence boundary ── */
+/* ── Smart truncation: cut at paragraph or sentence boundary ── */
 function truncateAtSentence(text: string, maxLen: number): { truncated: string; wasTruncated: boolean } {
   if (text.length <= maxLen) return { truncated: text, wasTruncated: false };
   const sub = text.slice(0, maxLen);
-  // Find the last sentence-ending punctuation
-  const lastPeriod = Math.max(sub.lastIndexOf('. '), sub.lastIndexOf('.\n'));
-  if (lastPeriod > maxLen * 0.4) {
-    return { truncated: text.slice(0, lastPeriod + 1), wasTruncated: true };
+  // Prefer cutting at a double newline (paragraph break)
+  const lastParagraph = sub.lastIndexOf('\n\n');
+  if (lastParagraph > maxLen * 0.4) {
+    return { truncated: text.slice(0, lastParagraph), wasTruncated: true };
+  }
+  // Find sentence end, but skip "1. " style numbered list prefixes
+  let bestPeriod = -1;
+  for (let i = sub.length - 1; i > maxLen * 0.4; i--) {
+    if (sub[i] === '.' && i + 1 < sub.length) {
+      const next = sub[i + 1];
+      // Ensure it's a real sentence end, not "1." or "vs."
+      if ((next === ' ' || next === '\n') && i > 0 && /[a-z]/.test(sub[i - 1])) {
+        bestPeriod = i;
+        break;
+      }
+    }
+  }
+  if (bestPeriod > 0) {
+    return { truncated: text.slice(0, bestPeriod + 1), wasTruncated: true };
   }
   // Fallback: cut at last space
   const lastSpace = sub.lastIndexOf(' ');
@@ -103,7 +118,7 @@ function PipelineCard({ post, stage, onSelect, index }: {
     <GlowCard
       onClick={() => onSelect(post)}
       className={`group p-4 rounded-xl border border-zinc-800/80 ${config.cardBg} hover:bg-zinc-800/40 ${config.cardAccent} transition-all duration-200 cursor-pointer hover:scale-[1.01] animate-fade-in-up`}
-      style={{ animationDelay: `${index * 60}ms` }}
+      style={{ animationDelay: `${index * 40}ms` }}
     >
       <div className="flex gap-3">
         <VoteButton postId={post.id} initialCount={post.upvotes} />
@@ -148,7 +163,7 @@ function PostMortemCard({ post, onSelect, index }: { post: Post; onSelect: (post
   return (
     <GlowCard
       className={`group relative p-5 md:p-6 rounded-xl border border-red-500/[0.08] bg-red-500/[0.015] hover:border-red-500/[0.15] hover:bg-red-500/[0.03] transition-all duration-200 hover:scale-[1.005] animate-fade-in-up`}
-      style={{ animationDelay: `${index * 80 + 200}ms` }}
+      style={{ animationDelay: `${index * 50 + 100}ms` }}
     >
       <div className="flex gap-4">
         <VoteButton postId={post.id} initialCount={post.upvotes} />
