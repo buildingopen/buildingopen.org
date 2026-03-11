@@ -73,7 +73,8 @@ export function middleware(request: NextRequest) {
     pathname.startsWith('/favicon') ||
     pathname === '/logo.svg' ||
     pathname === '/og-image.png' ||
-    pathname.startsWith('/openqueen')
+    pathname.startsWith('/openqueen') ||
+    pathname.startsWith('/wrapped/')
   ) {
     return NextResponse.next()
   }
