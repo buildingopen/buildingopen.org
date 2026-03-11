@@ -86,6 +86,7 @@ const stageConfig = {
     cardBg: 'bg-zinc-800',
     iconBg: 'bg-blue-500/15',
     iconColor: 'text-blue-400',
+    laneBg: 'bg-blue-500/[0.02]',
   },
   prototype: {
     label: 'Prototype',
@@ -98,6 +99,7 @@ const stageConfig = {
     cardBg: 'bg-zinc-800',
     iconBg: 'bg-yellow-500/15',
     iconColor: 'text-yellow-500',
+    laneBg: 'bg-yellow-500/[0.02]',
   },
   live: {
     label: 'Live',
@@ -107,9 +109,10 @@ const stageConfig = {
     labelClass: 'text-green-400',
     emptyBorder: 'border-green-500/10',
     cardAccent: 'border-green-600/30 hover:border-green-400/40',
-    cardBg: 'bg-zinc-800',
+    cardBg: 'bg-zinc-800 shadow-sm shadow-green-500/5',
     iconBg: 'bg-green-500/15',
     iconColor: 'text-green-400',
+    laneBg: 'bg-green-500/[0.03]',
   },
 } as const;
 
@@ -190,7 +193,7 @@ function PipelineCard({ post, stage, onSelect, index }: {
         <VoteButton postId={post.id} initialCount={post.upvotes} />
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2.5">
-            <div className={`w-7 h-7 rounded-lg ${config.iconBg} flex items-center justify-center shrink-0`}>
+            <div className={`w-7 h-7 rounded-lg ${config.iconBg} flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-110`}>
               <IdeaIcon title={post.title} className={`w-3.5 h-3.5 ${config.iconColor}`} />
             </div>
             <h3 className="font-semibold text-sm text-zinc-100 group-hover:text-white transition-colors">
@@ -239,7 +242,7 @@ function PostMortemCard({ post, onSelect, index }: { post: Post; onSelect: (post
         <VoteButton postId={post.id} initialCount={post.upvotes} />
         <div className="flex-1 min-w-0">
           <div className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center shrink-0 mt-0.5">
+            <div className="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center shrink-0 mt-0.5 transition-transform duration-200 group-hover:scale-110">
               <IdeaIcon title={post.title} className="w-4 h-4 text-red-400/70" />
             </div>
             <div className="flex-1 min-w-0">
@@ -295,35 +298,17 @@ function PostMortemCard({ post, onSelect, index }: { post: Post; onSelect: (post
   );
 }
 
-/* ── Progress track connecting the three pipeline stages ── */
-function ProgressTrack({ counts }: { counts: Record<PipelineStage, number> }) {
+/* ── Column header with step number, label, and count ── */
+function ColumnHeader({ stage }: { stage: PipelineStage }) {
+  const config = stageConfig[stage];
   return (
-    <div className="hidden md:flex items-center mb-10 animate-fade-in-up">
-      {pipelineStages.map((s, i) => (
-        <div key={s} className="contents">
-          <div className="flex items-center gap-2.5">
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border-2 ${stageConfig[s].dotClass} shadow-sm`}>
-              {stageConfig[s].step}
-            </div>
-            <div className="flex items-baseline gap-1.5">
-              <span className={`text-sm font-semibold ${stageConfig[s].labelClass} font-[family-name:var(--font-space-grotesk)]`}>
-                {stageConfig[s].label}
-              </span>
-              <span className="text-[10px] text-zinc-600">
-                {counts[s]}
-              </span>
-            </div>
-          </div>
-          {i < pipelineStages.length - 1 && (
-            <div className="flex-1 mx-5 flex items-center">
-              <div className="w-full h-[2px] bg-zinc-700/80 rounded-full" />
-              <svg className="w-4 h-4 text-zinc-500 shrink-0 -ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-          )}
-        </div>
-      ))}
+    <div className="flex items-center gap-2.5 mb-4">
+      <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold border-2 ${config.dotClass}`}>
+        {config.step}
+      </div>
+      <span className={`text-sm font-semibold ${config.labelClass} font-[family-name:var(--font-space-grotesk)]`}>
+        {config.label}
+      </span>
     </div>
   );
 }
@@ -434,9 +419,6 @@ export default function IdeasPage() {
           </div>
         ) : (
           <>
-            {/* ── Progress track (desktop) ── */}
-            <ProgressTrack counts={counts} />
-
             {/* ── Mobile tabs ── */}
             <div className="md:hidden mb-6">
               <div className="flex gap-1 bg-zinc-900 rounded-lg p-1">
@@ -464,19 +446,22 @@ export default function IdeasPage() {
             </div>
 
             {/* ── Desktop pipeline columns ── */}
-            <div className="hidden md:grid md:grid-cols-3 gap-8">
+            <div className="hidden md:grid md:grid-cols-3 gap-5 animate-fade-in-up">
               {pipelineStages.map((s) => (
-                <div key={s} className="space-y-3">
-                  {pipeline[s].length === 0 ? (
-                    <div className={`rounded-xl border border-dashed ${stageConfig[s].emptyBorder} p-10 text-center animate-fade-in-up`}>
-                      <p className="text-xs text-zinc-600">{stageConfig[s].tagline}</p>
-                      <p className="text-[11px] text-zinc-700 mt-1">No ideas yet</p>
-                    </div>
-                  ) : (
-                    pipeline[s].map((post, i) => (
-                      <PipelineCard key={post.id} post={post} stage={s} onSelect={setSelectedPost} index={i} />
-                    ))
-                  )}
+                <div key={s} className={`rounded-2xl p-3 ${stageConfig[s].laneBg}`}>
+                  <ColumnHeader stage={s} />
+                  <div className="space-y-3">
+                    {pipeline[s].length === 0 ? (
+                      <div className={`rounded-xl border border-dashed ${stageConfig[s].emptyBorder} p-10 text-center`}>
+                        <p className="text-xs text-zinc-600">{stageConfig[s].tagline}</p>
+                        <p className="text-[11px] text-zinc-700 mt-1">No ideas yet</p>
+                      </div>
+                    ) : (
+                      pipeline[s].map((post, i) => (
+                        <PipelineCard key={post.id} post={post} stage={s} onSelect={setSelectedPost} index={i} />
+                      ))
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
