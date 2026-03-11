@@ -82,8 +82,8 @@ const stageConfig = {
     dotClass: 'border-blue-500/50 text-blue-400 bg-blue-500/10',
     labelClass: 'text-blue-400',
     emptyBorder: 'border-blue-500/10',
-    cardAccent: 'border-zinc-700 hover:border-blue-500/40',
-    cardBg: 'bg-[#1a1a1f]',
+    cardAccent: 'border-zinc-700/80 hover:border-blue-400/40',
+    cardBg: 'bg-zinc-800',
     iconBg: 'bg-blue-500/15',
     iconColor: 'text-blue-400',
   },
@@ -94,8 +94,8 @@ const stageConfig = {
     dotClass: 'border-yellow-500/50 text-yellow-500 bg-yellow-500/10',
     labelClass: 'text-yellow-500',
     emptyBorder: 'border-yellow-500/10',
-    cardAccent: 'border-zinc-700 hover:border-yellow-500/40',
-    cardBg: 'bg-[#1a1a1f]',
+    cardAccent: 'border-zinc-700/80 hover:border-yellow-400/40',
+    cardBg: 'bg-zinc-800',
     iconBg: 'bg-yellow-500/15',
     iconColor: 'text-yellow-500',
   },
@@ -106,8 +106,8 @@ const stageConfig = {
     dotClass: 'border-green-500/50 text-green-400 bg-green-500/10',
     labelClass: 'text-green-400',
     emptyBorder: 'border-green-500/10',
-    cardAccent: 'border-green-500/25 hover:border-green-500/40',
-    cardBg: 'bg-[#141a16]',
+    cardAccent: 'border-green-600/30 hover:border-green-400/40',
+    cardBg: 'bg-zinc-800',
     iconBg: 'bg-green-500/15',
     iconColor: 'text-green-400',
   },
@@ -183,7 +183,7 @@ function PipelineCard({ post, stage, onSelect, index }: {
   return (
     <GlowCard
       onClick={() => onSelect(post)}
-      className={`group p-4 rounded-xl border ${config.cardBg} ${config.cardAccent} hover:bg-[#222228] transition-all duration-200 cursor-pointer hover:shadow-lg hover:shadow-black/30 animate-fade-in-up`}
+      className={`group p-4 rounded-xl border ${config.cardBg} ${config.cardAccent} hover:bg-zinc-700/50 transition-all duration-200 cursor-pointer hover:shadow-lg hover:shadow-black/30 animate-fade-in-up`}
       style={{ animationDelay: `${index * 40}ms` }}
     >
       <div className="flex gap-3">
@@ -232,7 +232,7 @@ function PostMortemCard({ post, onSelect, index }: { post: Post; onSelect: (post
 
   return (
     <GlowCard
-      className={`group relative p-5 md:p-6 rounded-xl border border-zinc-700 bg-[#1a1a1f] hover:border-red-500/30 hover:bg-[#222228] transition-all duration-200 animate-fade-in-up`}
+      className={`group relative p-5 md:p-6 rounded-xl border border-zinc-700/80 bg-zinc-800 hover:border-red-400/30 hover:bg-zinc-700/50 transition-all duration-200 animate-fade-in-up`}
       style={{ animationDelay: `${index * 50 + 100}ms` }}
     >
       <div className="flex gap-4">
