@@ -82,8 +82,10 @@ const stageConfig = {
     dotClass: 'border-blue-500/50 text-blue-400 bg-blue-500/10',
     labelClass: 'text-blue-400',
     emptyBorder: 'border-blue-500/10',
-    cardAccent: 'hover:border-blue-500/20',
-    cardBg: 'bg-zinc-900/40',
+    cardAccent: 'hover:border-blue-500/25',
+    cardBg: 'bg-zinc-900/80',
+    iconBg: 'bg-blue-500/10',
+    iconColor: 'text-blue-400',
   },
   prototype: {
     label: 'Prototype',
@@ -92,8 +94,10 @@ const stageConfig = {
     dotClass: 'border-yellow-500/50 text-yellow-500 bg-yellow-500/10',
     labelClass: 'text-yellow-500',
     emptyBorder: 'border-yellow-500/10',
-    cardAccent: 'hover:border-yellow-500/20',
-    cardBg: 'bg-zinc-900/30',
+    cardAccent: 'hover:border-yellow-500/25',
+    cardBg: 'bg-zinc-900/80',
+    iconBg: 'bg-yellow-500/10',
+    iconColor: 'text-yellow-500',
   },
   live: {
     label: 'Live',
@@ -102,8 +106,10 @@ const stageConfig = {
     dotClass: 'border-green-500/50 text-green-400 bg-green-500/10',
     labelClass: 'text-green-400',
     emptyBorder: 'border-green-500/10',
-    cardAccent: 'border-green-500/[0.08] hover:border-green-500/20',
-    cardBg: 'bg-green-500/[0.05]',
+    cardAccent: 'border-green-500/[0.12] hover:border-green-500/25',
+    cardBg: 'bg-green-500/[0.06]',
+    iconBg: 'bg-green-500/10',
+    iconColor: 'text-green-400',
   },
 } as const;
 
@@ -183,18 +189,20 @@ function PipelineCard({ post, stage, onSelect, index }: {
       <div className="flex gap-3">
         <VoteButton postId={post.id} initialCount={post.upvotes} />
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2">
-            <IdeaIcon title={post.title} className="w-4 h-4 text-zinc-500 group-hover:text-zinc-300 transition-colors" />
-            <h3 className="font-semibold text-[13px] text-zinc-200 group-hover:text-white transition-colors">
+          <div className="flex items-center gap-2.5">
+            <div className={`w-7 h-7 rounded-lg ${config.iconBg} flex items-center justify-center shrink-0`}>
+              <IdeaIcon title={post.title} className={`w-3.5 h-3.5 ${config.iconColor}`} />
+            </div>
+            <h3 className="font-semibold text-sm text-zinc-100 group-hover:text-white transition-colors">
               {post.title}
             </h3>
           </div>
           {post.body && (
-            <p className="text-xs text-zinc-500 mt-1.5 line-clamp-2 leading-relaxed">
+            <p className="text-xs text-zinc-400 mt-2 line-clamp-2 leading-relaxed">
               {post.body}
             </p>
           )}
-          <div className="flex items-center gap-1.5 mt-2.5 text-[11px] text-zinc-600">
+          <div className="flex items-center gap-1.5 mt-2.5 text-[11px] text-zinc-500">
             <span>{post.author_name}</span>
             <span className="text-zinc-700">·</span>
             <span>{timeAgo(post.created_at)}</span>
@@ -221,7 +229,6 @@ function PostMortemCard({ post, onSelect, index }: { post: Post; onSelect: (post
   const [expanded, setExpanded] = useState(false);
   const body = post.body || '';
   const { truncated, wasTruncated } = truncateAtSentence(body, 280);
-  const displayBody = expanded ? body : truncated;
 
   return (
     <GlowCard
@@ -231,8 +238,10 @@ function PostMortemCard({ post, onSelect, index }: { post: Post; onSelect: (post
       <div className="flex gap-4">
         <VoteButton postId={post.id} initialCount={post.upvotes} />
         <div className="flex-1 min-w-0">
-          <div className="flex items-start gap-2.5">
-            <IdeaIcon title={post.title} className="w-[18px] h-[18px] text-red-400/50 mt-0.5" />
+          <div className="flex items-start gap-3">
+            <div className="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center shrink-0 mt-0.5">
+              <IdeaIcon title={post.title} className="w-4 h-4 text-red-400/70" />
+            </div>
             <div className="flex-1 min-w-0">
               <button
                 onClick={() => onSelect(post)}
@@ -248,7 +257,7 @@ function PostMortemCard({ post, onSelect, index }: { post: Post; onSelect: (post
             </div>
           </div>
           {body && (
-            <div className="mt-3 ml-[26px]">
+            <div className="mt-3 ml-11">
               <p className="text-sm text-zinc-500 leading-relaxed whitespace-pre-wrap">
                 {truncated}
               </p>
@@ -474,7 +483,7 @@ export default function IdeasPage() {
 
             {/* ── Post-Mortems ── */}
             {rejected.length > 0 && (
-              <div className="mt-14 pt-10 border-t border-zinc-800/50">
+              <div className="mt-12 pt-8 border-t border-zinc-800/50">
                 <div className="flex items-center gap-3 mb-1.5 animate-fade-in-up" style={{ animationDelay: '150ms' }}>
                   <div className="w-8 h-8 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center">
                     <svg className="w-3.5 h-3.5 text-red-400/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
