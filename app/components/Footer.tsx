@@ -8,7 +8,7 @@ export default function Footer() {
             <span className="hidden md:inline">&middot;</span>
             <span className="text-zinc-500">Built fast. Shared freely.</span>
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2">
             <a
               href="https://github.com/buildingopen"
               className="hover:text-white transition-colors"
