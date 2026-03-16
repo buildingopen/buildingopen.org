@@ -5,8 +5,8 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-zinc-500">
           <div className="flex flex-col md:flex-row items-center gap-2">
             <span>Building Open</span>
-            <span className="hidden md:inline">·</span>
-            <span className="text-zinc-500">Tools for everyone, built by everyone.</span>
+            <span className="hidden md:inline">&middot;</span>
+            <span className="text-zinc-500">Built fast. Shared freely.</span>
           </div>
           <div className="flex items-center gap-6">
             <a
@@ -30,6 +30,12 @@ export default function Footer() {
               className="hover:text-white transition-colors"
             >
               Contact
+            </a>
+            <a
+              href="/community"
+              className="hover:text-white transition-colors"
+            >
+              Community
             </a>
             <a
               href="/journey"

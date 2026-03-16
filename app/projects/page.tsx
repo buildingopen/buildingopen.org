@@ -52,7 +52,7 @@ export default function ProjectsPage() {
     <div className="py-16">
       <div className="mx-auto max-w-4xl px-6">
         <h1 className="text-3xl font-bold mb-2">Projects</h1>
-        <p className="text-zinc-500 mb-12">Free and open source tools. Use them, learn from them, make them yours.</p>
+        <p className="text-zinc-500 mb-12">Open source tools I built. Use them, fork them, build on them.</p>
 
         <div className="space-y-16">
           {projects.map((project) => (

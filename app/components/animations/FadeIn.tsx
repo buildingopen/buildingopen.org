@@ -7,14 +7,17 @@ export function FadeIn({
   delay = 0,
   duration = 0.5,
   className = '',
+  id,
 }: {
   children: React.ReactNode;
   delay?: number;
   duration?: number;
   className?: string;
+  id?: string;
 }) {
   return (
     <motion.div
+      id={id}
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

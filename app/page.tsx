@@ -2,163 +2,186 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { FadeIn, StaggerContainer, StaggerItem } from "./components/animations/FadeIn";
+import { FadeIn } from "./components/animations/FadeIn";
 
-const projects = [
-  {
-    name: "OpenPaper",
-    tagline: "AI research team, 18 agents",
-    image: "/thesis-page-01.png",
-    href: "/projects#openpaper",
-    featured: true,
-  },
-  {
-    name: "OpenSlides",
-    tagline: "Text → branded slide deck",
-    image: "/openslides-demo.png",
-    href: "/projects#openslides",
-  },
-  {
-    name: "OpenWord",
-    tagline: "Template + data → document",
-    image: "/openword-demo.png",
-    href: "/projects#openword",
-  },
+const blogTeasers = [
+  { slug: "agent-protocol", title: "The Agent Protocol Layer", date: "Feb 27" },
+  { slug: "founder-habits", title: "I treated my life like a product. Here\u2019s what I removed.", date: "Feb 26" },
+  { slug: "clawdbot-hinge", title: "Clawdbot Killed My Hinge Date", date: "Feb 22" },
 ];
 
 export default function Home() {
   return (
     <div>
-      {/* Hero line */}
-      <FadeIn className="border-b border-zinc-800 px-6 py-8 md:py-12">
-        <div className="max-w-5xl mx-auto">
-          <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
-            Open source tools that <span className="text-white">actually work</span>
-          </h1>
-          <p className="text-zinc-500 mt-2">Use them. Learn from them. Make them yours.</p>
-          <a
-            href="https://openpaper.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 mt-4 px-5 py-2.5 bg-green-500 hover:bg-green-400 text-black text-sm font-medium rounded transition-colors"
-          >
-            Try OpenPaper &rarr;
-          </a>
-        </div>
-      </FadeIn>
-
-      {/* Gallery Grid */}
-      <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-        {projects.map((project, idx) => (
-          <StaggerItem key={project.name}>
-            <Link
-              href={project.href}
-              className="group block relative aspect-[4/3] overflow-hidden bg-zinc-900 border-b border-zinc-800 md:border-r h-full"
-            >
-              {/* Image - full bleed */}
-              <Image
-                src={project.image}
-                alt={project.name}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                priority={idx === 0}
-              />
-
-              {/* Gradient overlay - always visible, stronger on hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300" />
-
-              {/* Info - always visible */}
-              <div className="absolute bottom-0 left-0 right-0 p-5">
-                <h2 className="text-xl font-bold mb-1">{project.name}</h2>
-                <p className="text-zinc-400 text-sm">{project.tagline}</p>
-              </div>
-
-              {/* Featured tag */}
-              {project.featured && (
-                <div className="absolute top-4 left-4 px-2 py-1 bg-green-500 text-black text-xs font-medium rounded">
-                  Featured
-                </div>
-              )}
-            </Link>
-          </StaggerItem>
-        ))}
-      </StaggerContainer>
-
-      {/* Proof bar */}
-      <FadeIn delay={0.3} className="border-b border-zinc-800 px-6 py-12">
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 items-center">
-          <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800">
-            <Image
-              src="/thesis-page-02.png"
-              alt="OpenPaper generated research paper"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover object-top"
-            />
-          </div>
-          <div>
-            <p className="text-zinc-300 text-lg leading-relaxed mb-4">
-              OpenPaper generates thesis-level papers with verified citations from 200M+ academic sources. 18 agents, one pipeline.
+      {/* Hero */}
+      <FadeIn className="border-b border-zinc-800 px-6 py-14 md:py-16">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+          <div className="max-w-[620px]">
+            <h1 className="text-[28px] md:text-4xl font-bold tracking-tight leading-tight">
+              I see problems. I build solutions.
+            </h1>
+            <p className="text-zinc-400 mt-3 text-base leading-relaxed">
+              Then I share everything. Tools, ideas, experiments, code. Take what&apos;s useful, ignore the rest.
             </p>
+            <div className="mt-6 flex items-center gap-3.5">
+              <Image
+                src="/fede.jpg"
+                alt="Federico De Ponte"
+                width={64}
+                height={64}
+                className="rounded-full object-cover border-2 border-zinc-800 flex-shrink-0"
+              />
+              <div className="text-sm">
+                <div className="font-semibold">Federico De Ponte</div>
+                <div className="text-zinc-500 mt-0.5">AI engineer &middot; Hamburg &rarr; San Francisco</div>
+              </div>
+            </div>
+          </div>
+          <div className="flex-shrink-0">
             <a
-              href="https://openpaper.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-zinc-500 hover:text-white transition-colors"
+              href="#featured"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm text-zinc-400 border border-zinc-800 rounded-lg hover:border-zinc-600 hover:text-white transition-colors"
             >
-              Try it at openpaper.dev &rarr;
+              <span className="text-lg leading-none">&darr;</span> See what I&apos;m building
             </a>
           </div>
         </div>
       </FadeIn>
 
-      {/* Bottom row */}
-      <FadeIn delay={0.4} className="grid grid-cols-1 md:grid-cols-3 border-b border-zinc-800">
-        {/* About */}
-        <div className="border-b md:border-b-0 md:border-r border-zinc-800 p-8 flex items-center gap-5">
-          <Image
-            src="/fede.jpg"
-            alt="Federico De Ponte"
-            width={56}
-            height={56}
-            className="rounded-full object-cover flex-shrink-0"
-          />
-          <div>
-            <h3 className="font-semibold">Federico De Ponte</h3>
-            <p className="text-zinc-500 text-sm">Self-taught dev building in the open</p>
-            <div className="flex gap-3 mt-2">
-              <a href="https://github.com/federicodeponte" target="_blank" rel="noopener noreferrer" className="text-xs text-zinc-500 hover:text-white">GitHub</a>
-              <a href="https://linkedin.com/in/federicodeponte" target="_blank" rel="noopener noreferrer" className="text-xs text-zinc-500 hover:text-white">LinkedIn</a>
-              <Link href="/badge" className="text-xs text-green-500 hover:text-green-400">Get yours &rarr;</Link>
+      {/* Featured Project */}
+      <FadeIn delay={0.1} className="bg-[#111113] px-6 py-12" id="featured">
+        <div className="max-w-5xl mx-auto">
+          <div className="relative aspect-[2/1] rounded-xl overflow-hidden bg-[#0a0a0a] border border-zinc-800">
+            <Image
+              src="/thesis-page-02.png"
+              alt="OpenPaper research paper output"
+              fill
+              sizes="(max-width: 768px) 100vw, 1080px"
+              className="object-cover object-top"
+              priority
+            />
+          </div>
+          <div className="mt-6 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+            <div className="max-w-[560px]">
+              <h2 className="text-[22px] font-bold">OpenPaper</h2>
+              <p className="text-zinc-400 text-[15px] leading-relaxed mt-2">
+                18 AI agents write thesis-level research papers with verified citations from 200M+ academic sources. Full generation in ~10 minutes.
+              </p>
+            </div>
+            <div className="flex gap-3 flex-shrink-0">
+              <a
+                href="https://openpaper.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-green-500 hover:bg-green-400 text-black text-sm font-semibold rounded-lg transition-colors"
+              >
+                Try OpenPaper &rarr;
+              </a>
+              <Link
+                href="/projects"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 border border-zinc-800 text-zinc-400 text-sm font-medium rounded-lg hover:border-zinc-600 hover:text-white transition-colors"
+              >
+                All projects &rarr;
+              </Link>
             </div>
           </div>
         </div>
-
-        {/* Manifesto teaser */}
-        <Link
-          href="/manifesto"
-          className="group border-b md:border-b-0 md:border-r border-zinc-800 p-8 hover:bg-zinc-900/50 transition-colors"
-        >
-          <p className="text-zinc-400 text-sm mb-2">The Manifesto</p>
-          <p className="text-zinc-400 text-sm leading-relaxed">
-            &ldquo;The best tools and education should be accessible to everyone,
-            regardless of where you live or what you can afford.&rdquo;
-          </p>
-          <p className="text-zinc-600 text-sm mt-3 group-hover:text-white transition-colors">Read more &rarr;</p>
-        </Link>
-
-        {/* CTA */}
-        <Link
-          href="/blog"
-          className="group bg-green-500/10 hover:bg-green-500/20 transition-colors p-8 flex flex-col justify-center"
-        >
-          <h3 className="text-base font-semibold text-green-400">Read the blog</h3>
-          <p className="text-zinc-500 text-sm mt-1">Stories from building in the open.</p>
-        </Link>
       </FadeIn>
 
+      {/* Secondary Projects */}
+      <FadeIn delay={0.2} className="border-b border-zinc-800">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <Link
+            href="/projects#openqueen"
+            className="group block p-6 border-b md:border-b-0 md:border-r border-zinc-800 hover:bg-[#111113] transition-colors"
+          >
+            <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-[#111113] border border-zinc-800 mb-4">
+              <Image
+                src="/openqueen-demo.png"
+                alt="OpenQueen"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover object-top"
+              />
+            </div>
+            <h3 className="text-base font-semibold">OpenQueen</h3>
+            <p className="text-zinc-500 text-[13px] mt-1">Coding agent controlled by WhatsApp</p>
+          </Link>
+          <Link
+            href="/projects#openslides"
+            className="group block p-6 hover:bg-[#111113] transition-colors"
+          >
+            <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-[#111113] border border-zinc-800 mb-4">
+              <Image
+                src="/openslides-demo.png"
+                alt="OpenSlides"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover object-top"
+              />
+            </div>
+            <h3 className="text-base font-semibold">OpenSlides</h3>
+            <p className="text-zinc-500 text-[13px] mt-1">Text &rarr; branded slide deck</p>
+          </Link>
+        </div>
+      </FadeIn>
+
+      {/* Blog Teasers */}
+      <FadeIn delay={0.3} className="border-b border-zinc-800 px-6 py-12">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-baseline justify-between mb-6">
+            <h2 className="text-lg font-semibold">Latest writing</h2>
+            <Link href="/blog" className="text-[13px] text-zinc-500 hover:text-white transition-colors">
+              Read all &rarr;
+            </Link>
+          </div>
+          <div className="flex flex-col">
+            {blogTeasers.map((post, idx) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className={`group flex items-baseline justify-between py-3.5 ${idx < blogTeasers.length - 1 ? 'border-b border-zinc-800' : ''} transition-colors`}
+              >
+                <span className="text-[15px] font-medium text-zinc-400 group-hover:text-white transition-colors">
+                  {post.title}
+                </span>
+                <span className="text-[13px] text-zinc-500 flex-shrink-0 ml-6 tabular-nums hidden md:inline">
+                  {post.date}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </FadeIn>
+
+      {/* Closing */}
+      <FadeIn delay={0.4} className="bg-[#111113] px-6 py-16">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+          <div className="max-w-[520px]">
+            <p className="text-lg font-medium leading-relaxed text-zinc-400">
+              <strong className="text-white font-semibold">I build because I see problems.</strong><br />
+              <strong className="text-white font-semibold">I share because why not.</strong><br />
+              Come build with us.
+            </p>
+          </div>
+          <div className="flex gap-3">
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 border border-zinc-800 text-zinc-400 text-sm font-medium rounded-lg hover:border-zinc-600 hover:text-white transition-colors"
+            >
+              About Building Open &rarr;
+            </Link>
+            <a
+              href="https://github.com/buildingopen"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-5 py-2.5 bg-green-500 hover:bg-green-400 text-black text-sm font-semibold rounded-lg transition-colors"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
+      </FadeIn>
     </div>
   );
 }

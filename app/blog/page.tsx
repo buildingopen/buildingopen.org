@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { tutorials } from "../lib/tutorials";
 
 export const metadata: Metadata = {
   title: "Blog - Building Open",
@@ -94,24 +93,8 @@ export default function BlogPage() {
   return (
     <div className="py-16">
       <div className="mx-auto max-w-2xl px-6">
-        {/* Tutorials */}
-        <div className="mb-16">
-          <p className="text-xs uppercase tracking-wider text-zinc-500 mb-4">Tutorials</p>
-          <div className="space-y-3">
-            {tutorials.map((t) => (
-              <Link
-                key={t.slug}
-                href={`/tutorials/${t.slug}`}
-                className="group block text-sm text-zinc-400 hover:text-white transition-colors"
-              >
-                {t.title} &rarr;
-              </Link>
-            ))}
-          </div>
-        </div>
-
         <h1 className="text-3xl font-bold mb-2">Blog</h1>
-        <p className="text-zinc-500 mb-12">Thoughts on building, open source, and the things we learn along the way.</p>
+        <p className="text-zinc-500 mb-12">Thoughts on building, open source, and the things I learn along the way.</p>
 
         {/* Featured post */}
         <div className="border border-zinc-800 rounded-lg p-6 mb-12">

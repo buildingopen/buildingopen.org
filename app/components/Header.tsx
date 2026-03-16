@@ -5,11 +5,9 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 const navItems = [
-  { href: '/', label: 'Home' },
   { href: '/projects', label: 'Projects' },
-  { href: '/tutorials', label: 'Tutorials' },
   { href: '/blog', label: 'Blog' },
-  { href: '/community', label: 'Community' },
+  { href: '/about', label: 'About' },
 ];
 
 export default function Header() {
@@ -17,12 +15,13 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="border-b border-zinc-800 bg-[#0a0a0a] sticky top-0 z-50">
+    <header className="border-b border-zinc-800 bg-[#0a0a0a]/92 backdrop-blur-[12px] sticky top-0 z-50">
       <div className="mx-auto max-w-5xl px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center" onClick={() => setMenuOpen(false)}>
+          <Link href="/" className="flex items-center gap-2.5" onClick={() => setMenuOpen(false)}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo.svg" alt="Building Open" width="32" height="28" className="flex-shrink-0" />
+            <span className="text-[13px] text-zinc-500 hidden sm:inline">Open source AI tools</span>
           </Link>
 
           {/* Mobile menu button */}
@@ -48,7 +47,7 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 className={`px-3 py-2 md:py-1.5 rounded text-sm transition-colors ${
-                  pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
+                  pathname === item.href || pathname.startsWith(item.href)
                     ? 'text-white bg-zinc-800'
                     : 'text-zinc-500 hover:text-white'
                 }`}

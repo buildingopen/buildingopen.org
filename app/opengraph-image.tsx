@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'Building Open - Open source tools that actually work';
+export const alt = 'Building Open - Open source AI tools by Federico De Ponte';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -48,10 +48,10 @@ export default function OGImage() {
             marginBottom: '24px',
           }}
         >
-          Open source tools that actually work
+          I see problems. I build solutions.
         </h1>
         <p style={{ fontSize: '28px', color: '#a1a1aa' }}>
-          Use them. Learn from them. Make them yours.
+          Open source AI tools by Federico De Ponte. Built fast, shared freely.
         </p>
       </div>
     ),

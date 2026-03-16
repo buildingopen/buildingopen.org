@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         destination: '/openqueen/index.html',
         permanent: false,
       },
+      {
+        source: '/manifesto',
+        destination: '/about',
+        permanent: true,
+      },
     ];
   },
 };
