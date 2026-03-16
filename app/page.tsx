@@ -27,10 +27,9 @@ export default function Home() {
               <Image
                 src="/fede.jpg"
                 alt="Federico De Ponte"
-                width={120}
-                height={60}
-                className="rounded-lg object-cover border border-zinc-800 flex-shrink-0"
-                style={{ aspectRatio: '2/1' }}
+                width={56}
+                height={56}
+                className="rounded-xl object-cover border border-zinc-800 flex-shrink-0"
               />
               <div className="text-sm">
                 <div className="font-semibold">Federico De Ponte</div>
