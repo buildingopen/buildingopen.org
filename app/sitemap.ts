@@ -16,7 +16,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/tutorials',
     '/journey',
     '/community',
-    '/ideas',
     '/badge',
   ];
 
@@ -47,12 +46,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .is('stage', null)
     .order('created_at', { ascending: false });
 
-  // Fetch dynamic idea posts
-  const { data: ideaPosts } = await supabase
-    .from('posts')
-    .select('id, created_at')
-    .not('stage', 'is', null)
-    .order('created_at', { ascending: false });
 
   return [
     ...staticPages.map((path) => ({
@@ -75,12 +68,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     ...(communityPosts ?? []).map((post) => ({
       url: `${baseUrl}/community/${post.id}`,
-      lastModified: new Date(post.created_at),
-      changeFrequency: 'monthly' as const,
-      priority: 0.4,
-    })),
-    ...(ideaPosts ?? []).map((post) => ({
-      url: `${baseUrl}/ideas/${post.id}`,
       lastModified: new Date(post.created_at),
       changeFrequency: 'monthly' as const,
       priority: 0.4,
