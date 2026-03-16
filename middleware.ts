@@ -74,7 +74,8 @@ export function middleware(request: NextRequest) {
     pathname === '/logo.svg' ||
     pathname === '/og-image.png' ||
     pathname.startsWith('/openqueen') ||
-    pathname.startsWith('/wrapped/')
+    pathname.startsWith('/wrapped/') ||
+    pathname.startsWith('/entropy/')
   ) {
     return NextResponse.next()
   }
