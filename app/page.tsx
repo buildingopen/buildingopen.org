@@ -18,18 +18,19 @@ export default function Home() {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-8">
           <div className="max-w-[620px]">
             <h1 className="text-[28px] md:text-4xl font-bold tracking-tight leading-tight">
-              I see problems. I build solutions.
+              We see problems. We build solutions.
             </h1>
             <p className="text-zinc-400 mt-3 text-base leading-relaxed">
-              Then I share everything. Tools, ideas, experiments, code. Take what&apos;s useful, ignore the rest.
+              Then we share everything. Tools, ideas, experiments, code. Take what&apos;s useful, ignore the rest.
             </p>
-            <div className="mt-6 flex items-center gap-3.5">
+            <div className="mt-6 flex items-center gap-4">
               <Image
                 src="/fede.jpg"
                 alt="Federico De Ponte"
-                width={64}
-                height={64}
-                className="rounded-full object-cover border-2 border-zinc-800 flex-shrink-0"
+                width={120}
+                height={60}
+                className="rounded-lg object-cover border border-zinc-800 flex-shrink-0"
+                style={{ aspectRatio: '2/1' }}
               />
               <div className="text-sm">
                 <div className="font-semibold">Federico De Ponte</div>
@@ -42,7 +43,7 @@ export default function Home() {
               href="#featured"
               className="inline-flex items-center gap-2 px-5 py-2.5 text-sm text-zinc-400 border border-zinc-800 rounded-lg hover:border-zinc-600 hover:text-white transition-colors"
             >
-              <span className="text-lg leading-none">&darr;</span> See what I&apos;m building
+              <span className="text-lg leading-none">&darr;</span> See what we&apos;re building
             </a>
           </div>
         </div>
@@ -95,33 +96,43 @@ export default function Home() {
             href="/projects#openqueen"
             className="group block p-6 border-b md:border-b-0 md:border-r border-zinc-800 hover:bg-[#111113] transition-colors"
           >
-            <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-[#111113] border border-zinc-800 mb-4">
-              <Image
-                src="/openqueen-demo.png"
-                alt="OpenQueen"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover object-top"
-              />
+            <div className="flex items-start gap-4">
+              <div className="relative w-24 h-24 rounded-lg overflow-hidden bg-[#111113] border border-zinc-800 flex-shrink-0">
+                <Image
+                  src="/openqueen-demo.png"
+                  alt="OpenQueen"
+                  fill
+                  sizes="96px"
+                  className="object-cover object-top"
+                />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold">OpenQueen</h3>
+                <p className="text-zinc-500 text-[13px] mt-1">Coding agent controlled by WhatsApp. Send a task, get code back.</p>
+                <span className="text-zinc-600 text-xs mt-2 inline-block group-hover:text-zinc-400 transition-colors">View project &rarr;</span>
+              </div>
             </div>
-            <h3 className="text-base font-semibold">OpenQueen</h3>
-            <p className="text-zinc-500 text-[13px] mt-1">Coding agent controlled by WhatsApp</p>
           </Link>
           <Link
             href="/projects#openslides"
             className="group block p-6 hover:bg-[#111113] transition-colors"
           >
-            <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-[#111113] border border-zinc-800 mb-4">
-              <Image
-                src="/openslides-demo.png"
-                alt="OpenSlides"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover object-top"
-              />
+            <div className="flex items-start gap-4">
+              <div className="relative w-24 h-24 rounded-lg overflow-hidden bg-[#111113] border border-zinc-800 flex-shrink-0">
+                <Image
+                  src="/openslides-demo.png"
+                  alt="OpenSlides"
+                  fill
+                  sizes="96px"
+                  className="object-cover object-top"
+                />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold">OpenSlides</h3>
+                <p className="text-zinc-500 text-[13px] mt-1">Text &rarr; branded slide deck. Point at any website, get matching slides.</p>
+                <span className="text-zinc-600 text-xs mt-2 inline-block group-hover:text-zinc-400 transition-colors">View project &rarr;</span>
+              </div>
             </div>
-            <h3 className="text-base font-semibold">OpenSlides</h3>
-            <p className="text-zinc-500 text-[13px] mt-1">Text &rarr; branded slide deck</p>
           </Link>
         </div>
       </FadeIn>
@@ -159,8 +170,8 @@ export default function Home() {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           <div className="max-w-[520px]">
             <p className="text-lg font-medium leading-relaxed text-zinc-400">
-              <strong className="text-white font-semibold">I build because I see problems.</strong><br />
-              <strong className="text-white font-semibold">I share because why not.</strong><br />
+              <strong className="text-white font-semibold">We build because we see problems.</strong><br />
+              <strong className="text-white font-semibold">We share because why not.</strong><br />
               Come build with us.
             </p>
           </div>

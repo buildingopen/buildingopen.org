@@ -48,7 +48,7 @@ export default function OGImage() {
             marginBottom: '24px',
           }}
         >
-          I see problems. I build solutions.
+          We see problems. We build solutions.
         </h1>
         <p style={{ fontSize: '28px', color: '#a1a1aa' }}>
           Open source AI tools by Federico De Ponte. Built fast, shared freely.
