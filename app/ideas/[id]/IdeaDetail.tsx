@@ -80,7 +80,6 @@ export default function IdeaDetail({ id }: { id: string }) {
       setComments([...comments, { ...(data as Comment), replies: [] }]);
       setCommentBody('');
       if (post) {
-        await supabase.from('posts').update({ comment_count: post.comment_count + 1 }).eq('id', id);
         setPost({ ...post, comment_count: post.comment_count + 1 });
       }
     }
@@ -184,7 +183,13 @@ export default function IdeaDetail({ id }: { id: string }) {
         )}
 
         {/* Comments */}
-        <CommentThread comments={comments} postId={post.id} />
+        <CommentThread
+          comments={comments}
+          postId={post.id}
+          onCommentCountChange={(delta) => {
+            if (post) setPost({ ...post, comment_count: Math.max(0, post.comment_count + delta) });
+          }}
+        />
       </div>
     </div>
   );

@@ -35,7 +35,7 @@ function ReplyForm({
         post_id: postId,
         parent_id: parentId,
         body: body.trim(),
-        author_name: user.user_metadata?.user_name || user.email?.split('@')[0] || 'Anonymous',
+        author_name: user.user_metadata?.user_name || user.user_metadata?.email?.split('@')[0] || 'Anonymous',
         author_avatar: user.user_metadata?.avatar_url || null,
         author_id: user.id,
       })
@@ -241,9 +241,11 @@ function CommentItem({
 export default function CommentThread({
   comments,
   postId,
+  onCommentCountChange,
 }: {
   comments: Comment[];
   postId: string;
+  onCommentCountChange?: (delta: number) => void;
 }) {
   const [userId, setUserId] = useState<string | null>(null);
   const [items, setItems] = useState(comments);
@@ -262,6 +264,7 @@ export default function CommentThread({
 
   const handleDeleted = (commentId: string) => {
     setItems(items.filter((c) => c.id !== commentId));
+    onCommentCountChange?.(-1);
   };
 
   return (
