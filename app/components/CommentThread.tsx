@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import VoteButton from './VoteButton';
+import ConfirmModal from './ConfirmModal';
 import { createClient, timeAgo } from '../lib/supabase';
 import type { Comment } from '../lib/supabase';
 
@@ -34,7 +35,7 @@ function ReplyForm({
         post_id: postId,
         parent_id: parentId,
         body: body.trim(),
-        author_name: user.user_metadata?.user_name || user.email || 'Anonymous',
+        author_name: user.user_metadata?.user_name || user.email?.split('@')[0] || 'Anonymous',
         author_avatar: user.user_metadata?.avatar_url || null,
         author_id: user.id,
       })
@@ -80,18 +81,62 @@ function ReplyForm({
 function CommentItem({
   comment,
   postId,
+  userId,
   depth = 0,
+  onDeleted,
 }: {
   comment: Comment;
   postId: string;
+  userId: string | null;
   depth?: number;
+  onDeleted?: (commentId: string) => void;
 }) {
   const [showReply, setShowReply] = useState(false);
   const [replies, setReplies] = useState<Comment[]>(comment.replies || []);
+  const [editing, setEditing] = useState(false);
+  const [editBody, setEditBody] = useState(comment.body);
+  const [saving, setSaving] = useState(false);
+  const [currentBody, setCurrentBody] = useState(comment.body);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const supabase = createClient();
+
+  const isAuthor = userId && comment.author_id === userId;
 
   const handleReplySubmitted = (newReply: Comment) => {
     setReplies([...replies, { ...newReply, replies: [] }]);
     setShowReply(false);
+  };
+
+  const handleEdit = async () => {
+    if (!editBody.trim()) return;
+    setSaving(true);
+    const { error } = await supabase
+      .from('comments')
+      .update({ body: editBody.trim() })
+      .eq('id', comment.id);
+    if (!error) {
+      setCurrentBody(editBody.trim());
+      setEditing(false);
+    }
+    setSaving(false);
+  };
+
+  const handleDelete = async () => {
+    setDeleting(true);
+    const { error } = await supabase
+      .from('comments')
+      .delete()
+      .eq('id', comment.id);
+    if (!error) {
+      onDeleted?.(comment.id);
+    }
+    setDeleting(false);
+    setShowDeleteConfirm(false);
+  };
+
+  const handleChildDeleted = (childId: string) => {
+    setReplies(replies.filter((r) => r.id !== childId));
   };
 
   return (
@@ -107,15 +152,59 @@ function CommentItem({
             <span className="font-medium text-zinc-400">{comment.author_name}</span>
             <span>{timeAgo(comment.created_at)}</span>
           </div>
-          <p className="text-sm text-zinc-300 whitespace-pre-wrap">{comment.body}</p>
-          {depth < 3 && (
-            <button
-              onClick={() => setShowReply(!showReply)}
-              className="text-xs text-zinc-600 hover:text-zinc-400 mt-1 transition-colors"
-            >
-              Reply
-            </button>
+          {editing ? (
+            <div className="space-y-2">
+              <textarea
+                value={editBody}
+                onChange={(e) => setEditBody(e.target.value)}
+                rows={3}
+                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-500 resize-none"
+              />
+              <div className="flex gap-2">
+                <button
+                  onClick={handleEdit}
+                  disabled={saving || !editBody.trim()}
+                  className="px-3 py-1 bg-green-500 text-black text-xs font-medium rounded hover:bg-green-400 transition-colors disabled:opacity-50"
+                >
+                  {saving ? 'Saving...' : 'Save'}
+                </button>
+                <button
+                  onClick={() => { setEditing(false); setEditBody(currentBody); }}
+                  className="px-3 py-1 text-xs text-zinc-500 hover:text-white transition-colors"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          ) : (
+            <p className="text-sm text-zinc-300 whitespace-pre-wrap">{currentBody}</p>
           )}
+          <div className="flex items-center gap-2 mt-1">
+            {depth < 3 && !editing && (
+              <button
+                onClick={() => setShowReply(!showReply)}
+                className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors"
+              >
+                Reply
+              </button>
+            )}
+            {isAuthor && !editing && (
+              <>
+                <button
+                  onClick={() => setEditing(true)}
+                  className="text-xs text-zinc-600 hover:text-white transition-colors"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => setShowDeleteConfirm(true)}
+                  className="text-xs text-zinc-600 hover:text-red-400 transition-colors"
+                >
+                  Delete
+                </button>
+              </>
+            )}
+          </div>
         </div>
       </div>
       {showReply && (
@@ -131,9 +220,20 @@ function CommentItem({
           key={reply.id}
           comment={reply}
           postId={postId}
+          userId={userId}
           depth={depth + 1}
+          onDeleted={handleChildDeleted}
         />
       ))}
+      <ConfirmModal
+        open={showDeleteConfirm}
+        title="Delete comment"
+        message="This will permanently delete your comment. This cannot be undone."
+        confirmLabel="Delete"
+        loading={deleting}
+        onConfirm={handleDelete}
+        onCancel={() => setShowDeleteConfirm(false)}
+      />
     </div>
   );
 }
@@ -145,12 +245,37 @@ export default function CommentThread({
   comments: Comment[];
   postId: string;
 }) {
+  const [userId, setUserId] = useState<string | null>(null);
+  const [items, setItems] = useState(comments);
+  const supabase = createClient();
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data }) => {
+      if (data.user) setUserId(data.user.id);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    setItems(comments);
+  }, [comments]);
+
+  const handleDeleted = (commentId: string) => {
+    setItems(items.filter((c) => c.id !== commentId));
+  };
+
   return (
     <div className="space-y-0 divide-y divide-zinc-800/50">
-      {comments.map((comment) => (
-        <CommentItem key={comment.id} comment={comment} postId={postId} />
+      {items.map((comment) => (
+        <CommentItem
+          key={comment.id}
+          comment={comment}
+          postId={postId}
+          userId={userId}
+          onDeleted={handleDeleted}
+        />
       ))}
-      {comments.length === 0 && (
+      {items.length === 0 && (
         <p className="text-sm text-zinc-600 py-4">No comments yet. Be the first.</p>
       )}
     </div>
