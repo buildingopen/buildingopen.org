@@ -3,10 +3,28 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Projects - Building Open",
-  description: "Free and open source tools: OpenPaper for research papers, OpenSlides for presentations, OpenWord for documents.",
+  description: "Open source AI tools: OpenDraft for research papers, OpenSky for flights, OpenSlides for presentations, OpenQueen for coding agents.",
 };
 
 const projects = [
+  {
+    id: "opendraft",
+    title: "OpenDraft",
+    tagline: "AI agents that write research papers",
+    description: "AI agents that write thesis-level research papers with verified citations from 200M+ academic sources. Full generation in ~10 minutes.",
+    features: ["5-100 page papers", "Verified citations from 200M+ sources", "Multiple specialized AI agents", "Export to .docx"],
+    href: "https://opendraft.xyz",
+    image: "/thesis-page-01.png",
+  },
+  {
+    id: "opensky",
+    title: "OpenSky",
+    tagline: "AI flight search",
+    description: "AI-powered flight search that finds hidden deals. Gemini analyzes routes across airlines to surface prices you won't find on Google Flights.",
+    features: ["AI route analysis", "Cross-airline comparison", "Hidden deal detection", "Price alerts"],
+    href: "https://flyfast.app",
+    image: "/opensky-demo.png",
+  },
   {
     id: "openqueen",
     title: "OpenQueen",
@@ -18,15 +36,6 @@ const projects = [
     image: "/openqueen-demo.png",
   },
   {
-    id: "openpaper",
-    title: "OpenPaper",
-    tagline: "AI research team",
-    description: "18-agent pipeline that produces thesis-level research papers with verified citations from 200M+ academic papers. Full generation in ~10 minutes.",
-    features: ["5-100 page papers", "Verified citations from 200M+ sources", "18 specialized AI agents", "Export to .docx"],
-    href: "https://openpaper.dev",
-    image: "/thesis-page-01.png",
-  },
-  {
     id: "openslides",
     title: "OpenSlides",
     tagline: "Brand-first AI slide decks",
@@ -34,16 +43,6 @@ const projects = [
     features: ["65+ curated brands", "Real SVG logos", "LLM-powered generation", "Export to PNG/PDF"],
     href: "https://openslides.buildingopen.org",
     image: "/openslides-demo.png",
-  },
-  {
-    id: "openword",
-    title: "OpenWord",
-    tagline: "Template-based document generator",
-    description: "Generate contracts, letters, and documents from templates. Fill in your data, get formatted output.",
-    features: ["Contract templates", "Mail merge", "PDF export", "Custom fields"],
-    href: "https://github.com/federicodeponte/openword",
-    image: "/openword-demo.png",
-    comingSoon: true,
   },
 ];
 
@@ -78,30 +77,24 @@ export default function ProjectsPage() {
                     </li>
                   ))}
                 </ul>
-                {project.comingSoon ? (
-                  <span className="inline-block px-5 py-2 bg-zinc-800 text-zinc-500 font-medium rounded-lg text-sm cursor-default">
-                    Coming soon
-                  </span>
-                ) : (
-                  <div className="flex gap-3">
-                    {"landingHref" in project && (
-                      <a
-                        href={(project as { landingHref: string }).landingHref}
-                        className="inline-block px-5 py-2 bg-green-500 text-black font-medium rounded-lg hover:bg-green-400 transition-colors text-sm"
-                      >
-                        Learn more
-                      </a>
-                    )}
+                <div className="flex gap-3">
+                  {"landingHref" in project && (
                     <a
-                      href={project.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block px-5 py-2 bg-zinc-800 text-zinc-300 font-medium rounded-lg hover:bg-zinc-700 transition-colors text-sm"
+                      href={(project as { landingHref: string }).landingHref}
+                      className="inline-block px-5 py-2 bg-green-500 text-black font-medium rounded-lg hover:bg-green-400 transition-colors text-sm"
                     >
-                      GitHub
+                      Learn more
                     </a>
-                  </div>
-                )}
+                  )}
+                  <a
+                    href={project.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-5 py-2 bg-zinc-800 text-zinc-300 font-medium rounded-lg hover:bg-zinc-700 transition-colors text-sm"
+                  >
+                    {project.href.includes("github") ? "GitHub" : "Try it"}
+                  </a>
+                </div>
               </div>
             </div>
           ))}

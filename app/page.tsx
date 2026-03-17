@@ -57,26 +57,28 @@ export default function Home() {
       {/* Projects Bento */}
       <FadeIn delay={0.1} className="px-6 py-12" id="projects">
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-px bg-zinc-800 border border-zinc-800 rounded-xl overflow-hidden">
-            {/* Featured: OpenPaper */}
+          {/* Featured: OpenDraft */}
+          <div className="border border-zinc-800 rounded-xl overflow-hidden mb-px">
             <a
-              href="https://openpaper.dev"
+              href="https://opendraft.xyz"
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-[#0a0a0a] hover:bg-[#111113] transition-colors p-8 md:p-9 flex flex-col justify-between md:row-span-2 min-h-[320px] md:min-h-[400px]"
+              className="group block bg-[#0a0a0a] hover:bg-[#111113] transition-colors p-8 md:p-9"
             >
-              <div>
-                <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-green-500 font-medium mb-4">
-                  <PulseDot className="bg-green-500" />
-                  Live
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+                <div className="max-w-[520px]">
+                  <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-green-500 font-medium mb-4">
+                    <PulseDot className="bg-green-500" />
+                    Live
+                  </div>
+                  <h2 className="text-2xl md:text-[28px] font-bold tracking-tight">OpenDraft</h2>
+                  <p className="text-zinc-500 text-[14px] leading-relaxed mt-2">
+                    AI agents that write thesis-level research papers with verified citations from 200M+ academic sources.
+                  </p>
                 </div>
-                <h2 className="text-2xl md:text-[28px] font-bold tracking-tight">OpenPaper</h2>
-                <p className="text-zinc-500 text-[14px] leading-relaxed mt-2 max-w-[420px]">
-                  AI agents that write thesis-level research papers with verified citations from 200M+ academic sources.
-                </p>
 
                 {/* Activity feed */}
-                <div className="mt-6 p-4 bg-[#111113] group-hover:bg-[#18181b] rounded-lg border border-zinc-800/60 font-mono text-[12px] transition-colors">
+                <div className="flex-1 max-w-[400px] p-4 bg-[#111113] group-hover:bg-[#18181b] rounded-lg border border-zinc-800/60 font-mono text-[12px] transition-colors">
                   <div className="flex items-center gap-2.5 py-1.5 text-zinc-600">
                     <span className="text-green-500 text-[10px]">&#9679;</span>
                     <span className="flex-1">Research complete &middot; 51 sources found</span>
@@ -95,9 +97,39 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="mt-6 flex items-center justify-between">
+              <div className="mt-6">
                 <span className="text-[13px] text-zinc-600 group-hover:text-green-500 transition-colors">
-                  Try OpenPaper &rarr;
+                  Try OpenDraft &rarr;
+                </span>
+              </div>
+            </a>
+          </div>
+
+          {/* 3 secondary projects */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-zinc-800 border border-zinc-800 border-t-0 rounded-b-xl overflow-hidden">
+            {/* OpenSky */}
+            <a
+              href="https://flyfast.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-[#0a0a0a] hover:bg-[#111113] transition-colors p-7 flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-blue-400 font-medium mb-4">
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-400" />
+                  Live
+                </div>
+                <h3 className="text-lg font-bold tracking-tight">OpenSky</h3>
+                <p className="text-zinc-500 text-[13px] leading-relaxed mt-2">
+                  AI flight search that finds hidden deals. Gemini analyzes routes across airlines.
+                </p>
+                <div className="mt-4 px-3 py-2.5 bg-[#111113] group-hover:bg-[#18181b] rounded-md border border-zinc-800/60 font-mono text-[12px] text-zinc-700 transition-colors">
+                  <span className="text-blue-400">flyfast.app</span>
+                </div>
+              </div>
+              <div className="mt-5">
+                <span className="text-[13px] text-zinc-600 group-hover:text-green-500 transition-colors">
+                  Try FlyFast &rarr;
                 </span>
               </div>
             </a>
@@ -108,11 +140,11 @@ export default function Home() {
               className="group bg-[#0a0a0a] hover:bg-[#111113] transition-colors p-7 flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-blue-400 font-medium mb-4">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-400" />
+                <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-amber-400 font-medium mb-4">
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-400" />
                   New
                 </div>
-                <h3 className="text-xl font-bold tracking-tight">OpenQueen</h3>
+                <h3 className="text-lg font-bold tracking-tight">OpenQueen</h3>
                 <p className="text-zinc-500 text-[13px] leading-relaxed mt-2">
                   Coding agent controlled by WhatsApp. Send a task, get code back.
                 </p>
@@ -133,11 +165,11 @@ export default function Home() {
               className="group bg-[#0a0a0a] hover:bg-[#111113] transition-colors p-7 flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-amber-400 font-medium mb-4">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-400" />
+                <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-purple-400 font-medium mb-4">
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-purple-400" />
                   65+ brands
                 </div>
-                <h3 className="text-xl font-bold tracking-tight">OpenSlides</h3>
+                <h3 className="text-lg font-bold tracking-tight">OpenSlides</h3>
                 <p className="text-zinc-500 text-[13px] leading-relaxed mt-2">
                   Point at any website, get a pitch deck in that brand&apos;s exact colors and fonts.
                 </p>
