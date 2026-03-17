@@ -10,6 +10,12 @@ const blogTeasers = [
   { slug: "clawdbot-hinge", title: "Clawdbot Killed My Hinge Date", date: "Feb 22" },
 ];
 
+function PulseDot({ className }: { className?: string }) {
+  return (
+    <span className={`inline-block w-1.5 h-1.5 rounded-full animate-pulse ${className}`} />
+  );
+}
+
 export default function Home() {
   return (
     <div>
@@ -39,7 +45,7 @@ export default function Home() {
           </div>
           <div className="flex-shrink-0">
             <a
-              href="#featured"
+              href="#projects"
               className="inline-flex items-center gap-2 px-5 py-2.5 text-sm text-zinc-400 border border-zinc-800 rounded-lg hover:border-zinc-600 hover:text-white transition-colors"
             >
               <span className="text-lg leading-none">&darr;</span> See what I&apos;m building
@@ -48,96 +54,115 @@ export default function Home() {
         </div>
       </FadeIn>
 
-      {/* Featured Project */}
-      <FadeIn delay={0.1} className="bg-[#111113] px-6 py-12" id="featured">
+      {/* Projects Bento */}
+      <FadeIn delay={0.1} className="px-6 py-12" id="projects">
         <div className="max-w-5xl mx-auto">
-          <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-[#0a0a0a] border border-zinc-800">
-            <Image
-              src="/openpaper-hero.png"
-              alt="OpenPaper - AI research paper generator"
-              fill
-              sizes="(max-width: 768px) 100vw, 1080px"
-              className="object-cover object-top"
-              priority
-            />
-          </div>
-          <div className="mt-6 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-            <div className="max-w-[560px]">
-              <h2 className="text-[22px] font-bold">OpenPaper</h2>
-              <p className="text-zinc-400 text-[15px] leading-relaxed mt-2">
-                18 AI agents write thesis-level research papers with verified citations from 200M+ academic sources. Full generation in ~10 minutes.
-              </p>
-            </div>
-            <div className="flex gap-3 flex-shrink-0">
-              <a
-                href="https://openpaper.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-green-500 hover:bg-green-400 text-black text-sm font-semibold rounded-lg transition-colors"
-              >
-                Try OpenPaper &rarr;
-              </a>
-              <Link
-                href="/projects"
-                className="inline-flex items-center gap-1.5 px-5 py-2.5 border border-zinc-800 text-zinc-400 text-sm font-medium rounded-lg hover:border-zinc-600 hover:text-white transition-colors"
-              >
-                All projects &rarr;
-              </Link>
-            </div>
-          </div>
-        </div>
-      </FadeIn>
+          <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-px bg-zinc-800 border border-zinc-800 rounded-xl overflow-hidden">
+            {/* Featured: OpenPaper */}
+            <a
+              href="https://openpaper.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-[#0a0a0a] hover:bg-[#111113] transition-colors p-8 md:p-9 flex flex-col justify-between md:row-span-2 min-h-[320px] md:min-h-[400px]"
+            >
+              <div>
+                <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-green-500 font-medium mb-4">
+                  <PulseDot className="bg-green-500" />
+                  Live
+                </div>
+                <h2 className="text-2xl md:text-[28px] font-bold tracking-tight">OpenPaper</h2>
+                <p className="text-zinc-500 text-[14px] leading-relaxed mt-2 max-w-[420px]">
+                  AI agents that write thesis-level research papers with verified citations from 200M+ academic sources.
+                </p>
 
-      {/* Secondary Projects */}
-      <FadeIn delay={0.2} className="border-b border-zinc-800">
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          <Link
-            href="/projects#openqueen"
-            className="group block p-6 border-b md:border-b-0 md:border-r border-zinc-800 hover:bg-[#111113] transition-colors"
-          >
-            <div className="flex items-start gap-4">
-              <div className="relative w-24 h-24 rounded-lg overflow-hidden bg-[#111113] border border-zinc-800 flex-shrink-0">
-                <Image
-                  src="/openqueen-demo.png"
-                  alt="OpenQueen"
-                  fill
-                  sizes="96px"
-                  className="object-cover object-top"
-                />
+                {/* Activity feed */}
+                <div className="mt-6 p-4 bg-[#111113] group-hover:bg-[#18181b] rounded-lg border border-zinc-800/60 font-mono text-[12px] transition-colors">
+                  <div className="flex items-center gap-2.5 py-1.5 text-zinc-600">
+                    <span className="text-green-500 text-[10px]">&#9679;</span>
+                    <span className="flex-1">Research complete &middot; 51 sources found</span>
+                    <span className="text-zinc-700 text-[11px]">4:49</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 py-1.5 text-zinc-600 border-t border-zinc-800/40">
+                    <span className="text-green-500 text-[10px]">&#9679;</span>
+                    <span className="flex-1">Outline ready &middot; 7 sections</span>
+                    <span className="text-zinc-700 text-[11px]">2:05</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 py-1.5 text-zinc-600 border-t border-zinc-800/40">
+                    <span className="text-amber-500 text-[10px]">&#9679;</span>
+                    <span className="flex-1">Writing section 3 of 7...</span>
+                    <span className="text-zinc-700 text-[11px]">now</span>
+                  </div>
+                </div>
               </div>
+
+              <div className="mt-6 flex items-center justify-between">
+                <span className="text-[13px] text-zinc-600 group-hover:text-green-500 transition-colors">
+                  Try OpenPaper &rarr;
+                </span>
+              </div>
+            </a>
+
+            {/* OpenQueen */}
+            <Link
+              href="/projects#openqueen"
+              className="group bg-[#0a0a0a] hover:bg-[#111113] transition-colors p-7 flex flex-col justify-between"
+            >
               <div>
-                <h3 className="text-base font-semibold">OpenQueen</h3>
-                <p className="text-zinc-500 text-[13px] mt-1">Coding agent controlled by WhatsApp. Send a task, get code back.</p>
-                <span className="text-zinc-600 text-xs mt-2 inline-block group-hover:text-zinc-400 transition-colors">View project &rarr;</span>
+                <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-blue-400 font-medium mb-4">
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-400" />
+                  New
+                </div>
+                <h3 className="text-xl font-bold tracking-tight">OpenQueen</h3>
+                <p className="text-zinc-500 text-[13px] leading-relaxed mt-2">
+                  Coding agent controlled by WhatsApp. Send a task, get code back.
+                </p>
+                <div className="mt-4 px-3 py-2.5 bg-[#111113] group-hover:bg-[#18181b] rounded-md border border-zinc-800/60 font-mono text-[12px] text-zinc-700 transition-colors">
+                  <code>$ </code><span className="text-green-500">npx openqueen</span><code> --transport whatsapp</code>
+                </div>
               </div>
-            </div>
-          </Link>
-          <Link
-            href="/projects#openslides"
-            className="group block p-6 hover:bg-[#111113] transition-colors"
-          >
-            <div className="flex items-start gap-4">
-              <div className="relative w-24 h-24 rounded-lg overflow-hidden bg-[#111113] border border-zinc-800 flex-shrink-0">
-                <Image
-                  src="/openslides-demo.png"
-                  alt="OpenSlides"
-                  fill
-                  sizes="96px"
-                  className="object-cover object-top"
-                />
+              <div className="mt-5">
+                <span className="text-[13px] text-zinc-600 group-hover:text-green-500 transition-colors">
+                  GitHub &rarr;
+                </span>
               </div>
+            </Link>
+
+            {/* OpenSlides */}
+            <Link
+              href="/projects#openslides"
+              className="group bg-[#0a0a0a] hover:bg-[#111113] transition-colors p-7 flex flex-col justify-between"
+            >
               <div>
-                <h3 className="text-base font-semibold">OpenSlides</h3>
-                <p className="text-zinc-500 text-[13px] mt-1">Text &rarr; branded slide deck. Point at any website, get matching slides.</p>
-                <span className="text-zinc-600 text-xs mt-2 inline-block group-hover:text-zinc-400 transition-colors">View project &rarr;</span>
+                <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-amber-400 font-medium mb-4">
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-400" />
+                  65+ brands
+                </div>
+                <h3 className="text-xl font-bold tracking-tight">OpenSlides</h3>
+                <p className="text-zinc-500 text-[13px] leading-relaxed mt-2">
+                  Point at any website, get a pitch deck in that brand&apos;s exact colors and fonts.
+                </p>
+                <div className="mt-4 px-3 py-2.5 bg-[#111113] group-hover:bg-[#18181b] rounded-md border border-zinc-800/60 font-mono text-[12px] text-zinc-700 transition-colors">
+                  <code>$ </code><span className="text-green-500">openslides</span><code> --brand stripe.com</code>
+                </div>
               </div>
-            </div>
-          </Link>
+              <div className="mt-5">
+                <span className="text-[13px] text-zinc-600 group-hover:text-green-500 transition-colors">
+                  Try it &rarr;
+                </span>
+              </div>
+            </Link>
+          </div>
+
+          <div className="text-center mt-5">
+            <Link href="/projects" className="text-[13px] text-zinc-600 hover:text-white transition-colors">
+              All projects &rarr;
+            </Link>
+          </div>
         </div>
       </FadeIn>
 
       {/* Blog Teasers */}
-      <FadeIn delay={0.3} className="border-b border-zinc-800 px-6 py-12">
+      <FadeIn delay={0.2} className="border-t border-b border-zinc-800 px-6 py-12">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-baseline justify-between mb-6">
             <h2 className="text-lg font-semibold">Latest writing</h2>
@@ -165,7 +190,7 @@ export default function Home() {
       </FadeIn>
 
       {/* Closing */}
-      <FadeIn delay={0.4} className="bg-[#111113] px-6 py-16">
+      <FadeIn delay={0.3} className="bg-[#111113] px-6 py-16">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           <div className="max-w-[520px]">
             <p className="text-lg font-medium leading-relaxed text-zinc-400">
