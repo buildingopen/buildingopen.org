@@ -36,7 +36,7 @@ export default function JourneyPage() {
         <header className="mb-16">
           <h1 className="text-3xl font-bold mb-4">The Journey</h1>
           <p className="text-zinc-400 max-w-xl">
-            We build in public. Here is the raw footage of features coming together, from early broken prototypes to the final polished tools.
+            I build in public. Here is the raw footage of features coming together, from early broken prototypes to the final polished tools.
           </p>
         </header>
 
