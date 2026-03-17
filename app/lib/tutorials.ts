@@ -7,7 +7,7 @@ export const tutorials = [
   },
   {
     slug: "opendraft-quickstart",
-    title: "Generate your first research paper with OpenPaper",
+    title: "Generate your first research paper with OpenDraft",
     description: "Go from a topic to a 40-page paper with proper citations in under 15 minutes.",
     difficulty: "Beginner" as const,
   },
@@ -16,5 +16,11 @@ export const tutorials = [
     title: "Create a slide deck with OpenSlides",
     description: "Generate branded presentations from Python. Extract brand colors from any website, export to PNG or PDF.",
     difficulty: "Beginner" as const,
+  },
+  {
+    slug: "vibecoding-setup",
+    title: "The Complete Vibecoding Setup",
+    description: "A systematic 6-step workflow for production-grade AI-assisted development. System prompts, Claude.md templates, best practices.",
+    difficulty: "Intermediate" as const,
   },
 ];

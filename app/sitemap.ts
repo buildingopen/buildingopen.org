@@ -16,6 +16,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/tutorials',
     '/journey',
     '/community',
+    '/ideas',
+    '/glossary',
     '/badge',
   ];
 
@@ -37,6 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'openclaw-whatsapp-assistant',
     'opendraft-quickstart',
     'openslides-quickstart',
+    'vibecoding-setup',
   ];
 
   // Fetch dynamic community posts (non-idea posts)

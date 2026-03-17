@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Generate your first research paper with OpenPaper - Building Open",
+  title: "Generate your first research paper with OpenDraft - Building Open",
   description: "Go from a topic to a 40-page research paper with proper citations in under 15 minutes.",
 };
 
-export default function OpenPaperQuickstart() {
+export default function OpenDraftQuickstart() {
   return (
     <article className="py-16">
       <div className="mx-auto max-w-2xl px-6">
@@ -19,9 +19,9 @@ export default function OpenPaperQuickstart() {
             <span className="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-400 rounded">Beginner</span>
             <span className="text-xs text-zinc-600">~15 min</span>
           </div>
-          <h1 className="text-3xl font-bold mb-3">Generate your first research paper with OpenPaper</h1>
+          <h1 className="text-3xl font-bold mb-3">Generate your first research paper with OpenDraft</h1>
           <p className="text-zinc-500">From a topic to a 40-page paper with proper citations in under 15 minutes.</p>
-          <p className="text-xs text-zinc-600 mt-3">Note: The repository still uses the original name &quot;OpenDraft.&quot;</p>
+          <p className="text-xs text-zinc-600 mt-3">Uses the <a href="https://github.com/federicodeponte/opendraft" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">OpenDraft</a> repository.</p>
         </header>
 
         <section className="mb-10">
@@ -88,7 +88,7 @@ export default function OpenPaperQuickstart() {
             <p>python opendraft.py --topic &quot;Your research topic here&quot;</p>
           </div>
           <p className="text-zinc-400 mt-4 leading-relaxed">
-            That&apos;s it. OpenPaper will:
+            That&apos;s it. OpenDraft will:
           </p>
           <ul className="space-y-2 text-zinc-400 text-sm mt-3">
             <li className="flex items-start gap-2">
@@ -184,7 +184,7 @@ export default function OpenPaperQuickstart() {
             rel="noopener noreferrer"
             className="px-5 py-2.5 bg-green-500 text-black font-medium rounded-lg hover:bg-green-400 transition-colors text-sm"
           >
-            Get OpenPaper
+            Get OpenDraft
           </a>
           <Link
             href="/tutorials"
