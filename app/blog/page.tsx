@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Blog - Building Open",
-  description: "Thoughts on building, open source, startups, and the things we learn along the way.",
+  description: "Thoughts on building, open source, startups, and the things I learn along the way.",
 };
 
 const posts = [
@@ -94,7 +94,7 @@ export default function BlogPage() {
     <div className="py-16">
       <div className="mx-auto max-w-2xl px-6">
         <h1 className="text-3xl font-bold mb-2">Blog</h1>
-        <p className="text-zinc-500 mb-12">Thoughts on building, open source, and the things we learn along the way.</p>
+        <p className="text-zinc-500 mb-12">Thoughts on building, open source, and the things I learn along the way.</p>
 
         {/* Featured post */}
         <div className="border border-zinc-800 rounded-lg p-6 mb-12">

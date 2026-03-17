@@ -18,10 +18,10 @@ export default function Home() {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-8">
           <div className="max-w-[620px]">
             <h1 className="text-[28px] md:text-4xl font-bold tracking-tight leading-tight">
-              We see problems. We build solutions.
+              I see problems. I build solutions.
             </h1>
             <p className="text-zinc-400 mt-3 text-base leading-relaxed">
-              Then we share everything. Tools, ideas, experiments, code. Take what&apos;s useful, ignore the rest.
+              Then I share everything. Tools, ideas, experiments, code. Take what&apos;s useful, ignore the rest.
             </p>
             <div className="mt-6 flex items-center gap-4">
               <Image
@@ -42,7 +42,7 @@ export default function Home() {
               href="#featured"
               className="inline-flex items-center gap-2 px-5 py-2.5 text-sm text-zinc-400 border border-zinc-800 rounded-lg hover:border-zinc-600 hover:text-white transition-colors"
             >
-              <span className="text-lg leading-none">&darr;</span> See what we&apos;re building
+              <span className="text-lg leading-none">&darr;</span> See what I&apos;m building
             </a>
           </div>
         </div>
@@ -51,10 +51,10 @@ export default function Home() {
       {/* Featured Project */}
       <FadeIn delay={0.1} className="bg-[#111113] px-6 py-12" id="featured">
         <div className="max-w-5xl mx-auto">
-          <div className="relative aspect-[2/1] rounded-xl overflow-hidden bg-[#0a0a0a] border border-zinc-800">
+          <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-[#0a0a0a] border border-zinc-800">
             <Image
-              src="/thesis-page-02.png"
-              alt="OpenPaper research paper output"
+              src="/openpaper-hero.png"
+              alt="OpenPaper - AI research paper generator"
               fill
               sizes="(max-width: 768px) 100vw, 1080px"
               className="object-cover object-top"
@@ -169,9 +169,9 @@ export default function Home() {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           <div className="max-w-[520px]">
             <p className="text-lg font-medium leading-relaxed text-zinc-400">
-              <strong className="text-white font-semibold">We build because we see problems.</strong><br />
-              <strong className="text-white font-semibold">We share because why not.</strong><br />
-              Come build with us.
+              <strong className="text-white font-semibold">I build because I see problems.</strong><br />
+              <strong className="text-white font-semibold">I share because why not.</strong><br />
+              Come build with me.
             </p>
           </div>
           <div className="flex gap-3">

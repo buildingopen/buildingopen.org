@@ -4,7 +4,7 @@ import { SectionDivider } from "../components/blog";
 
 export const metadata: Metadata = {
   title: "About - Building Open",
-  description: "Why we build, why we share, and why everything is open source.",
+  description: "Why I build, why I share, and why everything is open source.",
 };
 
 export default function AboutPage() {
@@ -12,21 +12,21 @@ export default function AboutPage() {
     <article className="py-16">
       <div className="mx-auto max-w-2xl px-6">
         <h1 className="text-3xl font-bold mb-2">About Building Open</h1>
-        <p className="text-zinc-500 mb-12">Why we build, why we share, and why everything is open source.</p>
+        <p className="text-zinc-500 mb-12">Why I build, why I share, and why everything is open source.</p>
 
         <section className="mb-10">
-          <h2 className="text-lg font-semibold mb-3">Why we build</h2>
-          <p className="text-zinc-400 mb-3 leading-relaxed">We see problems and we can&apos;t leave them alone. A researcher spending weeks formatting citations. A founder hand-building slide decks at 2am. A developer copy-pasting boilerplate for the hundredth time.</p>
-          <p className="text-zinc-400 mb-3 leading-relaxed">AI means we can solve these in days, not months. So we do.</p>
-          <p className="text-zinc-400 leading-relaxed">Every project here started the same way: someone hit a problem, built a tool, and kept going until it actually worked.</p>
+          <h2 className="text-lg font-semibold mb-3">Why I build</h2>
+          <p className="text-zinc-400 mb-3 leading-relaxed">I see problems and I can&apos;t leave them alone. A researcher spending weeks formatting citations. A founder hand-building slide decks at 2am. A developer copy-pasting boilerplate for the hundredth time.</p>
+          <p className="text-zinc-400 mb-3 leading-relaxed">AI means I can solve these in days, not months. So I do.</p>
+          <p className="text-zinc-400 leading-relaxed">Every project here started the same way: I hit a problem, built a tool, and kept going until it actually worked.</p>
         </section>
 
         <SectionDivider />
 
         <section className="mb-10">
-          <h2 className="text-lg font-semibold mb-3">Why we share</h2>
+          <h2 className="text-lg font-semibold mb-3">Why I share</h2>
           <p className="text-zinc-400 mb-3 leading-relaxed">Not everything needs to be a product. Some things are just useful.</p>
-          <p className="text-zinc-400 leading-relaxed">If we built something that solves a problem, someone else probably has the same problem. Keeping it private doesn&apos;t help anyone. Sharing it might.</p>
+          <p className="text-zinc-400 leading-relaxed">If I built something that solves a problem, someone else probably has the same problem. Keeping it private doesn&apos;t help anyone. Sharing it might.</p>
         </section>
 
         <SectionDivider />
@@ -40,7 +40,7 @@ export default function AboutPage() {
         <SectionDivider />
 
         <section className="mb-10">
-          <h2 className="text-lg font-semibold mb-3">Come build with us</h2>
+          <h2 className="text-lg font-semibold mb-3">Come build with me</h2>
           <p className="text-zinc-400 mb-3 leading-relaxed">Use the tools. Read the code. Start your own project. There&apos;s no prescribed path here.</p>
           <p className="text-zinc-400 leading-relaxed">If you want to contribute, pick any repo and start. If you want to build something completely different, even better. Join the <Link href="/community" className="text-green-500 hover:text-green-400 transition-colors">community</Link> to ask questions, share what you&apos;ve built, or just say hi.</p>
         </section>
