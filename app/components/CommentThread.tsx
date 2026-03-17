@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import VoteButton from './VoteButton';
 import ConfirmModal from './ConfirmModal';
 import { createClient, timeAgo } from '../lib/supabase';
@@ -78,18 +78,25 @@ function ReplyForm({
   );
 }
 
+function countAllReplies(comment: Comment): number {
+  const replies = comment.replies || [];
+  return replies.reduce((sum, r) => sum + 1 + countAllReplies(r), 0);
+}
+
 function CommentItem({
   comment,
   postId,
   userId,
   depth = 0,
   onDeleted,
+  onCountChange,
 }: {
   comment: Comment;
   postId: string;
   userId: string | null;
   depth?: number;
-  onDeleted?: (commentId: string) => void;
+  onDeleted?: (commentId: string, totalRemoved: number) => void;
+  onCountChange?: (delta: number) => void;
 }) {
   const [showReply, setShowReply] = useState(false);
   const [replies, setReplies] = useState<Comment[]>(comment.replies || []);
@@ -104,8 +111,9 @@ function CommentItem({
   const isAuthor = userId && comment.author_id === userId;
 
   const handleReplySubmitted = (newReply: Comment) => {
-    setReplies([...replies, { ...newReply, replies: [] }]);
+    setReplies((prev) => [...prev, { ...newReply, replies: [] }]);
     setShowReply(false);
+    onCountChange?.(1);
   };
 
   const handleEdit = async () => {
@@ -124,19 +132,22 @@ function CommentItem({
 
   const handleDelete = async () => {
     setDeleting(true);
+    // DB has ON DELETE CASCADE on parent_id FK, so children are auto-deleted
+    const childCount = countAllReplies({ ...comment, replies });
     const { error } = await supabase
       .from('comments')
       .delete()
       .eq('id', comment.id);
     if (!error) {
-      onDeleted?.(comment.id);
+      onDeleted?.(comment.id, 1 + childCount);
     }
     setDeleting(false);
     setShowDeleteConfirm(false);
   };
 
-  const handleChildDeleted = (childId: string) => {
-    setReplies(replies.filter((r) => r.id !== childId));
+  const handleChildDeleted = (childId: string, totalRemoved: number) => {
+    setReplies((prev) => prev.filter((r) => r.id !== childId));
+    onCountChange?.(-totalRemoved);
   };
 
   return (
@@ -223,12 +234,15 @@ function CommentItem({
           userId={userId}
           depth={depth + 1}
           onDeleted={handleChildDeleted}
+          onCountChange={onCountChange}
         />
       ))}
       <ConfirmModal
         open={showDeleteConfirm}
         title="Delete comment"
-        message="This will permanently delete your comment. This cannot be undone."
+        message={replies.length > 0
+          ? `This will permanently delete your comment and ${replies.length} ${replies.length === 1 ? 'reply' : 'replies'}. This cannot be undone.`
+          : 'This will permanently delete your comment. This cannot be undone.'}
         confirmLabel="Delete"
         loading={deleting}
         onConfirm={handleDelete}
@@ -262,10 +276,14 @@ export default function CommentThread({
     setItems(comments);
   }, [comments]);
 
-  const handleDeleted = (commentId: string) => {
-    setItems(items.filter((c) => c.id !== commentId));
-    onCommentCountChange?.(-1);
-  };
+  const handleDeleted = useCallback((commentId: string, totalRemoved: number) => {
+    setItems((prev) => prev.filter((c) => c.id !== commentId));
+    onCommentCountChange?.(-totalRemoved);
+  }, [onCommentCountChange]);
+
+  const handleCountChange = useCallback((delta: number) => {
+    onCommentCountChange?.(delta);
+  }, [onCommentCountChange]);
 
   return (
     <div className="space-y-0 divide-y divide-zinc-800/50">
@@ -276,6 +294,7 @@ export default function CommentThread({
           postId={postId}
           userId={userId}
           onDeleted={handleDeleted}
+          onCountChange={handleCountChange}
         />
       ))}
       {items.length === 0 && (
