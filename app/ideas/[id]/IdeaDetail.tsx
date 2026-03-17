@@ -168,6 +168,7 @@ export default function IdeaDetail({ id }: { id: string }) {
               onChange={(e) => setCommentBody(e.target.value)}
               placeholder="Write a comment..."
               rows={3}
+              maxLength={5000}
               className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-zinc-500 resize-none"
             />
             <div className="flex justify-end mt-2">

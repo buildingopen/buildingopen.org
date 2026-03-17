@@ -74,26 +74,25 @@ export default function VoteButton({
       });
     }
 
-    // Recalculate actual count from votes table
+    // DB trigger auto-updates upvotes on posts/comments table
+    // Read back the actual count to stay in sync
     const targetId = postId || commentId;
     const table = postId ? 'posts' : 'comments';
-    const column = postId ? 'post_id' : 'comment_id';
     if (targetId) {
-      const { data: votes } = await supabase
-        .from('votes')
-        .select('value')
-        .eq(column, targetId);
+      const { data: row } = await supabase
+        .from(table)
+        .select('upvotes')
+        .eq('id', targetId)
+        .single();
 
-      const actualCount = votes?.reduce((sum, v) => sum + v.value, 0) ?? 0;
-      await supabase.from(table).update({ upvotes: actualCount }).eq('id', targetId);
-      setCount(actualCount);
-      showToast(newValue === 0 ? "Vote removed" : newValue === 1 ? "Upvoted" : "Downvoted");
-
-      // Broadcast vote change so list views can sync
-      if (postId) {
-        window.dispatchEvent(new CustomEvent('vote-changed', {
-          detail: { postId, count: actualCount },
-        }));
+      if (row) {
+        setCount(row.upvotes);
+        showToast(newValue === 0 ? "Vote removed" : newValue === 1 ? "Upvoted" : "Downvoted");
+        if (postId) {
+          window.dispatchEvent(new CustomEvent('vote-changed', {
+            detail: { postId, count: row.upvotes },
+          }));
+        }
       }
     }
   };

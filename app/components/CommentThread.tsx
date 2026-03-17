@@ -56,6 +56,7 @@ function ReplyForm({
         onChange={(e) => setBody(e.target.value)}
         placeholder="Write a reply..."
         rows={2}
+        maxLength={5000}
         className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-500 resize-none"
       />
       <div className="flex gap-2 mt-1">
@@ -169,6 +170,7 @@ function CommentItem({
                 value={editBody}
                 onChange={(e) => setEditBody(e.target.value)}
                 rows={3}
+                maxLength={5000}
                 className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-500 resize-none"
               />
               <div className="flex gap-2">
