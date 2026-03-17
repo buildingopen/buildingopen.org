@@ -11,6 +11,10 @@ import {
 export const metadata: Metadata = {
   title: "Cracking SEO & AEO: The Formula for Compounding Visibility - Building Open",
   description: "18 months cracking SEO/AEO at SCAILE. Here's the formula to reach #1 across Google, ChatGPT, Perplexity, and Gemini.",
+  openGraph: {
+    title: "Cracking SEO & AEO: The Formula for Compounding Visibility - Building Open",
+    description: "18 months cracking SEO/AEO at SCAILE. Here's the formula to reach #1 across Google, ChatGPT, Perplexity, and Gemini.",
+  },
 };
 
 export default function OpenDraftSeoPost() {

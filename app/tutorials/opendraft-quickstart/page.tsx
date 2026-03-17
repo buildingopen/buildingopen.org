@@ -4,6 +4,10 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Generate your first research paper with OpenDraft - Building Open",
   description: "Go from a topic to a 40-page research paper with proper citations in under 15 minutes.",
+  openGraph: {
+    title: "Generate your first research paper with OpenPaper - Building Open",
+    description: "Go from a topic to a 40-page research paper with proper citations in under 15 minutes.",
+  },
 };
 
 export default function OpenDraftQuickstart() {

@@ -11,6 +11,10 @@ import {
 export const metadata: Metadata = {
   title: "I genuinely stopped using PowerPoint - Building Open",
   description: "Spending days aligning boxes feels insane when you can build a whole app in the same time. So I made an app for building slides.",
+  openGraph: {
+    title: "I genuinely stopped using PowerPoint - Building Open",
+    description: "Spending days aligning boxes feels insane when you can build a whole app in the same time. So I made an app for building slides.",
+  },
 };
 
 export default function GoodbyePowerpointPost() {

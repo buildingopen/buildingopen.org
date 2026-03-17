@@ -11,6 +11,10 @@ import {
 export const metadata: Metadata = {
   title: "4 pivots in 1.5 years: what I'd tell myself before starting - Building Open",
   description: "Venture studio. Marketing agency. Marketing SaaS. AI visibility SaaS. Here's what I learned.",
+  openGraph: {
+    title: "4 pivots in 1.5 years: what I'd tell myself before starting - Building Open",
+    description: "Venture studio. Marketing agency. Marketing SaaS. AI visibility SaaS. Here's what I learned.",
+  },
 };
 
 export default function StartupLearningsPost() {

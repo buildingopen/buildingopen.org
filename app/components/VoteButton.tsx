@@ -101,7 +101,7 @@ export default function VoteButton({
     <div className="flex flex-col items-center gap-0.5">
       <button
         onClick={() => handleVote(1)}
-        className={`p-1 rounded transition-colors ${
+        className={`p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded transition-colors ${
           voted === 1 ? 'text-white' : 'text-zinc-600 hover:text-zinc-400'
         }`}
         aria-label="Upvote"
@@ -115,7 +115,7 @@ export default function VoteButton({
       </span>
       <button
         onClick={() => handleVote(-1)}
-        className={`p-1 rounded transition-colors ${
+        className={`p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded transition-colors ${
           voted === -1 ? 'text-red-400' : 'text-zinc-600 hover:text-zinc-400'
         }`}
         aria-label="Downvote"

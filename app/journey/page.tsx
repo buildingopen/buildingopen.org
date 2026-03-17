@@ -3,6 +3,10 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Journey - Building Open",
   description: "The building process, caught on tape. The iterations, the failures, and the final products.",
+  openGraph: {
+    title: "Journey - Building Open",
+    description: "The building process, caught on tape. The iterations, the failures, and the final products.",
+  },
 };
 
 const videos = [

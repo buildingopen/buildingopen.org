@@ -4,6 +4,10 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Create a slide deck with OpenSlides - Building Open",
   description: "Generate branded presentations from Python. Extract brand colors from any website, write slides as HTML, export to PNG or PDF.",
+  openGraph: {
+    title: "Create a slide deck with OpenSlides - Building Open",
+    description: "Generate branded presentations from Python. Extract brand colors from any website, write slides as HTML, export to PNG or PDF.",
+  },
 };
 
 export default function OpenSlidesQuickstart() {

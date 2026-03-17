@@ -5,6 +5,10 @@ import { tutorials } from "../lib/tutorials";
 export const metadata: Metadata = {
   title: "Tutorials - Building Open",
   description: "Step-by-step guides for building with open source tools. Learn how things work, then build your own.",
+  openGraph: {
+    title: "Tutorials - Building Open",
+    description: "Step-by-step guides for building with open source tools. Learn how things work, then build your own.",
+  },
 };
 
 export default function TutorialsPage() {

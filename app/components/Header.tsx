@@ -19,7 +19,7 @@ export default function Header() {
     <header className="border-b border-zinc-800 bg-[#0a0a0a]/92 backdrop-blur-[12px] sticky top-0 z-50">
       <div className="mx-auto max-w-5xl px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5" onClick={() => setMenuOpen(false)}>
+          <Link href="/" className="flex items-center gap-2.5 p-2" onClick={() => setMenuOpen(false)}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo.svg" alt="Building Open" width="32" height="28" className="flex-shrink-0" />
             <span className="text-[13px] text-zinc-500 hidden sm:inline">Open source AI tools</span>
@@ -27,7 +27,7 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white transition-colors"
+            className="md:hidden w-11 h-11 flex items-center justify-center text-zinc-400 hover:text-white transition-colors"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-expanded={menuOpen}
             aria-label="Toggle menu"

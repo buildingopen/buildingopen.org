@@ -5,6 +5,10 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Blog - Building Open",
   description: "Thoughts on building, open source, startups, and the things I learn along the way.",
+  openGraph: {
+    title: "Blog - Building Open",
+    description: "Thoughts on building, open source, startups, and the things I learn along the way.",
+  },
 };
 
 const posts = [

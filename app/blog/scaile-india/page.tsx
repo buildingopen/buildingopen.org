@@ -9,6 +9,10 @@ import {
 export const metadata: Metadata = {
   title: "SCAILE goes to India - Building Open",
   description: "One country, producing more unicorns than any country in Europe. I understand why now.",
+  openGraph: {
+    title: "SCAILE goes to India - Building Open",
+    description: "One country, producing more unicorns than any country in Europe. I understand why now.",
+  },
 };
 
 export default function ScaileIndiaPost() {

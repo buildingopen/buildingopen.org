@@ -10,6 +10,10 @@ import {
 export const metadata: Metadata = {
   title: "Clawdbot Killed My Hinge Date - Building Open",
   description: "Auto-replied with a config error. She blocked me. New item for the AI agent risk assessment checklist.",
+  openGraph: {
+    title: "Clawdbot Killed My Hinge Date - Building Open",
+    description: "Auto-replied with a config error. She blocked me. New item for the AI agent risk assessment checklist.",
+  },
 };
 
 export default function ClawdbotHingePost() {

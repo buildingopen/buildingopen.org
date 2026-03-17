@@ -10,6 +10,10 @@ import {
 export const metadata: Metadata = {
   title: "Golf courses use 30x more water than all US data centers - Building Open",
   description: "I was worried about my AI carbon footprint. Then I fact-checked it. The numbers are surprising.",
+  openGraph: {
+    title: "Golf courses use 30x more water than all US data centers - Building Open",
+    description: "I was worried about my AI carbon footprint. Then I fact-checked it. The numbers are surprising.",
+  },
 };
 
 export default function GolfVsDatacentersPost() {

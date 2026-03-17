@@ -9,6 +9,10 @@ import {
 export const metadata: Metadata = {
   title: "The Agent Protocol Layer - Building Open",
   description: "A protocol specification for agent-to-world interaction. TCP/IP for the agent era.",
+  openGraph: {
+    title: "The Agent Protocol Layer - Building Open",
+    description: "A protocol specification for agent-to-world interaction. TCP/IP for the agent era.",
+  },
 };
 
 export default function AgentProtocolPost() {

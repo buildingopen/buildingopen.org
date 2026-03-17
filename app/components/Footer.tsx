@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2">
             <a
               href="https://github.com/buildingopen"
-              className="hover:text-white transition-colors"
+              className="py-2 hover:text-white transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -19,7 +19,7 @@ export default function Footer() {
             </a>
             <a
               href="https://linkedin.com/in/federicodeponte"
-              className="hover:text-white transition-colors"
+              className="py-2 hover:text-white transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -27,25 +27,25 @@ export default function Footer() {
             </a>
             <a
               href="mailto:hello@buildingopen.org"
-              className="hover:text-white transition-colors"
+              className="py-2 hover:text-white transition-colors"
             >
               Contact
             </a>
             <a
               href="/community"
-              className="hover:text-white transition-colors"
+              className="py-2 hover:text-white transition-colors"
             >
               Community
             </a>
             <a
               href="/journey"
-              className="hover:text-white transition-colors"
+              className="py-2 hover:text-white transition-colors"
             >
               Journey
             </a>
             <a
               href="/badge"
-              className="hover:text-white transition-colors"
+              className="py-2 hover:text-white transition-colors"
             >
               Badge
             </a>

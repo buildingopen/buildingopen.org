@@ -10,6 +10,10 @@ import {
 export const metadata: Metadata = {
   title: "I treated my life like a product. Here's what I removed. - Building Open",
   description: "2 years into my 2nd startup. The habits that moved the needle most aren't what you'd expect.",
+  openGraph: {
+    title: "I treated my life like a product. Here's what I removed. - Building Open",
+    description: "2 years into my 2nd startup. The habits that moved the needle most aren't what you'd expect.",
+  },
 };
 
 export default function FounderHabitsPost() {

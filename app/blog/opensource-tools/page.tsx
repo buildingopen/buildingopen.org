@@ -11,6 +11,10 @@ import {
 export const metadata: Metadata = {
   title: "Replacing $800+ of Software Subscriptions with Open Source - Building Open",
   description: "6 months ago, I stopped using Word, Excel, PowerPoint, Figma, and n8n. I replaced them all with Claude Code.",
+  openGraph: {
+    title: "Replacing $800+ of Software Subscriptions with Open Source - Building Open",
+    description: "6 months ago, I stopped using Word, Excel, PowerPoint, Figma, and n8n. I replaced them all with Claude Code.",
+  },
 };
 
 export default function OpenSourceToolsPost() {

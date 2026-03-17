@@ -105,7 +105,7 @@ export default function CommunityPage() {
             {user && (
               <Link
                 href="/community/new"
-                className="px-4 py-2 bg-green-500 text-black text-sm font-medium rounded-lg hover:bg-green-400 transition-colors"
+                className="px-4 py-2.5 bg-green-500 text-black text-sm font-medium rounded-lg hover:bg-green-400 transition-colors"
               >
                 New Post
               </Link>
@@ -139,7 +139,7 @@ export default function CommunityPage() {
             <button
               key={cat.value}
               onClick={() => setCategory(cat.value)}
-              className={`px-3 py-1.5 rounded-lg text-sm whitespace-nowrap transition-colors ${
+              className={`px-3 py-2 rounded-lg text-sm whitespace-nowrap transition-colors ${
                 category === cat.value
                   ? 'bg-zinc-800 text-white'
                   : 'text-zinc-500 hover:text-white'
@@ -155,7 +155,7 @@ export default function CommunityPage() {
             <button
               key={opt.value}
               onClick={() => setSort(opt.value)}
-              className={`px-2 py-1 rounded text-xs transition-colors ${
+              className={`px-3 py-2 rounded text-xs transition-colors ${
                 sort === opt.value
                   ? 'text-white bg-zinc-800'
                   : 'text-zinc-600 hover:text-zinc-400'

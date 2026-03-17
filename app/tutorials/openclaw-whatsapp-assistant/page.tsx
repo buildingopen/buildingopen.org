@@ -4,6 +4,10 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Build your own AI WhatsApp assistant for ~5/month - Building Open",
   description: "Set up a personal AI agent on a cheap cloud server, accessible via WhatsApp. Uses Gemini, runs 24/7.",
+  openGraph: {
+    title: "Build your own AI WhatsApp assistant for ~5/month - Building Open",
+    description: "Set up a personal AI agent on a cheap cloud server, accessible via WhatsApp. Uses Gemini, runs 24/7.",
+  },
 };
 
 export default function OpenClawTutorial() {

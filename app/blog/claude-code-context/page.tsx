@@ -10,6 +10,10 @@ import {
 export const metadata: Metadata = {
   title: "Claude Code Context: Why AI is My Co-Founder - Building Open",
   description: "Why I moved everything to Claude Code. It's not just a search bar, it's a thinking partner with full context.",
+  openGraph: {
+    title: "Claude Code Context: Why AI is My Co-Founder - Building Open",
+    description: "Why I moved everything to Claude Code. It's not just a search bar, it's a thinking partner with full context.",
+  },
 };
 
 export default function ClaudeCodeContextPost() {

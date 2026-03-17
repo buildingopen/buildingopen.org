@@ -4,6 +4,10 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Projects - Building Open",
   description: "Open source AI tools: OpenDraft for research papers, OpenSky for flights, OpenSlides for presentations, OpenQueen for coding agents.",
+  openGraph: {
+    title: "Projects - Building Open",
+    description: "Open source AI tools: OpenDraft for research papers, OpenSky for flights, OpenSlides for presentations, OpenQueen for coding agents.",
+  },
 };
 
 const projects = [
