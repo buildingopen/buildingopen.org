@@ -22,7 +22,7 @@ const videos = [
   },
   {
     title: "OpenSlides V12 (Early UI)",
-    description: "Testing early UI iterations before we stripped away all the buttons and went pure-prompt.",
+    description: "Testing early UI iterations before I stripped away all the buttons and went pure-prompt.",
     src: "/videos/openslides-v12.mp4",
     poster: "/thesis-page-01.png",
     date: "February 2026",
