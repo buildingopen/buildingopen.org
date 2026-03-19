@@ -69,6 +69,17 @@ export function middleware(request: NextRequest) {
     )
   }
 
+  // entropy.buildingopen.org: rewrite paths to /entropy prefix, no password
+  if (host.startsWith('entropy.')) {
+    if (pathname === '/') {
+      return NextResponse.rewrite(new URL('/entropy', request.url))
+    }
+    if (!pathname.startsWith('/entropy') && !pathname.startsWith('/api/') && !pathname.startsWith('/_next/')) {
+      return NextResponse.rewrite(new URL(`/entropy${pathname}`, request.url))
+    }
+    return NextResponse.next()
+  }
+
   if (
     pathname.startsWith('/api/') ||
     pathname.startsWith('/_next/') ||
