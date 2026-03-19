@@ -7,13 +7,13 @@ export const metadata: Metadata = {
     title: "Claude Code Entropy",
     description: "Spotify Wrapped for Claude Code. See your AI coding stats visualized.",
     url: "https://entropy.buildingopen.org",
-    images: [{ url: "/entropy-og.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Claude Code Entropy",
     description: "Spotify Wrapped for Claude Code. See your AI coding stats visualized.",
-    images: ["/entropy-og.png"],
+    images: ["/og-image.png"],
   },
 };
 
@@ -50,7 +50,7 @@ export default function EntropyLandingPage() {
 
         <h1
           style={{
-            fontFamily: "'Syne', system-ui, sans-serif",
+            fontFamily: "var(--font-space-grotesk), system-ui, sans-serif",
             fontWeight: 800,
             fontSize: "clamp(3rem, 10vw, 5rem)",
             letterSpacing: "-0.03em",
