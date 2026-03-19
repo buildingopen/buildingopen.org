@@ -15,14 +15,14 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL("https://buildingopen.org"),
   title: "Building Open",
-  description: "Open source AI tools by Federico De Ponte. Built fast, shared freely.",
+  description: "Open source AI tools. Built fast, shared freely.",
   icons: {
     icon: "/favicon.png",
     apple: "/favicon.png",
   },
   openGraph: {
     title: "Building Open",
-    description: "Open source AI tools by Federico De Ponte. Built fast, shared freely.",
+    description: "Open source AI tools. Built fast, shared freely.",
     url: "https://buildingopen.org",
     siteName: "Building Open",
     type: "website",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Building Open",
-    description: "Open source AI tools by Federico De Ponte. Built fast, shared freely.",
+    description: "Open source AI tools. Built fast, shared freely.",
     images: ["/og-image.png"],
   },
 };
@@ -53,7 +53,7 @@ export default function RootLayout({
               name: 'Building Open',
               url: 'https://buildingopen.org',
               logo: 'https://buildingopen.org/logo.svg',
-              description: 'Open source AI tools by Federico De Ponte. Built fast, shared freely.',
+              description: 'Open source AI tools. Built fast, shared freely.',
               founder: {
                 '@type': 'Person',
                 name: 'Federico De Ponte',

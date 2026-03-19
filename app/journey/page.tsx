@@ -26,7 +26,7 @@ const videos = [
   },
   {
     title: "OpenSlides V12 (Early UI)",
-    description: "Testing early UI iterations before I stripped away all the buttons and went pure-prompt.",
+    description: "Testing early UI iterations before we stripped away all the buttons and went pure-prompt.",
     src: "/videos/openslides-v12.mp4",
     poster: "/thesis-page-01.png",
     date: "February 2026",
@@ -40,7 +40,7 @@ export default function JourneyPage() {
         <header className="mb-16">
           <h1 className="text-3xl font-bold mb-4">The Journey</h1>
           <p className="text-zinc-400 max-w-xl">
-            I build in public. Here is the raw footage of features coming together, from early broken prototypes to the final polished tools.
+            We build in public. Here is the raw footage of features coming together, from early broken prototypes to the final polished tools.
           </p>
         </header>
 

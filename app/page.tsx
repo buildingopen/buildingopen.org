@@ -24,10 +24,10 @@ export default function Home() {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-8">
           <div className="max-w-[620px]">
             <h1 className="text-[28px] md:text-4xl font-bold tracking-tight leading-tight">
-              I see problems. I build solutions.
+              We see problems. We build solutions.
             </h1>
             <p className="text-zinc-400 mt-3 text-base leading-relaxed">
-              Then I share everything. Tools, ideas, experiments, code. Take what&apos;s useful, ignore the rest.
+              Then we share everything. Tools, ideas, experiments, code. Take what&apos;s useful, ignore the rest.
             </p>
             <div className="mt-6 flex items-center gap-4">
               <Image
@@ -39,7 +39,7 @@ export default function Home() {
               />
               <div className="text-sm">
                 <div className="font-semibold">Federico De Ponte</div>
-                <div className="text-zinc-500 mt-0.5">AI engineer &middot; Hamburg &rarr; San Francisco</div>
+                <div className="text-zinc-500 mt-0.5">Founder &middot; Building Open</div>
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@ export default function Home() {
               href="#projects"
               className="inline-flex items-center gap-2 px-5 py-2.5 text-sm text-zinc-400 border border-zinc-800 rounded-lg hover:border-zinc-600 hover:text-white transition-colors"
             >
-              <span className="text-lg leading-none">&darr;</span> See what I&apos;m building
+              <span className="text-lg leading-none">&darr;</span> See what we&apos;re building
             </a>
           </div>
         </div>
@@ -124,12 +124,12 @@ export default function Home() {
                   AI flight search that finds hidden deals. Gemini analyzes routes across airlines.
                 </p>
                 <div className="mt-4 px-3 py-2.5 bg-[#111113] group-hover:bg-[#18181b] rounded-md border border-zinc-800/60 font-mono text-[12px] text-zinc-700 transition-colors">
-                  <span className="text-blue-400">flyfast.app</span>
+                  <span className="text-blue-400">opensky &middot; flyfast.app</span>
                 </div>
               </div>
               <div className="mt-5">
                 <span className="text-[13px] text-zinc-600 group-hover:text-green-500 transition-colors">
-                  Try FlyFast &rarr;
+                  Try OpenSky &rarr;
                 </span>
               </div>
             </a>
@@ -226,9 +226,9 @@ export default function Home() {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           <div className="max-w-[520px]">
             <p className="text-lg font-medium leading-relaxed text-zinc-400">
-              <strong className="text-white font-semibold">I build because I see problems.</strong><br />
-              <strong className="text-white font-semibold">I share because why not.</strong><br />
-              Come build with me.
+              <strong className="text-white font-semibold">We build because we see problems.</strong><br />
+              <strong className="text-white font-semibold">We share because why not.</strong><br />
+              Come build with us.
             </p>
           </div>
           <div className="flex gap-3">

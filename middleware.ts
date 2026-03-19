@@ -7,6 +7,8 @@ const passwordPage = `<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Building Open</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/favicon.png">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
