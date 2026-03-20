@@ -3,10 +3,10 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Projects - Building Open",
-  description: "Open source AI tools: OpenDraft for research papers, OpenSky for flights, OpenSlides for presentations, OpenQueen for coding agents.",
+  description: "Open source AI tools and Claude Code extensions. OpenDraft, OpenSky, OpenBrowser, OpenPage, and more.",
   openGraph: {
     title: "Projects - Building Open",
-    description: "Open source AI tools: OpenDraft for research papers, OpenSky for flights, OpenSlides for presentations, OpenQueen for coding agents.",
+    description: "Open source AI tools and Claude Code extensions. OpenDraft, OpenSky, OpenBrowser, OpenPage, and more.",
   },
 };
 
@@ -47,6 +47,103 @@ const projects = [
     features: ["65+ curated brands", "Real SVG logos", "LLM-powered generation", "Export to PNG/PDF"],
     href: "https://openslides.buildingopen.org",
     image: "/openslides-demo.png",
+  },
+];
+
+type CompactProject = {
+  id: string;
+  title: string;
+  description: string;
+  href: string;
+};
+
+const moreTools: CompactProject[] = [
+  {
+    id: "openbrowser",
+    title: "OpenBrowser",
+    description: "Give AI your browser. Check email, track orders, download receipts. Open source MCP server + CLI.",
+    href: "https://github.com/buildingopen/openbrowser",
+  },
+  {
+    id: "openpage",
+    title: "OpenPage",
+    description: "Open-source website builder with visual drag-and-drop editor, AI site generation, and JSON-first architecture.",
+    href: "https://github.com/buildingopen/openpage",
+  },
+  {
+    id: "opencfo",
+    title: "OpenCFO",
+    description: "Your Chief Food Officer. AI agent that searches delivery apps + Google Maps and picks the best restaurant.",
+    href: "https://github.com/buildingopen/opencfo",
+  },
+  {
+    id: "runit",
+    title: "RunIt",
+    description: "Deploy and run code from AI chats. Self-hosted.",
+    href: "https://github.com/buildingopen/runit",
+  },
+  {
+    id: "openclaw-setup",
+    title: "OpenClaw Setup",
+    description: "Set up your own AI assistant with OpenClaw in 10 minutes. No coding required.",
+    href: "https://github.com/buildingopen/openclaw-setup",
+  },
+];
+
+const claudeCodeTools: CompactProject[] = [
+  {
+    id: "session-recall",
+    title: "Session Recall",
+    description: "Search and analyze Claude Code session transcripts to recover context after compaction.",
+    href: "https://github.com/buildingopen/session-recall",
+  },
+  {
+    id: "claude-wrapped",
+    title: "Claude Wrapped",
+    description: "Spotify Wrapped for Claude Code. Visualize your AI coding stats with npx claude-entropy.",
+    href: "https://github.com/buildingopen/claude-wrapped",
+  },
+  {
+    id: "claude-code-stats",
+    title: "Claude Code Stats",
+    description: "Spotify Wrapped for Claude Code. Visualize your AI coding stats, token usage, and costs.",
+    href: "https://github.com/buildingopen/claude-code-stats",
+  },
+  {
+    id: "bouncer",
+    title: "Bouncer",
+    description: "Gemini stands at the door. Independent quality gate that audits Claude Code's output before it can stop.",
+    href: "https://github.com/buildingopen/bouncer",
+  },
+  {
+    id: "cc-resilience",
+    title: "CC Resilience",
+    description: "Crash-resilient automation for Claude Code. Verified iteration loops + automatic crash recovery.",
+    href: "https://github.com/buildingopen/cc-resilience",
+  },
+  {
+    id: "blast-radius",
+    title: "Blast Radius",
+    description: "Find all files affected by your changes. One bash script, zero dependencies.",
+    href: "https://github.com/buildingopen/blast-radius",
+  },
+  {
+    id: "dep-check",
+    title: "Dep Check",
+    description: "Find dead imports in your project. One bash script.",
+    href: "https://github.com/buildingopen/dep-check",
+  },
+  {
+    id: "hook-stats",
+    title: "Hook Stats",
+    description: "Analyze your Claude Code bash command log.",
+    href: "https://github.com/buildingopen/hook-stats",
+  },
+  {
+    id: "ai-error-analyzer",
+    title: "AI Error Analyzer",
+    description: "6 rules to reduce wasted AI coding retries. Analyze your own Claude Code, Cursor, or Copilot errors.",
+    href: "https://github.com/buildingopen/ai-error-analyzer",
   },
 ];
 
@@ -104,8 +201,64 @@ export default function ProjectsPage() {
           ))}
         </div>
 
+        <div className="mt-16 mb-6">
+          <h2 className="text-lg font-semibold">More Tools</h2>
+          <p className="text-zinc-500 text-sm mt-1">Smaller utilities and experiments.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {moreTools.map((tool) => (
+            <a
+              key={tool.id}
+              href={tool.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              id={tool.id}
+              className="group scroll-mt-24 bg-zinc-900 rounded-lg border border-zinc-800 p-5 hover:border-zinc-600 hover:bg-zinc-800/50 transition-colors"
+            >
+              <h3 className="text-sm font-bold mb-1 group-hover:text-green-500 transition-colors">
+                {tool.title}
+              </h3>
+              <p className="text-zinc-500 text-[13px] leading-relaxed">
+                {tool.description}
+              </p>
+              <span className="text-[12px] text-zinc-600 mt-3 inline-block group-hover:text-zinc-400 transition-colors">
+                GitHub →
+              </span>
+            </a>
+          ))}
+        </div>
+
+        <div className="mt-16 mb-6">
+          <h2 className="text-lg font-semibold">Claude Code Tools</h2>
+          <p className="text-zinc-500 text-sm mt-1">Extensions, quality gates, and analytics for Claude Code.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {claudeCodeTools.map((tool) => (
+            <a
+              key={tool.id}
+              href={tool.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              id={tool.id}
+              className="group scroll-mt-24 bg-zinc-900 rounded-lg border border-zinc-800 p-5 hover:border-zinc-600 hover:bg-zinc-800/50 transition-colors"
+            >
+              <h3 className="text-sm font-bold mb-1 group-hover:text-green-500 transition-colors">
+                {tool.title}
+              </h3>
+              <p className="text-zinc-500 text-[13px] leading-relaxed">
+                {tool.description}
+              </p>
+              <span className="text-[12px] text-zinc-600 mt-3 inline-block group-hover:text-zinc-400 transition-colors">
+                GitHub →
+              </span>
+            </a>
+          ))}
+        </div>
+
         <div className="mt-16 p-6 bg-zinc-900 rounded-lg border border-zinc-800 text-center">
-          <p className="text-zinc-400 mb-4">More tools coming. Want to contribute?</p>
+          <p className="text-zinc-400 mb-4">All open source. Want to contribute?</p>
           <a
             href="https://github.com/buildingopen"
             target="_blank"
