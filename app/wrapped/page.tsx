@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Claude Code Entropy",
+  title: "Claude Code Wrapped",
   description: "Spotify Wrapped for Claude Code. See your AI coding stats visualized.",
   openGraph: {
-    title: "Claude Code Entropy",
+    title: "Claude Code Wrapped",
     description: "Spotify Wrapped for Claude Code. See your AI coding stats visualized.",
-    url: "https://entropy.buildingopen.org",
+    url: "https://wrapped.buildingopen.org",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Claude Code Entropy",
+    title: "Claude Code Wrapped",
     description: "Spotify Wrapped for Claude Code. See your AI coding stats visualized.",
   },
 };
@@ -22,7 +22,7 @@ const slidePreview = [
   { number: "33%", label: "delusion rate", accent: "#f59e0b" },
 ];
 
-export default function EntropyLandingPage() {
+export default function WrappedLandingPage() {
   return (
     <div
       style={{
@@ -90,7 +90,7 @@ export default function EntropyLandingPage() {
               marginBottom: "1.5rem",
             }}
           >
-            Entropy
+            Wrapped
           </h1>
 
           <p
@@ -122,7 +122,7 @@ export default function EntropyLandingPage() {
                 fontFamily: "'SF Mono', 'Fira Code', monospace",
               }}
             >
-              npx claude-entropy
+              npx claude-wrapped
             </code>
             <div
               style={{
@@ -370,7 +370,7 @@ export default function EntropyLandingPage() {
             {
               step: "1",
               title: "Run one command",
-              desc: "npx claude-entropy scans your local Claude Code session files.",
+              desc: "npx claude-wrapped scans your local Claude Code session files.",
             },
             {
               step: "2",
@@ -452,7 +452,7 @@ export default function EntropyLandingPage() {
               fontFamily: "'SF Mono', 'Fira Code', monospace",
             }}
           >
-            npx claude-entropy
+            npx claude-wrapped
           </code>
         </div>
 
@@ -464,18 +464,18 @@ export default function EntropyLandingPage() {
           }}
         >
           <a
-            href="https://github.com/buildingopen/claude-entropy"
+            href="https://github.com/buildingopen/claude-wrapped"
             style={{ color: "#52525b", textDecoration: "none" }}
           >
-            github.com/buildingopen/claude-entropy
+            github.com/buildingopen/claude-wrapped
           </a>
           {" "}
           &middot; npm:{" "}
           <a
-            href="https://www.npmjs.com/package/claude-entropy"
+            href="https://www.npmjs.com/package/claude-wrapped"
             style={{ color: "#52525b", textDecoration: "none" }}
           >
-            claude-entropy
+            claude-wrapped
           </a>
         </div>
       </section>

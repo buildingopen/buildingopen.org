@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 
 export default function Footer() {
   const pathname = usePathname();
-  if (pathname.startsWith('/entropy')) return null;
+  if (pathname.startsWith('/wrapped')) return null;
 
   return (
     <footer className="border-t border-zinc-800 py-8">

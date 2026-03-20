@@ -53,10 +53,10 @@ export async function GET(
           }}
         >
           <div style={{ color: '#22c55e', fontSize: '48px', fontWeight: 700 }}>
-            CLAUDE CODE ENTROPY
+            CLAUDE CODE WRAPPED
           </div>
           <div style={{ color: '#a1a1aa', fontSize: '28px', marginTop: '16px' }}>
-            entropy.buildingopen.org
+            wrapped.buildingopen.org
           </div>
         </div>
       ),
@@ -95,7 +95,7 @@ export async function GET(
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div style={{ color: '#a1a1aa', fontSize: '24px', letterSpacing: '4px', fontWeight: 700 }}>
-              CLAUDE CODE ENTROPY
+              CLAUDE CODE WRAPPED
             </div>
           </div>
         </div>
@@ -143,7 +143,7 @@ export async function GET(
             {author}
           </div>
           <div style={{ color: '#52525b', fontSize: '20px' }}>
-            entropy.buildingopen.org
+            wrapped.buildingopen.org
           </div>
         </div>
       </div>

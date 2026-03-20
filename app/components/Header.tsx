@@ -15,7 +15,7 @@ export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  if (pathname.startsWith('/entropy')) return null;
+  if (pathname.startsWith('/wrapped')) return null;
 
   return (
     <header className="border-b border-zinc-800 bg-[#0a0a0a]/92 backdrop-blur-[12px] sticky top-0 z-50">

@@ -22,7 +22,20 @@ export async function GET(
     return new NextResponse('Not found', { status: 404 });
   }
 
-  return new NextResponse(data.html_content, {
+  // Inject dynamic OG image URL for this specific report
+  const ogUrl = `https://wrapped.buildingopen.org/api/og/${hash}`;
+  let html = data.html_content;
+  html = html.replace(
+    /content="https:\/\/wrapped\.buildingopen\.org\/api\/og\/[^"]*"/g,
+    `content="${ogUrl}"`,
+  );
+  // Also replace legacy static og.png references
+  html = html.replace(
+    /content="https:\/\/wrapped\.buildingopen\.org\/og\.png"/g,
+    `content="${ogUrl}"`,
+  );
+
+  return new NextResponse(html, {
     headers: {
       'Content-Type': 'text/html; charset=utf-8',
       'Cache-Control': 'public, max-age=86400',

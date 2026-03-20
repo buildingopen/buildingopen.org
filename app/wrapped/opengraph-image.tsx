@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'Claude Code Entropy - Your AI coding stats, visualized';
+export const alt = 'Claude Code Wrapped - Your AI coding stats, visualized';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -60,7 +60,7 @@ export default function OGImage() {
             marginBottom: '24px',
           }}
         >
-          Entropy
+          Wrapped
         </div>
 
         {/* Subtitle */}
@@ -116,9 +116,9 @@ export default function OGImage() {
             fontSize: '16px',
           }}
         >
-          <span style={{ color: '#22c55e', fontFamily: 'monospace' }}>npx claude-entropy</span>
+          <span style={{ color: '#22c55e', fontFamily: 'monospace' }}>npx claude-wrapped</span>
           <span>·</span>
-          <span>entropy.buildingopen.org</span>
+          <span>wrapped.buildingopen.org</span>
         </div>
       </div>
     ),

@@ -69,13 +69,13 @@ export function middleware(request: NextRequest) {
     )
   }
 
-  // entropy.buildingopen.org: rewrite paths to /entropy prefix, no password
-  if (host.startsWith('entropy.')) {
+  // wrapped.buildingopen.org: rewrite paths to /wrapped prefix, no password
+  if (host.startsWith('wrapped.')) {
     if (pathname === '/') {
-      return NextResponse.rewrite(new URL('/entropy', request.url))
+      return NextResponse.rewrite(new URL('/wrapped', request.url))
     }
-    if (!pathname.startsWith('/entropy') && !pathname.startsWith('/api/') && !pathname.startsWith('/_next/')) {
-      return NextResponse.rewrite(new URL(`/entropy${pathname}`, request.url))
+    if (!pathname.startsWith('/wrapped') && !pathname.startsWith('/api/') && !pathname.startsWith('/_next/')) {
+      return NextResponse.rewrite(new URL(`/wrapped${pathname}`, request.url))
     }
     return NextResponse.next()
   }
@@ -88,7 +88,7 @@ export function middleware(request: NextRequest) {
     pathname === '/og-image.png' ||
     pathname.startsWith('/openqueen') ||
     pathname.startsWith('/wrapped/') ||
-    pathname.startsWith('/entropy/')
+    pathname.startsWith('/wrapped/')
   ) {
     return NextResponse.next()
   }
