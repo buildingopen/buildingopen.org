@@ -122,7 +122,7 @@ export default function WrappedLandingPage() {
                 fontFamily: "'SF Mono', 'Fira Code', monospace",
               }}
             >
-              npx claude-wrapped
+              npx claude-entropy
             </code>
             <div
               style={{
@@ -370,7 +370,7 @@ export default function WrappedLandingPage() {
             {
               step: "1",
               title: "Run one command",
-              desc: "npx claude-wrapped scans your local Claude Code session files.",
+              desc: "npx claude-entropy scans your local Claude Code session files.",
             },
             {
               step: "2",
@@ -452,7 +452,7 @@ export default function WrappedLandingPage() {
               fontFamily: "'SF Mono', 'Fira Code', monospace",
             }}
           >
-            npx claude-wrapped
+            npx claude-entropy
           </code>
         </div>
 
@@ -472,10 +472,10 @@ export default function WrappedLandingPage() {
           {" "}
           &middot; npm:{" "}
           <a
-            href="https://www.npmjs.com/package/claude-wrapped"
+            href="https://www.npmjs.com/package/claude-entropy"
             style={{ color: "#52525b", textDecoration: "none" }}
           >
-            claude-wrapped
+            claude-entropy
           </a>
         </div>
       </section>
