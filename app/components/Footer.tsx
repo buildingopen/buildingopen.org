@@ -50,12 +50,6 @@ export default function Footer() {
             >
               Journey
             </a>
-            <a
-              href="/badge"
-              className="py-2 hover:text-white transition-colors"
-            >
-              Badge
-            </a>
           </div>
         </div>
         <p className="text-center md:text-right text-xs text-zinc-600 mt-4">&copy; 2026 Building Open</p>
