@@ -22,7 +22,7 @@ const projects = [
   },
   {
     id: "opensky",
-    title: "OpenSky",
+    title: "FlyFast",
     tagline: "AI flight search",
     description: "AI-powered flight search that finds hidden deals. Gemini analyzes routes across airlines to surface prices you won't find on Google Flights.",
     features: ["AI route analysis", "Cross-airline comparison", "Hidden deal detection", "Price alerts"],
@@ -106,7 +106,7 @@ const claudeCodeTools: CompactProject[] = [
   {
     id: "claude-code-stats",
     title: "Claude Code Stats",
-    description: "Spotify Wrapped for Claude Code. Visualize your AI coding stats, token usage, and costs.",
+    description: "Terminal dashboard for Claude Code. Track token usage, costs, and session metrics from the command line.",
     href: "https://github.com/buildingopen/claude-code-stats",
   },
   {
