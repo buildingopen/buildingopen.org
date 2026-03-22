@@ -112,7 +112,7 @@ export default function Home() {
 
           {/* 3 secondary projects */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-zinc-800 border border-zinc-800 border-t-0 rounded-b-xl overflow-hidden">
-            {/* FlyFast */}
+            {/* OpenSky */}
             <a
               href="https://flyfast.app"
               target="_blank"
@@ -124,17 +124,17 @@ export default function Home() {
                   <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-400" />
                   Live
                 </div>
-                <h3 className="text-lg font-bold tracking-tight">FlyFast</h3>
+                <h3 className="text-lg font-bold tracking-tight">OpenSky</h3>
                 <p className="text-zinc-500 text-[13px] leading-relaxed mt-2">
                   AI flight search that finds hidden deals. Gemini analyzes routes across airlines.
                 </p>
                 <div className="mt-4 px-3 py-2.5 bg-[#111113] group-hover:bg-[#18181b] rounded-md border border-zinc-800/60 font-mono text-[12px] text-zinc-700 transition-colors">
-                  <span className="text-blue-400">flyfast.app</span>
+                  <span className="text-blue-400">opensky &middot; flyfast.app</span>
                 </div>
               </div>
               <div className="mt-5">
                 <span className="text-[13px] text-zinc-600 group-hover:text-green-500 transition-colors">
-                  Try FlyFast &rarr;
+                  Try OpenSky &rarr;
                 </span>
               </div>
             </a>

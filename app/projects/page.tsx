@@ -22,7 +22,7 @@ const projects = [
   },
   {
     id: "opensky",
-    title: "FlyFast",
+    title: "OpenSky",
     tagline: "AI flight search",
     description: "AI-powered flight search that finds hidden deals. Gemini analyzes routes across airlines to surface prices you won't find on Google Flights.",
     features: ["AI route analysis", "Cross-airline comparison", "Hidden deal detection", "Price alerts"],
