@@ -29,7 +29,12 @@ export default function Home() {
             <p className="text-zinc-400 mt-3 text-base leading-relaxed">
               Then we share everything. Tools, ideas, experiments, code. Take what&apos;s useful, ignore the rest.
             </p>
-            <div className="mt-6 flex items-center gap-4">
+            <a
+              href="https://linkedin.com/in/federicodeponte"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 flex items-center gap-4 group"
+            >
               <Image
                 src="/fede.jpg"
                 alt="Federico De Ponte"
@@ -38,10 +43,10 @@ export default function Home() {
                 className="rounded-xl object-cover border border-zinc-800 flex-shrink-0"
               />
               <div className="text-sm">
-                <div className="font-semibold">Federico De Ponte</div>
+                <div className="font-semibold group-hover:text-green-500 transition-colors">Federico De Ponte</div>
                 <div className="text-zinc-500 mt-0.5">Founder &middot; Building Open</div>
               </div>
-            </div>
+            </a>
           </div>
           <div className="flex-shrink-0">
             <a
