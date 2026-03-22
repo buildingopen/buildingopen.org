@@ -113,17 +113,6 @@ export default function CommunityPage() {
           </div>
         </div>
 
-        <Link
-          href="/badge"
-          className="block mb-6 p-5 rounded-lg border border-zinc-800 hover:border-zinc-700 transition-colors"
-        >
-          <h2 className="text-sm font-semibold text-green-400">Get your Building Open badge</h2>
-          <p className="text-sm text-zinc-500 mt-1">Add the BO logo to your profile picture. Takes 10 seconds.</p>
-          <span className="text-xs text-zinc-600 mt-2 inline-block hover:text-white transition-colors">
-            Get yours &rarr;
-          </span>
-        </Link>
-
         <div className="mb-4">
           <input
             type="text"
