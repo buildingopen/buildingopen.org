@@ -92,6 +92,12 @@ const moreTools: CompactProject[] = [
 
 const claudeCodeTools: CompactProject[] = [
   {
+    id: "claude-setup",
+    title: "Claude Setup",
+    description: "Production-grade Claude Code configuration: CLAUDE.md templates, 12 safety hooks, 40+ skills, memory system.",
+    href: "https://github.com/buildingopen/claude-setup",
+  },
+  {
     id: "session-recall",
     title: "Session Recall",
     description: "Search and analyze Claude Code session transcripts to recover context after compaction.",
