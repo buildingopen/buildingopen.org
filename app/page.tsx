@@ -29,6 +29,7 @@ export default function Home() {
             <p className="text-zinc-400 mt-3 text-base leading-relaxed">
               Then we share everything. Tools, ideas, experiments, code. Take what&apos;s useful, ignore the rest.
             </p>
+            <p className="text-zinc-600 text-sm mt-2">20,000+ installs across PyPI &amp; npm</p>
             <a
               href="https://linkedin.com/in/federicodeponte"
               target="_blank"
